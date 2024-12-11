@@ -37,6 +37,28 @@
       />
     </div>
     <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        type="tel"
+        id="phone"
+        v-model="formData.phone"
+        required
+        placeholder="Your Phone Number"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input
+        type="tel"
+        id="quantity"
+        v-model="formData.quantity"
+        required
+        placeholder="Order Quantity"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
       <label for="message">Message</label>
       <textarea
         id="message"
@@ -629,6 +651,8 @@ export default {
         name: "",
         email: "",
         message: "",
+        phone: "",
+        quantity: "",
       },
   }),
   components: {
@@ -729,6 +753,8 @@ export default {
         name: "",
         email: "",
         message: "",
+        phone: "",
+        quantity: "",
       };
     },
   },
@@ -776,6 +802,8 @@ export default {
 
 .contact-form {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .form-header {
