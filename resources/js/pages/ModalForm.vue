@@ -21,14 +21,19 @@
   <script>
   export default {
     props: {
-      isVisible: Boolean, // Show modal based on this prop
+        isVisible: Boolean, // Show modal based on this prop
+    },
+    watch: {
+        isVisible(newValue) {
+        console.log("Modal visibility changed:", newValue); // Log to see the visibility status
+        },
     },
     methods: {
-      closeModal() {
-        this.$emit('close'); // Emit event to close modal
-      },
+        closeModal() {
+        this.$emit("close"); // Emit event to close modal
+        },
     },
-  };
+};
   </script>
   
   <style scoped>
@@ -63,6 +68,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 10000;
   margin: 0 auto;
   background-color: #fff;
   width: 600px;
