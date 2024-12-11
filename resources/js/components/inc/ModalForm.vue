@@ -11,7 +11,22 @@
   
         <!-- Modal Content -->
         <div class="modal-content">
-          <h3>Some content here</h3>
+          <form action="">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" id="name">
+              </div>
+              <div class="col-md-6">
+                <label for="email">Email</label>
+                <input class="form-control" type="text" name="email" id="email">
+              </div>
+              <div class="col-md-12">
+                <input type="submit" class="btn btn-success" value="Submit">
+              </div>
+            </div>
+
+          </form>
         </div>
   
       </div>
@@ -47,12 +62,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 5;
+    z-index: 5 !important;
     background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    visibility: hidden;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    opacity: 1;
+    visibility: visible;
+    -webkit-backface-visibility: visible;
+            backface-visibility: visible;
     transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1);
   }
   .modal-overlay.active {
@@ -68,7 +83,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 10000;
+  z-index: 9999999 !important;
   margin: 0 auto;
   background-color: #fff;
   width: 600px;
@@ -76,12 +91,12 @@
   min-height: 20rem;
   padding: 1rem;
   border-radius: 3px;
-  opacity: 0;
+  opacity: 1;
   overflow-y: auto;
-  visibility: hidden;
+  visibility: visible;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
   transform: scale(1.2);
   transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
 }
@@ -90,9 +105,9 @@
   cursor: pointer;
   top: 5px;
   right: 15px;
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  opacity: 1;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
   transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
   transition-delay: 0.3s;
 }
@@ -101,9 +116,9 @@
   height: 1.75em;
 }
 .modal .modal-content {
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  opacity: 1;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
   transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1);
   transition-delay: 0.3s;
 }
