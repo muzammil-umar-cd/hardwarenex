@@ -410,13 +410,14 @@
               />
             </template>
             <template v-else>
-            <banner
-              :loading="false"
-              @click.native="openModal"
-              class=""
-            />
-            <ModalForm v-if="showModal" @close="closeModal" />
-          </template>
+              <banner
+                :loading="false"
+                :banner="modifiedBanner"
+                @click.native="handleBannerClick"
+                class=""
+              />
+              <ModalForm v-if="showModal" @close="closeModal" />
+            </template>
 
             <div
               v-if="productDetails.has_warranty == 1"
@@ -582,7 +583,14 @@ export default {
     SwiperSlide,
     ModalForm,
   },
-  computed: {},
+  computed: {
+    modifiedBanner() {
+      // Clone the banner object to avoid mutating Vuex state directly
+      const bannerData = { ...this.$store.getters['app/banners'].product_page };
+      bannerData.link = null; // Set link to null or an empty string
+      return bannerData;
+    },
+  },
   watch:{
     metaTitle(newTitle){
       this.updateHead(newTitle, this.metaDescription);
@@ -658,6 +666,10 @@ export default {
     closeModal() {
       this.showModal = false;
     },
+    handleBannerClick(event) {
+    event.preventDefault(); // Prevent default navigation
+    this.openModal(); // Open the modal
+  },
   },
   async created() {
     this.getDetails();
