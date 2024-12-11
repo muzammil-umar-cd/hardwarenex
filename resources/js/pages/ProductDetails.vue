@@ -409,19 +409,25 @@
                 class=""
               />
             </template>
-            <template>
-                <div>
-                  <!-- Banner Section -->
-                  <banner
-                    :loading="false"
-                    :banner="modifiedBanner"
-                    @click="openModal"
-                    class="banner-wrapper-modal"
-                  />
+            <!-- <template v-else>
+              <banner
+                :loading="false"
+                :banner="modifiedBanner"
+                @click="openModal"
+                class="banner-wrapper-modal"
+              />
+              <ModalForm v-if="showModal" @close="closeModal" />
+            </template> -->
+            <template v-else>
+                <banner
+                  :loading="false"
+                  :banner="modifiedBanner"
+                  @click="openModal"
+                  class="banner-wrapper-modal"
+                />
 
-                  <!-- Modal Section -->
-                  <modal :isVisible="showModal" @close="closeModal" />
-                </div>
+                <!-- Modal Section -->
+                <modal :isVisible="showModal" @close="closeModal" />
             </template>
             <div
               v-if="productDetails.has_warranty == 1"
