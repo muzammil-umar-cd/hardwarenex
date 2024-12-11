@@ -1,4 +1,20 @@
 <template>
+  <v-navigation-drawer
+  class="cart-drawer"
+  location="right"
+  width="400"
+  height="100vh"
+  v-model="drawerOpen"
+  fixed
+  temporary
+  hide-overlay
+  right
+  clipped
+>
+  <h2 class="p-4">Drawer Content</h2>
+  <p class="px-4">You can replace this content with your desired UI.</p>
+  <button @click="toggleDrawer" class="px-4 py-2">Close Drawer</button>
+</v-navigation-drawer>
   <v-container class="pt-7">
     <v-row align="start">
       <v-col
@@ -416,25 +432,6 @@
                   @click="toggleDrawer"
                   class="banner-wrapper-modal"
                 />
-
-                <!-- Modal Section -->
-                <!-- <ModalForm :isVisible="showModal" @close="showModal = false" /> -->
-                <v-navigation-drawer
-                  class="cart-drawer"
-                  location="right"
-                  width="400"
-                  height="100vh"
-                  v-model="drawerOpen"
-                  fixed
-                  temporary
-                  hide-overlay
-                  right
-                  clipped
-                >
-                  <h2 class="p-4">Drawer Content</h2>
-                  <p class="px-4">You can replace this content with your desired UI.</p>
-                  <button @click="toggleDrawer" class="px-4 py-2">Close Drawer</button>
-                </v-navigation-drawer>
             </template>
             <div
               v-if="productDetails.has_warranty == 1"
