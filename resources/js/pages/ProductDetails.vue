@@ -409,25 +409,32 @@
                 class=""
               />
             </template>
-            <!-- <template v-else>
-              <banner
-                :loading="false"
-                :banner="modifiedBanner"
-                @click="openModal"
-                class="banner-wrapper-modal"
-              />
-              <ModalForm v-if="showModal" @close="closeModal" />
-            </template> -->
             <template v-else>
                 <banner
                   :loading="false"
                   :banner="modifiedBanner"
-                  @click="showModal = true"
+                  @click="toggleDrawer"
                   class="banner-wrapper-modal"
                 />
 
                 <!-- Modal Section -->
-                <ModalForm :isVisible="showModal" @close="showModal = false" />
+                <!-- <ModalForm :isVisible="showModal" @close="showModal = false" /> -->
+                <v-navigation-drawer
+                  class="cart-drawer"
+                  location="right"
+                  width="400"
+                  height="100vh"
+                  v-model="drawerOpen"
+                  fixed
+                  temporary
+                  hide-overlay
+                  right
+                  clipped
+                >
+                  <h2 class="p-4">Drawer Content</h2>
+                  <p class="px-4">You can replace this content with your desired UI.</p>
+                  <button @click="toggleDrawer" class="px-4 py-2">Close Drawer</button>
+                </v-navigation-drawer>
             </template>
             <div
               v-if="productDetails.has_warranty == 1"
@@ -584,7 +591,7 @@ export default {
         },
       },
     },
-    showModal: false,
+    drawerOpen: false,
   }),
   components: {
     ProductReviews,
@@ -668,13 +675,8 @@ export default {
         ]
       });
     },
-    openModal() {
-      console.log('Opening Modal...');
-      this.showModal = true;
-    },
-    closeModal() {
-      console.log('Closing Modal...');
-      this.showModal = false;
+    toggleDrawer() {
+      this.drawerOpen = !this.drawerOpen; // Toggle drawer visibility
     },
   },
   async created() {
@@ -710,5 +712,8 @@ export default {
     width: 224px;
     max-width: 224px;
   }
+}
+.cart-drawer {
+  z-index: 610;
 }
 </style>
