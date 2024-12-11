@@ -413,8 +413,8 @@
               <banner
                 :loading="false"
                 :banner="modifiedBanner"
-                @click.native="handleBannerClick"
-                class=""
+                @click.native="openModal"
+                class="banner-wrapper"
               />
               <ModalForm v-if="showModal" @close="closeModal" />
             </template>
@@ -587,7 +587,7 @@ export default {
     modifiedBanner() {
       // Clone the banner object to avoid mutating Vuex state directly
       const bannerData = { ...this.$store.getters['app/banners'].product_page };
-      bannerData.link = null; // Set link to null or an empty string
+      bannerData.link = null; // Remove or disable the link
       return bannerData;
     },
   },
@@ -661,10 +661,11 @@ export default {
       });
     },
     openModal() {
-      this.showModal = true;
+      console.log('Modal triggered');
+      this.showModal = true; // Show the modal
     },
     closeModal() {
-      this.showModal = false;
+      this.showModal = false; // Close the modal
     },
     handleBannerClick(event) {
     event.preventDefault(); // Prevent default navigation
