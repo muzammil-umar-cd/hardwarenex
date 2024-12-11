@@ -416,7 +416,9 @@
                 @click.native="openModal"
                 class="banner-wrapper"
               />
-              <ModalForm v-if="showModal" @close="closeModal" />
+            </template>
+            <template v-if="showModal">
+              <ModalForm @close="closeModal" />
             </template>
 
             <div
