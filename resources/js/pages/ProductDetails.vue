@@ -422,12 +422,12 @@
                 <banner
                   :loading="false"
                   :banner="modifiedBanner"
-                  @click="openModal"
+                  @click="showModal = true"
                   class="banner-wrapper-modal"
                 />
 
                 <!-- Modal Section -->
-                <modal :isVisible="showModal" @close="closeModal" />
+                <modal :isVisible="showModal" @close="showModal = false" />
             </template>
             <div
               v-if="productDetails.has_warranty == 1"
