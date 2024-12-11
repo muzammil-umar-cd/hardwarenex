@@ -413,11 +413,14 @@
               <banner
                 :loading="false"
                 :banner="modifiedBanner"
-                @click="showModal"
-                class="banner-wrapper"
               />
             </template>
             <template>
+              <button
+              type="button"
+              class="btn"
+              @click="showModal"
+              >Bulk Order Here..</button>
                 <ModalForm
                   v-show="isModalVisible"
                   @close="closeModal"
