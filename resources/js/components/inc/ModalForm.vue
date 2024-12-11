@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isVisible" class="modal-overlay">
+    <div v-if="isVisible" :class="['modal-overlay', { active: isVisible }]">
       <div class="modal">
   
         <!-- Close Button -->

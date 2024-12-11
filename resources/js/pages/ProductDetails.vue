@@ -686,6 +686,16 @@ export default {
     if (product_referral_code != null) {
       this.productReferralCode(product_referral_code);
     }
+
+    const elements = $(".modal-overlay, .modal");
+
+    $(".banner-wrapper-modal span a, .banner-wrapper-modal span a img").click(() => {
+      elements.addClass("active");
+    });
+
+    $(".close-modal").click(() => {
+      elements.removeClass("active");
+    });
   },
 };
 </script>
