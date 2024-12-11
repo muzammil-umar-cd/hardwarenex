@@ -11,9 +11,45 @@
   right
   clipped
 >
-  <h2 class="p-4">Drawer Content</h2>
-  <p class="px-4">You can replace this content with your desired UI.</p>
-  <button @click="toggleDrawer" class="px-4 py-2">Close Drawer</button>
+<div class="contact-form">
+  <h3 class="form-header">Get in Touch</h3>
+  <form @submit.prevent="submitForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        v-model="formData.name"
+        required
+        placeholder="Your Name"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        v-model="formData.email"
+        required
+        placeholder="Your Email"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        v-model="formData.message"
+        required
+        placeholder="Your Message"
+        class="form-control"
+        rows="4"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+  </form>
+</div>
 </v-navigation-drawer>
   <v-container class="pt-7">
     <v-row align="start">
@@ -712,5 +748,41 @@ export default {
 }
 .cart-drawer {
   z-index: 610;
+}
+.contact-drawer {
+  z-index: 610;
+  padding: 20px;
+}
+
+.contact-form {
+  margin-top: 20px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
 }
 </style>
