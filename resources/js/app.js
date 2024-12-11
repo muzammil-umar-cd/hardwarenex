@@ -20,7 +20,7 @@ import Mixin from "./utils/mixin";
 
 import TheShop from "./components/TheShop.vue";
 import Banner from "./components/inc/Banner.vue";
-import ModalForm from "./pages/ModalForm.vue";
+import ModalForm from "./components/inc/ModalForm.vue";
 import DynamicLink from "./components/inc/DynamicLink.vue";
 import ProductBox from "./components/product/ProductBox.vue";
 import HelperClass from "./utils/helpers";

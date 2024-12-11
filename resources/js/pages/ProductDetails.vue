@@ -539,7 +539,6 @@ import ProductReviews from "../components/product/ProductReviews.vue";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { useHead } from "@unhead/vue";
-import ModalForm from "./ModalForm.vue";
 export default {
 
   data: () => ({
@@ -591,7 +590,6 @@ export default {
     AddToCart,
     Swiper,
     SwiperSlide,
-    ModalForm,
   },
   computed: {
     modifiedBanner() {
