@@ -128,7 +128,7 @@
                 </div>
               </v-expansion-panel-title>
               <v-expansion-panel-text>
-                <div v-html="productDetails.short_description"></div>
+                <div>{{ productDetails.short_description }}</div>
               </v-expansion-panel-text>
             </v-expansion-panel>
             <v-expansion-panel class="mb-3">
