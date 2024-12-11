@@ -1,33 +1,38 @@
 <template>
-    <div v-if="showModal" class="modal-overlay" id="custom-order-modal">
-      <div class="modal-content">
-        <button @click="closeModal" class="close-button">×</button>
-        <form @submit.prevent="submitForm">
-          <h3>Modal Form</h3>
-          <input type="text" v-model="formData.name" placeholder="Enter your name" required />
-          <button type="submit">Submit</button>
-        </form>
+    <div class="modal-backdrop">
+      <div class="modal">
+        <header class="modal-header">
+          <slot name="header">
+            This is the default title!
+          </slot>
+          <button
+            type="button"
+            class="btn-close"
+            @click="close"
+          >
+            x
+          </button>
+        </header>
+  
+        <section class="modal-body">
+          <slot name="body">
+            This is the default body!
+          </slot>
+         </section>
+  
+        <footer class="modal-footer">
+          <slot name="footer">
+            This is the default footer!
+          </slot>
+          <button
+            type="button"
+            class="btn-green"
+            @click="close"
+          >
+            Close Modal
+          </button>
+        </footer>
       </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            hihi
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        </div>
-    </div>
     </div>
   </template>
   
@@ -60,31 +65,67 @@
   </script>
   
   <style>
-  .modal-overlay {
+  .modal-backdrop {
     position: fixed;
     top: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
-  .modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+
+  .modal {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px 1px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
   }
-  .close-button {
-    background: transparent;
+
+  .modal-header,
+  .modal-footer {
+    padding: 15px;
+    display: flex;
+  }
+
+  .modal-header {
+    position: relative;
+    border-bottom: 1px solid #eeeeee;
+    color: #4AAE9B;
+    justify-content: space-between;
+  }
+
+  .modal-footer {
+    border-top: 1px solid #eeeeee;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 20px 10px;
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
     border: none;
     font-size: 20px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    padding: 10px;
     cursor: pointer;
+    font-weight: bold;
+    color: #4AAE9B;
+    background: transparent;
   }
-  </style>
-  
+
+  .btn-green {
+    color: white;
+    background: #4AAE9B;
+    border: 1px solid #4AAE9B;
+    border-radius: 2px;
+  }
+</style>

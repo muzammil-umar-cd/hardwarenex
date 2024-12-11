@@ -417,8 +417,19 @@
                 class="banner-wrapper"
               />
             </template>
-            <template v-if="showModal">
-              <ModalForm @close="closeModal" />
+            <template>
+                <button
+                  type="button"
+                  class="btn"
+                  @click="showModal"
+                >
+                  Open Modal!
+                </button>
+
+                <Modal
+                  v-show="isModalVisible"
+                  @close="closeModal"
+                />
             </template>
 
             <div
@@ -576,7 +587,7 @@ export default {
         },
       },
     },
-    showModal: false,
+    isModalVisible: false,
   }),
   components: {
     ProductReviews,
@@ -661,15 +672,11 @@ export default {
         ]
       });
     },
-    openModal() {
-      console.log('Modal triggered');
-      this.showModal = true; // Show the modal
+    showModal() {
+      this.isModalVisible = true;
     },
     closeModal() {
-      this.showModal = false; // Close the modal
-    },
-    openEditModal(){
-      this.$root.$emit("bv::show::modal", "exampleModal");
+      this.isModalVisible = false;
     }
   },
   async created() {
