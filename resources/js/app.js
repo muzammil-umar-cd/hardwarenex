@@ -20,6 +20,7 @@ import Mixin from "./utils/mixin";
 
 import TheShop from "./components/TheShop.vue";
 import Banner from "./components/inc/Banner.vue";
+import ModalForm from "./pages/ModalForm.vue";
 import DynamicLink from "./components/inc/DynamicLink.vue";
 import ProductBox from "./components/product/ProductBox.vue";
 import HelperClass from "./utils/helpers";
@@ -55,6 +56,7 @@ const globalOptions = {
 
 app.component("dynamic-link", DynamicLink);
 app.component("banner", Banner);
+app.component('ModalForm', ModalForm);
 app.component("product-box", ProductBox);
 app.component("vue-number-input", VueNumberInput);
 
