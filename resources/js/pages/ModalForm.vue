@@ -1,5 +1,5 @@
 <template>
-    <div v-if="showModal" class="modal-overlay">
+    <div v-if="showModal" class="modal-overlay" id="custom-order-modal">
       <div class="modal-content">
         <button @click="closeModal" class="close-button">×</button>
         <form @submit.prevent="submitForm">

@@ -413,7 +413,7 @@
               <banner
                 :loading="false"
                 :banner="modifiedBanner"
-                @click.native="openModal"
+                @click.native="openEditModal"
                 class="banner-wrapper"
               />
             </template>
@@ -668,6 +668,9 @@ export default {
     closeModal() {
       this.showModal = false; // Close the modal
     },
+    openEditModal(){
+      this.$root.$emit("bv::show::modal", "custom-order-modal");
+    }
   },
   async created() {
     this.getDetails();
