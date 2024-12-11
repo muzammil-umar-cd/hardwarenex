@@ -413,20 +413,12 @@
               <banner
                 :loading="false"
                 :banner="modifiedBanner"
+                @click.native="openModal"
+                class="banner-wrapper-modal"
               />
-            </template>
-            <template>
-              <button
-              type="button"
-              class="btn"
-              @click="showModal"
-              >Bulk Order Here..</button>
-                <ModalForm
-                  v-show="isModalVisible"
-                  @close="closeModal"
-                />
-            </template>
+              <ModalForm :isVisible="showModal" @close="closeModal" />
 
+            </template>
             <div
               v-if="productDetails.has_warranty == 1"
               class="bg-soft-primary border border-primary d-flex rounded px-4 py-3 mt-3"
@@ -537,7 +529,7 @@ import ProductReviews from "../components/product/ProductReviews.vue";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { useHead } from "@unhead/vue";
-import ModalForm from './ModalForm.vue';
+import ModalForm from "./ModalForm.vue";
 export default {
 
   data: () => ({
@@ -582,7 +574,7 @@ export default {
         },
       },
     },
-    isModalVisible: false,
+    showModal: false,
   }),
   components: {
     ProductReviews,
@@ -667,12 +659,14 @@ export default {
         ]
       });
     },
-    showModal() {
-      this.isModalVisible = true;
+    openModal() {
+      console.log('Opening Modal...');
+      this.showModal = true;
     },
     closeModal() {
-      this.isModalVisible = false;
-    }
+      console.log('Closing Modal...');
+      this.showModal = false;
+    },
   },
   async created() {
     this.getDetails();
