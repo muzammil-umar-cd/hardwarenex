@@ -413,11 +413,10 @@
               <banner
                 :loading="false"
                 :banner="modifiedBanner"
-                @click.native="openModal"
+                @click="openModal"
                 class="banner-wrapper-modal"
               />
-              <ModalForm :isVisible="showModal" @close="closeModal" />
-
+              <ModalForm v-if="showModal" @close="closeModal" />
             </template>
             <div
               v-if="productDetails.has_warranty == 1"
