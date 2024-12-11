@@ -41331,3 +41331,8 @@ label {
         padding-right: 15px !important;
     }
 }
+.product-box-one div div div div a img, .product-box-two div div div div a img,.product-box-three div div div div a img, .product-box-four div div div div a img {object-fit: contain;  padding: 10px;}
+.networkingmart-product-info-content { width: 100%; overflow-x: auto; margin: 1rem 0; }.networkingmart-tech-spec {width: 100%;border-collapse: collapse;margin: 0;padding: 0;table-layout: auto;font-family: Arial, sans-serif;font-size: 14px;color: #333;}.networkingmart-tech-spec td {padding: 10px 15px;border: 1px solid #ddd;text-align: left;vertical-align: top;}.networkingmart-spec-group-title td {background-color: #f4f4f4;font-weight: bold;font-size: 16px;text-align: center;color: #000;border: 1px solid #ccc;}.networkingmart-tech-spec tr:nth-child(even):not(.networkingmart-spec-group-title) {background-color: #f9f9f9;}@media screen and (max-width: 768px) {.networkingmart-tech-spec td {padding: 8px 10px;font-size: 13px;}.networkingmart-spec-group-title td {font-size: 14px;}}@media screen and (max-width: 480px) {.networkingmart-tech-spec td {display: block;width: 100%;box-sizing: border-box;}.networkingmart-tech-spec tr {display: block;margin-bottom: 15px;}.networkingmart-spec-group-title td {display: block;width: 100%;text-align: left;}}
+del .fs-20 {
+    font-size: 0.75rem !important;
+  }
