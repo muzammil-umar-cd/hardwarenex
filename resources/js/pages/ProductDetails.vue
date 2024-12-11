@@ -12,8 +12,8 @@
   clipped
 >
 <div class="contact-form">
-  <h3 class="form-header">Get in Touch</h3>
   <form @submit.prevent="submitForm">
+    <h3 class="form-header">Get in Touch</h3>
     <div class="form-group">
       <label for="name">Name</label>
       <input
