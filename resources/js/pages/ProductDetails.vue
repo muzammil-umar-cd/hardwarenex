@@ -426,7 +426,7 @@
                   Open Modal!
                 </button>
 
-                <Modal
+                <ModalForm
                   v-show="isModalVisible"
                   @close="closeModal"
                 />
