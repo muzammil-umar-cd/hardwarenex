@@ -413,7 +413,7 @@
               <banner
                 :loading="false"
                 :banner="$store.getters['app/banners'].product_page"
-                @click.native="openModal"
+                @click.native="handleBannerClick"
                 class=""
               />
               <ModalForm v-if="showModal" @close="closeModal" />
@@ -658,6 +658,14 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+    handleBannerClick(event) {
+      // Prevent default navigation if a link exists
+      if (event.target.tagName === 'A') {
+        event.preventDefault();
+      }
+      // Open modal instead
+      this.openModal();
     },
   },
   async created() {
