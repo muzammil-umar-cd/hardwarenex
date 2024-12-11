@@ -427,7 +427,7 @@
                 />
 
                 <!-- Modal Section -->
-                <modal :isVisible="showModal" @close="showModal = false" />
+                <ModalForm :isVisible="showModal" @close="showModal = false" />
             </template>
             <div
               v-if="productDetails.has_warranty == 1"
@@ -539,6 +539,7 @@ import ProductReviews from "../components/product/ProductReviews.vue";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { useHead } from "@unhead/vue";
+import ModalForm from "../components/inc/ModalForm.vue";
 export default {
 
   data: () => ({
