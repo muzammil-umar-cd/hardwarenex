@@ -66,12 +66,5 @@
     right: 10px;
     cursor: pointer;
   }
-  .modal {
-    display: none;
-    }
-
-    .modal.show {
-    display: block;
-    }
   </style>
   

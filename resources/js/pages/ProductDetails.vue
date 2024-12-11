@@ -587,9 +587,8 @@ export default {
   },
   computed: {
     modifiedBanner() {
-      // Clone the banner object to avoid mutating Vuex state directly
       const bannerData = { ...this.$store.getters['app/banners'].product_page };
-      bannerData.link = null; // Remove or disable the link
+      bannerData.link = null;
       return bannerData;
     },
   },
@@ -669,10 +668,6 @@ export default {
     closeModal() {
       this.showModal = false; // Close the modal
     },
-    handleBannerClick(event) {
-    event.preventDefault(); // Prevent default navigation
-    this.openModal(); // Open the modal
-  },
   },
   async created() {
     this.getDetails();
@@ -698,4 +693,11 @@ export default {
     max-width: 224px;
   }
 }
+.modal {
+  display: none;
+  }
+
+  .modal.show {
+  display: block;
+  }
 </style>
