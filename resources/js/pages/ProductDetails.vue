@@ -413,19 +413,11 @@
               <banner
                 :loading="false"
                 :banner="modifiedBanner"
-                @click.native="openEditModal"
+                @click="showModal"
                 class="banner-wrapper"
               />
             </template>
             <template>
-                <button
-                  type="button"
-                  class="btn"
-                  @click="showModal"
-                >
-                  Open Modal!
-                </button>
-
                 <ModalForm
                   v-show="isModalVisible"
                   @close="closeModal"
