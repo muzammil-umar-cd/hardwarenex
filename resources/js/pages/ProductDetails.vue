@@ -574,6 +574,7 @@ export default {
         },
       },
     },
+    showModal: false,
   }),
   components: {
     ProductReviews,
@@ -581,11 +582,6 @@ export default {
     Swiper,
     SwiperSlide,
     ModalForm,
-  },
-  data() {
-    return {
-      showModal: false,
-    };
   },
   computed: {},
   watch:{
