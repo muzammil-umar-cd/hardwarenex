@@ -410,14 +410,13 @@
               />
             </template>
             <template v-else>
-              <banner
-                :loading="false"
-                :banner="$store.getters['app/banners'].product_page"
-                @click.native="handleBannerClick"
-                class=""
-              />
-              <ModalForm v-if="showModal" @close="closeModal" />
-            </template>
+            <banner
+              :loading="false"
+              @click.native="openModal"
+              class=""
+            />
+            <ModalForm v-if="showModal" @close="closeModal" />
+          </template>
 
             <div
               v-if="productDetails.has_warranty == 1"
@@ -658,14 +657,6 @@ export default {
     },
     closeModal() {
       this.showModal = false;
-    },
-    handleBannerClick(event) {
-      // Prevent default navigation if a link exists
-      if (event.target.tagName === 'A') {
-        event.preventDefault();
-      }
-      // Open modal instead
-      this.openModal();
     },
   },
   async created() {
