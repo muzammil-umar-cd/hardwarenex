@@ -669,7 +669,7 @@ export default {
       this.showModal = false; // Close the modal
     },
     openEditModal(){
-      this.$root.$emit("bv::show::modal", "custom-order-modal");
+      this.$root.$emit("bv::show::modal", "exampleModal");
     }
   },
   async created() {
