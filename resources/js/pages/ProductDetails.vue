@@ -573,7 +573,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 import AddToCart from "../components/product/AddToCart.vue";
 import ProductReviews from "../components/product/ProductReviews.vue";
 // Import Swiper Vue.js components
@@ -625,6 +625,11 @@ export default {
       },
     },
     drawerOpen: false,
+    formData: {
+        name: "",
+        email: "",
+        message: "",
+      },
   }),
   components: {
     ProductReviews,
@@ -710,6 +715,21 @@ export default {
     },
     toggleDrawer() {
       this.drawerOpen = !this.drawerOpen; // Toggle drawer visibility
+    },
+    ...mapMutations("auth", ["updateCartDrawer"]),
+    submitForm() {
+      // Handle form submission logic here
+      console.log("Form Submitted:", this.formData);
+      this.resetForm();
+      this.updateCartDrawer(false);
+      alert("Thank you for reaching out to us!");
+    },
+    resetForm() {
+      this.formData = {
+        name: "",
+        email: "",
+        message: "",
+      };
     },
   },
   async created() {
