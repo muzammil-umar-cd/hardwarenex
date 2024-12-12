@@ -1,6 +1,14 @@
 <template>
     <v-container class="pt-7">
         <v-row>
+            <banner
+                :loading="false"
+                :banner="
+                    $store.getters['app/banners']
+                        .checkout_page
+                "
+                class="checkout-banner"
+            />
             <v-col xl="12" lg="12" class="mx-auto">
                 <h1 class="fs-24 fw-700 opacity-80 mb-4">
                     {{ $t("checkout") }}
@@ -498,16 +506,6 @@
                                                 }}</v-col>
                                             </v-row>
                                         </div>
-                                    </v-col>
-                                    <v-col cols="12" sm="4">
-                                        <banner
-                                            :loading="false"
-                                            :banner="
-                                                $store.getters['app/banners']
-                                                    .checkout_page
-                                            "
-                                            class="checkout-banner"
-                                        />
                                     </v-col>
                                 </v-row>
                             </div>
