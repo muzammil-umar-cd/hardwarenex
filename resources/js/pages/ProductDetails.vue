@@ -16,18 +16,22 @@
     <h3 class="form-header">Looking for a Bulk Quantity of
       <p>{{productDetails.name}}?</p>
     </h3>
-    <div class="form-group">
-      <label for="name">Name</label>
-      <inputc
-        type="text"
-        id="name"
-        v-model="formData.name"
-        required
-        placeholder="Your Name"
-        class="form-control"
-      />
-    </div>
-    <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <inputc
+              type="text"
+              id="name"
+              v-model="formData.name"
+              required
+              placeholder="Your Name"
+              class="form-control"
+            />
+          </div>
+      </div>
+      <div class="col-md-12">
+            <div class="form-group">
       <label for="email">Email</label>
       <input
         type="email"
@@ -38,7 +42,9 @@
         class="form-control"
       />
     </div>
-    <div class="form-group">
+      </div>
+      <div class="col-md-12">
+            <div class="form-group">
       <label for="phone">Phone</label>
       <input
         type="tel"
@@ -49,7 +55,9 @@
         class="form-control"
       />
     </div>
-    <div class="form-group">
+      </div>
+      <div class="col-md-12">
+            <div class="form-group">
       <label for="quantity">Quantity</label>
       <input
         type="tel"
@@ -60,7 +68,9 @@
         class="form-control"
       />
     </div>
-    <div class="form-group">
+      </div>
+      <div class="col-md-12">
+            <div class="form-group">
       <label for="message">Message</label>
       <textarea
         id="message"
@@ -71,6 +81,14 @@
         rows="4"
       ></textarea>
     </div>
+      </div>
+      <div class="col-md-12"></div>
+    </div>
+
+
+
+
+
     <button type="submit" class="btn btn-primary w-100">Send Message</button>
   </form>
 </div>
