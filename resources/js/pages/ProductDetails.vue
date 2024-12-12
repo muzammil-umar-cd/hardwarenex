@@ -783,10 +783,7 @@ export default {
       };
     },
     formatPrice(price) {
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(price);
+      return `$${price.toFixed(2)}`;
     },
   },
   async created() {
