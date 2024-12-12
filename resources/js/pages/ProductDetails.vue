@@ -16,6 +16,13 @@
     <h3 class="form-header">Looking for a Bulk Quantity?
     </h3>
     <small style="margin-bottom: 20px">{{productDetails.name}}</small>
+    <template v-if="productDetails.base_price > productDetails.base_discounted_price">
+      <del class="opacity-40">{{ format_price(productDetails.base_price) }}</del>
+      <span class="ml-1 fw-700">{{ format_price(productDetails.base_discounted_price) }}</span>
+    </template>
+    <template v-else>
+      <span class="fw-700">{{ format_price(productDetails.base_discounted_price) }}</span>
+    </template>
     <input type="hidden" name="p_price" v-model="formData.p_price" id="p_price" value="{{ productDetails.price }}">
     <div class="row">
       <div class="col-md-12">
