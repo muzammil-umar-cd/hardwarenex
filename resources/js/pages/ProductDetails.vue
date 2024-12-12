@@ -13,7 +13,9 @@
 >
 <div class="contact-form">
   <form @submit.prevent="submitForm">
-    <h3 class="form-header">Looking for a Bulk Quantity of {{productDetails.name}}?</h3>
+    <h3 class="form-header">Looking for a Bulk Quantity of
+      <p>{{productDetails.name}}?</p>
+    </h3>
     <div class="form-group">
       <label for="name">Name</label>
       <inputc
