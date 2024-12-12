@@ -16,12 +16,11 @@
     <h3 class="form-header">Looking for a Bulk Quantity?
     </h3>
     <small style="margin-bottom: 20px">{{productDetails.name}}</small>
-    <input
-        type="hidden"
-        id="hiddenPrice"
-        v-model="formData.hiddenPrice"
-        :value="productDetails.base_discounted_price"
-      />
+    <input 
+      type="hidden" 
+      id="hiddenPrice" 
+      :value="productDetails.base_discounted_price"
+    />
     <div class="row">
       <div class="col-md-12">
           <div class="form-group">
@@ -63,20 +62,18 @@
     </div>
       </div>
       <div class="col-md-12">
-          <div class="form-group">
-            <label for="quantity">Quantity</label>
-            <input
-              type="tel"
-              id="quantity"
-              v-model="formData.quantity"
-              required
-              placeholder="Order Quantity"
-              class="form-control"
-            />
-            <small v-if="totalPrice > 0" class="text-muted">
-              Total Price: {{ formatPrice(totalPrice) }}
-            </small>
-          </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input
+            type="number"
+            id="quantity"
+            v-model="formData.quantity"
+            required
+            placeholder="Order Quantity"
+            class="form-control"
+          />
+          <small>Total Price: {{ formatPrice(totalPrice) }}</small>
+        </div>
         </div>
       <div class="col-md-12">
             <div class="form-group">
@@ -627,7 +624,12 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { useHead } from "@unhead/vue";
 import ModalForm from "../components/inc/ModalForm.vue";
 export default {
-
+  props: {
+    productDetails: {
+      type: Object,
+      required: true,
+    },
+  },
   data: () => ({
     metaTitle: "",
     metaDescription: "",
@@ -677,7 +679,6 @@ export default {
         message: "",
         phone: "",
         quantity: "",
-        hiddenPrice: "",
       },
   }),
   components: {
@@ -693,12 +694,9 @@ export default {
       return bannerData;
     },
     totalPrice() {
-      // Calculate total price based on quantity
       const quantity = parseInt(this.formData.quantity, 10);
-      if (!isNaN(quantity)) {
-        return quantity * this.formData.hiddenPrice;
-      }
-      return 0;
+      const price = this.productDetails.base_discounted_price;
+      return !isNaN(quantity) && quantity > 0 ? quantity * price : 0;
     },
   },
   watch:{
@@ -791,7 +789,6 @@ export default {
       };
     },
     formatPrice(price) {
-      // Format price with currency
       return new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
