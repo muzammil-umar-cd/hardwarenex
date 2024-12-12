@@ -495,24 +495,12 @@
                                                 }}</v-col>
                                             </v-row>
                                             <v-divider class="my-3"></v-divider>
-                                            <div
-                                                v-if="getCartProducts.length > 0"
-                                                class="px-5 py-2 c-scrollbar side-cart-content"
-                                                >
-                                                <min-order-progress
-                                                    class="mt-3"
-                                                    :cart-price="getCartPrice"
-                                                    :min-order="getShopMinOrder()"
-                                                    v-if="getShopMinOrder() > 0"
-                                                />
-
-                                                <v-list
-                                                    dense
-                                                    class=""
-                                                >
-                                                    <cart-items :cart-items="getCartProducts" />
-                                                </v-list>
-                                                </div>
+                                            <v-list
+                                                dense
+                                                class=""
+                                            >
+                                                <cart-items :cart-items="getCartProducts" />
+                                            </v-list>
                                             <v-divider class="my-3"></v-divider>
                                             <v-row class="fs-16">
                                                 <v-col
