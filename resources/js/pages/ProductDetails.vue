@@ -15,13 +15,7 @@
   <form @submit.prevent="submitForm" style="display: inline-grid;justify-content: center;width: 80%;">
     <h3 class="form-header">Looking for a Bulk Quantity?
     </h3>
-    <table class="table table-responsive table-bordered" style="margin-bottom: 20px">
-      <tr>
-        <th>Product</th>
-        <td>{{productDetails.name}}</td>
-      </tr>
-    </table>
-    <!-- <small style="margin-bottom: 20px"></small> -->
+    <small style="margin-bottom: 20px">{{productDetails.name}}</small>
     <div class="row">
       <div class="col-md-12">
           <div class="form-group">
