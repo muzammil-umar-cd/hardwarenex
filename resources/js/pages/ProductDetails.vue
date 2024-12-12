@@ -624,12 +624,6 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { useHead } from "@unhead/vue";
 import ModalForm from "../components/inc/ModalForm.vue";
 export default {
-  props: {
-    productDetails: {
-      type: Object,
-      required: true,
-    },
-  },
   data: () => ({
     metaTitle: "",
     metaDescription: "",
