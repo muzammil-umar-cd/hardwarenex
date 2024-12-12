@@ -823,7 +823,7 @@ export default {
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color: #df3c3f;
   color: #fff;
   border: none;
   padding: 10px;
@@ -831,7 +831,7 @@ export default {
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #df3c3fb6;
 }
 .form-drawer{
   background-image: linear-gradient(rgba(255,255,255,0.88),rgba(255,255,255,0.88)),url('https://img.freepik.com/free-photo/notepads-cup-coffee-yellow-background-flat-lay_169016-50608.jpg?t=st=1733962381~exp=1733965981~hmac=f401ae2559a387620ba63ca6667b66145d0f602453a4733ec57c4d449f0f86b7&w=740');
