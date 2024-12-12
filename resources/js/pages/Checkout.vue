@@ -7,7 +7,7 @@
                     $store.getters['app/banners']
                         .checkout_page
                 "
-                class="checkout-banner"
+                class=""
             />
             <v-col xl="12" lg="12" class="mx-auto">
                 <h1 class="fs-24 fw-700 opacity-80 mb-4">
