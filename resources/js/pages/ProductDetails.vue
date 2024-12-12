@@ -13,10 +13,10 @@
 >
 <div class="contact-form">
   <form @submit.prevent="submitForm">
-    <h3 class="form-header">Get in Touch</h3>
+    <h3 class="form-header">Looking for a Bulk Quantity of {{productDetails.name}}?</h3>
     <div class="form-group">
       <label for="name">Name</label>
-      <input
+      <inputc
         type="text"
         id="name"
         v-model="formData.name"
