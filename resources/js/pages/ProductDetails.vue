@@ -16,14 +16,12 @@
     <h3 class="form-header">Looking for a Bulk Quantity?
     </h3>
     <small style="margin-bottom: 20px">{{productDetails.name}}</small>
-    <template v-if="productDetails.base_price > productDetails.base_discounted_price">
-      <del class="opacity-40">{{ format_price(productDetails.base_price) }}</del>
-      <span class="ml-1 fw-700">{{ format_price(productDetails.base_discounted_price) }}</span>
-    </template>
-    <template v-else>
-      <span class="fw-700">{{ format_price(productDetails.base_discounted_price) }}</span>
-    </template>
-    <input type="hidden" name="p_price" v-model="formData.p_price" id="p_price" value="{{ productDetails.price }}">
+    <input
+        type="hidden"
+        id="hiddenPrice"
+        v-model="formData.hiddenPrice"
+        :value="productDetails.base_discounted_price"
+      />
     <div class="row">
       <div class="col-md-12">
           <div class="form-group">
@@ -679,7 +677,7 @@ export default {
         message: "",
         phone: "",
         quantity: "",
-        p_price: "",
+        hiddenPrice: "",
       },
   }),
   components: {
@@ -698,7 +696,7 @@ export default {
       // Calculate total price based on quantity
       const quantity = parseInt(this.formData.quantity, 10);
       if (!isNaN(quantity)) {
-        return quantity * this.formData.p_price;
+        return quantity * this.formData.hiddenPrice;
       }
       return 0;
     },
