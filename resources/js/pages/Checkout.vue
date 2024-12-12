@@ -14,7 +14,7 @@
                     {{ $t("checkout") }}
                 </h1>
                 <v-row>
-                    <v-col xl="6" lg="6">
+                    <v-col xl="7" lg="7">
                         <div class="mb-4">
                             <div>
                                 <div class="delivery-type">
@@ -399,14 +399,14 @@
                             </div>
                         </div>
                     </v-col>
-                    <v-col xl="6" lg="6">
+                    <v-col xl="5" lg="5">
                         <div class="mb-4">
                             <h3 class="opacity-80 mb-3 fs-20">
                                 {{ $t("order_summary") }}
                             </h3>
                             <div class="mb-4">
                                 <v-row>
-                                    <v-col cols="12" sm="8">
+                                    <v-col cols="12" sm="12">
                                         <div
                                             class="bg-soft-primary text-reset px-6 rounded-sm"
                                             v-if="generalSettings.club_point == 1"
