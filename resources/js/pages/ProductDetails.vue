@@ -16,6 +16,7 @@
     <h3 class="form-header">Looking for a Bulk Quantity?
     </h3>
     <small style="margin-bottom: 20px">{{productDetails.name}}</small>
+    <input type="hidden" name="p_price" v-model="formData.p_price" id="p_price" value="{{ productDetails.price }}">
     <div class="row">
       <div class="col-md-12">
           <div class="form-group">
@@ -57,18 +58,21 @@
     </div>
       </div>
       <div class="col-md-12">
-            <div class="form-group">
-      <label for="quantity">Quantity</label>
-      <input
-        type="tel"
-        id="quantity"
-        v-model="formData.quantity"
-        required
-        placeholder="Order Quantity"
-        class="form-control"
-      />
-    </div>
-      </div>
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input
+              type="tel"
+              id="quantity"
+              v-model="formData.quantity"
+              required
+              placeholder="Order Quantity"
+              class="form-control"
+            />
+            <small v-if="totalPrice > 0" class="text-muted">
+              Total Price: {{ formatPrice(totalPrice) }}
+            </small>
+          </div>
+        </div>
       <div class="col-md-12">
             <div class="form-group">
       <label for="message">Message</label>
@@ -84,11 +88,6 @@
       </div>
       <div class="col-md-12"></div>
     </div>
-
-
-
-
-
     <button type="submit" class="btn btn-primary w-100">Send Message</button>
   </form>
 </div>
@@ -673,6 +672,7 @@ export default {
         message: "",
         phone: "",
         quantity: "",
+        p_price: "",
       },
   }),
   components: {
@@ -686,6 +686,14 @@ export default {
       const bannerData = { ...this.$store.getters['app/banners'].product_page };
       bannerData.link = null;
       return bannerData;
+    },
+    totalPrice() {
+      // Calculate total price based on quantity
+      const quantity = parseInt(this.formData.quantity, 10);
+      if (!isNaN(quantity)) {
+        return quantity * this.formData.p_price;
+      }
+      return 0;
     },
   },
   watch:{
@@ -776,6 +784,13 @@ export default {
         phone: "",
         quantity: "",
       };
+    },
+    formatPrice(price) {
+      // Format price with currency
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(price);
     },
   },
   async created() {
