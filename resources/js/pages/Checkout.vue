@@ -495,13 +495,6 @@
                                                 }}</v-col>
                                             </v-row>
                                             <v-divider class="my-3"></v-divider>
-                                            <v-list
-                                                dense
-                                                class=""
-                                            >
-                                                <cart-items :cart-items="getCartProducts" />
-                                            </v-list>
-                                            <v-divider class="my-3"></v-divider>
                                             <v-row class="fs-16">
                                                 <v-col
                                                     cols="8"
