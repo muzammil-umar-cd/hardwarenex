@@ -19,7 +19,7 @@
     <input 
       type="hidden" 
       id="hiddenPrice" 
-      :value="productDetails.base_discounted_price"
+      :value="format_price(productDetails.base_discounted_price)"
     />
     <div class="row">
       <div class="col-md-12">
