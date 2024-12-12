@@ -11,7 +11,7 @@
                     <v-chip class="absolute-top-left white-text z-1" v-if="cart_item.outOfStock" color="red" x-small label>{{ $t('out_of_stock') }}</v-chip>
                     <div :class="['d-flex align-center', { 'opacity-50': cart_item.outOfStock }]">
                         <v-checkbox true-icon="las la-check" hide-details class="mt-0 pt-0" :model-value="cart_item.selected" :disabled="cart_item.outOfStock" @update:modelValue="toggleCartItem({ cart_id: cart_item.cart_id, status: $event })" />
-                        <div class="flex-shrink-0 lh-0">
+                        <div class="flex-shrink-0 lh-0" style="padding: 0 0 0 17px;">
                             <img :src="cart_item.thumbnail" :alt="cart_item.name" class="img-fluid size-70px" @error="imageFallback($event)"/>
                         </div>
                         <div class="flex-grow-1 minw-0 ms-3">
