@@ -20,7 +20,7 @@
       <div class="col-md-12">
           <div class="form-group">
             <label for="name">Name</label>
-            <inputc
+            <input
               type="text"
               id="name"
               v-model="formData.name"
