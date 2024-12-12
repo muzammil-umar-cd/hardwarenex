@@ -12,7 +12,7 @@
   clipped
 >
 <div class="contact-form">
-  <form @submit.prevent="submitForm">
+  <form @submit.prevent="submitForm" style="display: inline-grid;justify-content: center;width: 80%;">
     <h3 class="form-header">Looking for a Bulk Quantity of
       <p>{{productDetails.name}}?</p>
     </h3>
