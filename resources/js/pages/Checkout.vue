@@ -1855,6 +1855,9 @@ export default {
         object-fit: cover;
     }
 }
+h3{
+    color: #df3c3f !important;
+}
 .form-control {
   width: 100%;
   padding: 10px;
