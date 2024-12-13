@@ -249,14 +249,14 @@
                                                         <label for="phone_number">{{ $t("phone_number") }}</label>
                                                         <input 
                                                             :placeholder="$t('phone_number')"
-                                                            v-model="form.phone_number"
+                                                            v-model="form.phone"
                                                             hide-details="auto"
                                                             required
                                                             class="form-control"
-                                                            name="phone_number"
-                                                            id="phone_number"
+                                                            name="phone"
+                                                            id="phone"
                                                         >
-                                                        <p v-for="error of v$.form.phone_number.$errors" :key="error.$uid" class="text-red">
+                                                        <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
