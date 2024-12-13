@@ -103,6 +103,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
         Route::post('coupon/apply', [CouponController::class, 'apply']);
     });
 
+    Route::get('addresses', [AddressController::class, 'addresses']);
+    Route::post('address/create', [AddressController::class, 'createShippingAddress']);
+    Route::post('address/update', [AddressController::class, 'updateShippingAddress']);
+
     Route::group(['middleware' => ['auth:api', 'unbanned']], function () {
         Route::group(['prefix' => 'user'], function () {
 
@@ -135,9 +139,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
             Route::apiResource('wishlists', WishlistController::class)->except(['update', 'show']);
             Route::apiResource('follow', FollowController::class)->except(['update', 'show']);
 
-            Route::get('addresses', [AddressController::class, 'addresses']);
-            Route::post('address/create', [AddressController::class, 'createShippingAddress']);
-            Route::post('address/update', [AddressController::class, 'updateShippingAddress']);
             Route::get('address/delete/{id}', [AddressController::class, 'deleteShippingAddress']);
             Route::get('address/default-shipping/{id}', [AddressController::class, 'defaultShippingAddress']);
             Route::get('address/default-billing/{id}', [AddressController::class, 'defaultBillingAddress']);

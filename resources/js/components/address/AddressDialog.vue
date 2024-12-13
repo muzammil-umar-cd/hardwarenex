@@ -236,7 +236,7 @@ export default {
       if (!isFormCorrect) return;
 
             this.adding = true;
-            const res = await this.call_api("post", "user/address/create",this.form);
+            const res = await this.call_api("post", "address/create",this.form);
             if(res.data.success){
                 this.addAddress(res.data.data)
                 this.snack({ message: res.data.message });
@@ -257,7 +257,7 @@ export default {
 
 
             this.adding = true;
-            const res = await this.call_api("post", `user/address/update`,this.form);
+            const res = await this.call_api("post", `address/update`,this.form);
             if(res.data.success){
                 this.setAddresses(res.data.data)
                 this.snack({ message: res.data.message });

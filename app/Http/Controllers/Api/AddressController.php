@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\PickupPoint;
 use App\Models\State;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AddressController extends Controller
 {
@@ -20,40 +21,51 @@ class AddressController extends Controller
     public function createShippingAddress(Request $request)
     {
         dd($request->all());
-        if(auth('api')->user()->id){
-            $shipping_count = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->count();
-            $billing_count = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->count();
-            
-            $address = new Address;
-            $address->user_id = auth('api')->user()->id;
-            $address->address = $request->address;
-            $address->country = Country::find($request->country)->name;
-            $address->country_id = $request->country;
-            $address->state = State::find($request->state)->name;
-            $address->state_id = $request->state;
-            $address->city = City::find($request->city)->name;
-            $address->city_id = $request->city;
-            $address->postal_code = $request->postal_code;
-            $address->phone = $request->phone;
-            $address->default_shipping = $shipping_count > 0 ? 0 : 1;
-            $address->default_billing = $billing_count > 0 ? 0 : 1;
-            $address->save();
-        }else{
-            $address = new Address;
-            $address->user_id = auth('api')->user()->id;
-            $address->address = $request->address;
-            $address->country = Country::find($request->country)->name;
-            $address->country_id = $request->country;
-            $address->state = State::find($request->state)->name;
-            $address->state_id = $request->state;
-            $address->city = City::find($request->city)->name;
-            $address->city_id = $request->city;
-            $address->postal_code = $request->postal_code;
-            $address->phone = $request->phone;
-            $address->default_shipping = $shipping_count > 0 ? 0 : 1;
-            $address->default_billing = $billing_count > 0 ? 0 : 1;
-            $address->save();
-        }
+        $shipping_count = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->count();
+        $billing_count = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->count();
+        
+        $address = new Address;
+        $address->user_id = auth('api')->user()->id;
+        $address->address = $request->address;
+        $address->country = Country::find($request->country)->name;
+        $address->country_id = $request->country;
+        $address->state = State::find($request->state)->name;
+        $address->state_id = $request->state;
+        $address->city = City::find($request->city)->name;
+        $address->city_id = $request->city;
+        $address->postal_code = $request->postal_code;
+        $address->phone = $request->phone;
+        $address->default_shipping = $shipping_count > 0 ? 0 : 1;
+        $address->default_billing = $billing_count > 0 ? 0 : 1;
+        $address->save();
+        // if($request->id != null){
+        // }else{
+
+        //     if (!$request->has('phone') || !$request->has('email')) {
+        //         return response()->json([
+        //             'success' => false,
+        //             'message' => translate('Email & phone is required.'),
+        //             'data' => null
+        //         ], 200);
+        //     }
+
+        //     $user = User::where('phone', $request->phone)->orWhere('email', $request->email)->first();
+
+        //     $address = new Address;
+        //     $address->user_id = auth('api')->user()->id;
+        //     $address->address = $request->address;
+        //     $address->country = Country::find($request->country)->name;
+        //     $address->country_id = $request->country;
+        //     $address->state = State::find($request->state)->name;
+        //     $address->state_id = $request->state;
+        //     $address->city = City::find($request->city)->name;
+        //     $address->city_id = $request->city;
+        //     $address->postal_code = $request->postal_code;
+        //     $address->phone = $request->phone;
+        //     $address->default_shipping = $shipping_count > 0 ? 0 : 1;
+        //     $address->default_billing = $billing_count > 0 ? 0 : 1;
+        //     $address->save();
+        // }
 
 
         return response()->json([
