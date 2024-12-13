@@ -14,7 +14,7 @@
                     {{ $t("checkout") }}
                 </h1>
                 <v-row>
-                    <v-col xl="8" lg="8">
+                    <v-col xl="8" lg="8" sm="12">
                         <div class="mb-4">
                             <div>
                                 <div class="delivery-type" hidden>
@@ -546,7 +546,7 @@
                             </div>
                         </div>
                     </v-col>
-                    <v-col xl="4" lg="4">
+                    <v-col xl="4" lg="4" sm="12">
                         <div class="mb-4">
                             <h3 class="opacity-80 mb-3 fs-20">
                                 {{ $t("order_summary") }}
