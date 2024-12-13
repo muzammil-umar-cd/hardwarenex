@@ -510,7 +510,7 @@
                                 </v-row>
                             </div>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4" hidden>
                             <h3 class="opacity-80 mb-3 fs-20">
                                 {{ $t("payment_options") }}
                             </h3>
