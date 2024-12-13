@@ -122,9 +122,8 @@
                                         <div class="row"> 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
-                                                        :placeholder="$t('email_address')"
+                                                        placeholder="Email Address*"
                                                         v-model="form.email_address"
                                                         hide-details="auto"
                                                         required
@@ -139,9 +138,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="full_name">{{ $t('full_name') }}</label>
                                                     <input 
-                                                        :placeholder="$t('full_name')"
+                                                        placeholder="Full Name*"
                                                         v-model="form.full_name"
                                                         hide-details="auto"
                                                         required
@@ -156,9 +154,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="phone_number">{{ $t("phone_number") }}</label>
                                                     <input 
-                                                        :placeholder="$t('phone_number')"
+                                                        placeholder="Phone Number*"
                                                         v-model="form.phone"
                                                         hide-details="auto"
                                                         required
@@ -173,9 +170,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="address">{{ $t("address") }}</label>
                                                     <input 
-                                                        :placeholder="$t('address')"
+                                                        placeholder="Street Address*"
                                                         v-model="form.address"
                                                         hide-details="auto"
                                                         required
@@ -190,9 +186,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="country">{{ $t("country") }}</label>
                                                     <input 
-                                                        :placeholder="$t('country')"
+                                                        placeholder="Country*"
                                                         v-model="form.country"
                                                         hide-details="auto"
                                                         required
@@ -207,9 +202,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="state">{{ $t("state") }}</label>
                                                     <input 
-                                                        :placeholder="$t('state')"
+                                                        placeholder="State*"
                                                         v-model="form.state"
                                                         hide-details="auto"
                                                         required
@@ -224,9 +218,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="city">{{ $t("city") }}</label>
                                                     <input 
-                                                        :placeholder="$t('city')"
+                                                        placeholder="City*"
                                                         v-model="form.city"
                                                         hide-details="auto"
                                                         required
@@ -241,9 +234,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
-                                                        :placeholder="$t('postal_code')"
+                                                        placeholder="Postal Code*"
                                                         v-model="form.postal_code"
                                                         hide-details="auto"
                                                         required
@@ -269,9 +261,8 @@
                                         <div class="row"> 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
-                                                        :placeholder="$t('email_address')"
+                                                        placeholder="Email Address*"
                                                         v-model="form.billing_email_address"
                                                         hide-details="auto"
                                                         required
@@ -286,9 +277,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="full_name">{{ $t('full_name') }}</label>
                                                     <input 
-                                                        :placeholder="$t('full_name')"
+                                                        placeholder="Full Name*"
                                                         v-model="form.billing_full_name"
                                                         hide-details="auto"
                                                         required
@@ -303,9 +293,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="phone_number">{{ $t("phone_number") }}</label>
                                                     <input 
-                                                        :placeholder="$t('phone_number')"
+                                                        placeholder="Phone Number*"
                                                         v-model="form.billing_phone"
                                                         hide-details="auto"
                                                         required
@@ -320,9 +309,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="address">{{ $t("address") }}</label>
                                                     <input 
-                                                        :placeholder="$t('address')"
+                                                        placeholder="Street Address*"
                                                         v-model="form.billing_address"
                                                         hide-details="auto"
                                                         required
@@ -337,9 +325,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="country">{{ $t("country") }}</label>
                                                     <input 
-                                                        :placeholder="$t('country')"
+                                                        placeholder="Country*"
                                                         v-model="form.billing_country"
                                                         hide-details="auto"
                                                         required
@@ -354,9 +341,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="state">{{ $t("state") }}</label>
                                                     <input 
-                                                        :placeholder="$t('state')"
+                                                        placeholder="State*"
                                                         v-model="form.billing_state"
                                                         hide-details="auto"
                                                         required
@@ -371,9 +357,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="city">{{ $t("city") }}</label>
                                                     <input 
-                                                        :placeholder="$t('city')"
+                                                        placeholder="City*"
                                                         v-model="form.billing_city"
                                                         hide-details="auto"
                                                         required
@@ -388,9 +373,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
-                                                        :placeholder="$t('postal_code')"
+                                                        placeholder="Postal Code*"
                                                         v-model="form.billing_postal_code"
                                                         hide-details="auto"
                                                         required
@@ -1867,6 +1851,7 @@ export default {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
+  background: #fff;
   border-radius: 5px;
 }
 .form-group{
