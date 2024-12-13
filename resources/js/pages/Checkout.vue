@@ -118,6 +118,10 @@
                                 </div>
                                 <!-- ========== -->
                                 <div v-if="currentUser.id == null">
+                                    <h3 class="opacity-80 mb-3 fs-20">
+                                        {{ $t("shipping_address") }}
+                                    </h3>
+
                                     <div class="white pa-5 rounded">
                                         <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                             <v-row>
@@ -160,7 +164,7 @@
                                                             :label="$t('address')"
                                                             v-model="form.address"
                                                             hide-details="auto"
-                                                            rows="3"
+                                                            rows="1"
                                                             required
                                                             variant="outlined"
                                                             no-resize
@@ -1715,5 +1719,10 @@ export default {
         height: 281px;
         object-fit: cover;
     }
+}
+.v-field__input{
+    min-height: none !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }
 </style>
