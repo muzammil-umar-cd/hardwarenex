@@ -122,25 +122,8 @@
                                         {{ $t("shipping_address") }}
                                     </h3>
                                     <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="full_name">{{ $t('full_name') }}</label>
-                                                    <input 
-                                                        :placeholder="$t('full_name')"
-                                                        v-model="form.full_name"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="full_name"
-                                                        id="full_name"
-                                                    >
-                                                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
+                                        <div class="row"> 
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
@@ -157,7 +140,41 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="full_name">{{ $t('full_name') }}</label>
+                                                    <input 
+                                                        :placeholder="$t('full_name')"
+                                                        v-model="form.full_name"
+                                                        hide-details="auto"
+                                                        required
+                                                        class="form-control"
+                                                        name="full_name"
+                                                        id="full_name"
+                                                    >
+                                                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="phone_number">{{ $t("phone_number") }}</label>
+                                                    <input 
+                                                        :placeholder="$t('phone_number')"
+                                                        v-model="form.phone"
+                                                        hide-details="auto"
+                                                        required
+                                                        class="form-control"
+                                                        name="phone"
+                                                        id="phone"
+                                                    >
+                                                    <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="address">{{ $t("address") }}</label>
                                                     <input 
@@ -174,24 +191,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="postal_code">{{ $t("postal_code") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('postal_code')"
-                                                        v-model="form.postal_code"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="postal_code"
-                                                        id="postal_code"
-                                                    >
-                                                    <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="country">{{ $t("country") }}</label>
                                                     <input 
@@ -208,7 +208,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="state">{{ $t("state") }}</label>
                                                     <input 
@@ -225,7 +225,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="city">{{ $t("city") }}</label>
                                                     <input 
@@ -242,19 +242,19 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="phone_number">{{ $t("phone_number") }}</label>
+                                                    <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
-                                                        :placeholder="$t('phone_number')"
-                                                        v-model="form.phone"
+                                                        :placeholder="$t('postal_code')"
+                                                        v-model="form.postal_code"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
-                                                        name="phone"
-                                                        id="phone"
+                                                        name="postal_code"
+                                                        id="postal_code"
                                                     >
-                                                    <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
+                                                    <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
@@ -269,25 +269,8 @@
                                         {{ $t("billing_address") }}
                                     </h3>
                                     <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="full_name">{{ $t('full_name') }}</label>
-                                                    <input 
-                                                        :placeholder="$t('full_name')"
-                                                        v-model="form.full_name"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="full_name"
-                                                        id="full_name"
-                                                    >
-                                                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
+                                        <div class="row"> 
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
@@ -304,7 +287,41 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="full_name">{{ $t('full_name') }}</label>
+                                                    <input 
+                                                        :placeholder="$t('full_name')"
+                                                        v-model="form.full_name"
+                                                        hide-details="auto"
+                                                        required
+                                                        class="form-control"
+                                                        name="full_name"
+                                                        id="full_name"
+                                                    >
+                                                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="phone_number">{{ $t("phone_number") }}</label>
+                                                    <input 
+                                                        :placeholder="$t('phone_number')"
+                                                        v-model="form.phone"
+                                                        hide-details="auto"
+                                                        required
+                                                        class="form-control"
+                                                        name="phone"
+                                                        id="phone"
+                                                    >
+                                                    <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="address">{{ $t("address") }}</label>
                                                     <input 
@@ -321,24 +338,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="postal_code">{{ $t("postal_code") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('postal_code')"
-                                                        v-model="form.postal_code"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="postal_code"
-                                                        id="postal_code"
-                                                    >
-                                                    <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="country">{{ $t("country") }}</label>
                                                     <input 
@@ -355,7 +355,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="state">{{ $t("state") }}</label>
                                                     <input 
@@ -372,7 +372,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="city">{{ $t("city") }}</label>
                                                     <input 
@@ -389,19 +389,19 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="phone_number">{{ $t("phone_number") }}</label>
+                                                    <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
-                                                        :placeholder="$t('phone_number')"
-                                                        v-model="form.phone"
+                                                        :placeholder="$t('postal_code')"
+                                                        v-model="form.postal_code"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
-                                                        name="phone"
-                                                        id="phone"
+                                                        name="postal_code"
+                                                        id="postal_code"
                                                     >
-                                                    <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
+                                                    <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
@@ -1838,7 +1838,7 @@ export default {
 }
 .form-control {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -1896,7 +1896,7 @@ export default {
   .col-md-1 { flex: 0 0 8.333%; max-width: 8.333%; }
   .col-md-2 { flex: 0 0 16.667%; max-width: 16.667%; }
   .col-md-3 { flex: 0 0 25%; max-width: 25%; }
-  .col-md-3 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
   .col-md-5 { flex: 0 0 41.667%; max-width: 41.667%; }
   .col-md-6 { flex: 0 0 50%; max-width: 50%; }
   .col-md-7 { flex: 0 0 58.333%; max-width: 58.333%; }
