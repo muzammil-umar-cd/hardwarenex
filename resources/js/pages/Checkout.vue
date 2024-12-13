@@ -1162,6 +1162,23 @@ export default {
                 "Dec",
             ],
             dateloop: [],
+            adding: false,
+            countriesLoaded: false,
+            countries: [],
+            filteredStates: [],
+            filteredCities: [],
+            v$: useVuelidate(),
+            form:{
+                id: null,
+                full_name: "",
+                email_address: "",
+                address: "",
+                postal_code: "",
+                country: "",
+                state: "",
+                city: "",
+                phone: "",
+            }
         };
     },
     components: {
@@ -1171,25 +1188,6 @@ export default {
         FailedDialog,
         CouponForm,
     },
-    data: () => ({
-        adding: false,
-        countriesLoaded: false,
-        countries: [],
-        filteredStates: [],
-        filteredCities: [],
-        v$: useVuelidate(),
-        form:{
-            id: null,
-            full_name: "",
-            email_address: "",
-            address: "",
-            postal_code: "",
-            country: "",
-            state: "",
-            city: "",
-            phone: "",
-        }
-    }),
     validations: {
         form: {
             full_name: { required },
