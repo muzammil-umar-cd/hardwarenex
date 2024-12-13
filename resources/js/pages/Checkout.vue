@@ -630,10 +630,6 @@
     
                             <!-- show authorize net payment method's data -->
                             <div
-                                v-if="
-                                    selectedPaymentMethod &&
-                                    selectedPaymentMethod.code == 'authorizenet'
-                                "
                                 class="my-3"
                             >
                                 <h3 class="opacity-80 mb-3 fs-18 text-capitalize">
