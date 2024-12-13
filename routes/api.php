@@ -102,9 +102,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
         Route::post('order/store', [OrderController::class, 'store']);
         Route::post('coupon/apply', [CouponController::class, 'apply']);
     });
+
     Route::group(['middleware' => ['auth:api', 'unbanned']], function () {
-
-
         Route::group(['prefix' => 'user'], function () {
 
             Route::get('notification', [UserController::class, 'notification']);
