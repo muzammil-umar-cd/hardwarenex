@@ -398,7 +398,7 @@
                                     </h3>
                                     <p>Select your preferred delivery method</p>
 
-                                    <h4 class="opacity-80 mb-3 fs-18"> No shipping method available for selected address. </h4>
+                                    <h4 class="opacity-80 mb-3 fs-18 mt-3"> No shipping method available for selected address. </h4>
                                 </div>
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
                                     <address-dialog
