@@ -264,30 +264,6 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="12" lg="12">
-                                                    <div class="text-right mt-4">
-                                                        <v-btn text @click="closeDialog" elevation="0" class="mr-2">{{ $t('cancel') }}</v-btn>
-                                                        <v-btn
-                                                            v-if="!is_empty_obj(oldAddress)"
-                                                            elevation="0"
-                                                            type="submit"
-                                                            color="primary"
-                                                            @click="updateAddress"
-                                                            :loading="adding"
-                                                            :disabled="adding"
-                                                        >{{ $t('update') }}</v-btn>
-                                                        <v-btn
-                                                            v-else
-                                                            elevation="0"
-                                                            type="submit"
-                                                            color="primary"
-                                                            @click="addNewAddress"
-                                                            :loading="adding"
-                                                            :disabled="adding"
-                                                        >{{ $t('add_new') }}</v-btn>
-                                                    </div>
-                                                </v-col>
-
                                             </v-row>
                                             
                                         </v-form>
