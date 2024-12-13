@@ -10,9 +10,6 @@
                 class=""
             />
             <v-col xl="12" lg="12" class="mx-auto">
-                <h1 class="fs-24 fw-800 opacity-80 mb-4" style="text-align: center;">
-                    {{ $t("checkout") }}
-                </h1>
                 <v-row>
                     <v-col xl="8" lg="8" sm="12">
                         <div class="mb-4">
@@ -693,7 +690,7 @@
                             </div>
                         </div>
                     </v-col>
-                    <v-col xl="4" lg="4" sm="12" style="border: 1px solid #cccccc;padding: 12px;background-color: #fff;border-radius: 5px;">
+                    <v-col xl="4" lg="4" sm="12" style="border: 1px solid #cccccc;padding: 12px;background-color: #fff;border-radius: 12px;">
                         <div class="mb-4">
                             <h3 class="opacity-80 mb-3 fs-20">
                                 {{ $t("order_summary") }}
