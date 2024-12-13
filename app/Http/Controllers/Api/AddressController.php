@@ -19,23 +19,42 @@ class AddressController extends Controller
 
     public function createShippingAddress(Request $request)
     {
-        $shipping_count = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->count();
-        $billing_count = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->count();
+        dd($request->all());
+        if(auth('api')->user()->id){
+            $shipping_count = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->count();
+            $billing_count = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->count();
+            
+            $address = new Address;
+            $address->user_id = auth('api')->user()->id;
+            $address->address = $request->address;
+            $address->country = Country::find($request->country)->name;
+            $address->country_id = $request->country;
+            $address->state = State::find($request->state)->name;
+            $address->state_id = $request->state;
+            $address->city = City::find($request->city)->name;
+            $address->city_id = $request->city;
+            $address->postal_code = $request->postal_code;
+            $address->phone = $request->phone;
+            $address->default_shipping = $shipping_count > 0 ? 0 : 1;
+            $address->default_billing = $billing_count > 0 ? 0 : 1;
+            $address->save();
+        }else{
+            $address = new Address;
+            $address->user_id = auth('api')->user()->id;
+            $address->address = $request->address;
+            $address->country = Country::find($request->country)->name;
+            $address->country_id = $request->country;
+            $address->state = State::find($request->state)->name;
+            $address->state_id = $request->state;
+            $address->city = City::find($request->city)->name;
+            $address->city_id = $request->city;
+            $address->postal_code = $request->postal_code;
+            $address->phone = $request->phone;
+            $address->default_shipping = $shipping_count > 0 ? 0 : 1;
+            $address->default_billing = $billing_count > 0 ? 0 : 1;
+            $address->save();
+        }
 
-        $address = new Address;
-        $address->user_id = auth('api')->user()->id;
-        $address->address = $request->address;
-        $address->country = Country::find($request->country)->name;
-        $address->country_id = $request->country;
-        $address->state = State::find($request->state)->name;
-        $address->state_id = $request->state;
-        $address->city = City::find($request->city)->name;
-        $address->city_id = $request->city;
-        $address->postal_code = $request->postal_code;
-        $address->phone = $request->phone;
-        $address->default_shipping = $shipping_count > 0 ? 0 : 1;
-        $address->default_billing = $billing_count > 0 ? 0 : 1;
-        $address->save();
 
         return response()->json([
             'success' => true,
