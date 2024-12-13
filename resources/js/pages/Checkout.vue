@@ -1693,9 +1693,10 @@ export default {
         object-fit: cover;
     }
 }
-.v-field__input{
-    min-height: none !important;
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 </style>
