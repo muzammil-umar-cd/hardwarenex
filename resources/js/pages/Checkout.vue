@@ -16,7 +16,7 @@
                 <v-row>
                     <v-col xl="8" lg="8" sm="12">
                         <div class="mb-4">
-                            <div>
+                            <div style="background: #f8f8f8;padding: 20px;border-radius: 12px;border: 1px solid #ccc;">
                                 <div class="delivery-type" hidden>
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("delivery_type") }}
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                                 <!-- ========== -->
-                                <div v-if="currentUser.id == null" style="background: #DEE2E6;padding: 20px;border-radius: 12px;">
+                                <div v-if="currentUser.id == null">
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("shipping_address") }}
                                     </h3>
@@ -264,7 +264,7 @@
                                     </form>
 
                                 </div>
-                                <div v-if="currentUser.id == null" style="background: #DEE2E6;padding: 20px;border-radius: 12px;">
+                                <div v-if="currentUser.id == null">
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("billing_address") }}
                                     </h3>
@@ -411,7 +411,7 @@
                                     </form>
 
                                 </div>
-                                <div v-if="selectedDeliveryType == 'home_delivery'" >
+                                <div v-if="selectedDeliveryType == 'home_delivery'">
                                     <address-dialog
                                         :show="addDialogShow"
                                         @close="addressDialogClosed"
@@ -693,7 +693,7 @@
                             </div>
                         </div>
                     </v-col>
-                    <v-col xl="4" lg="4" sm="12">
+                    <v-col xl="4" lg="4" sm="12" style="border: 1px solid #cccccc;padding: 12px;background-color: #fff;border-radius: 5px;">
                         <div class="mb-4">
                             <h3 class="opacity-80 mb-3 fs-20">
                                 {{ $t("order_summary") }}
