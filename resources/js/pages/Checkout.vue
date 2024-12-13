@@ -121,9 +121,9 @@
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("shipping_address") }}
                                     </h3>
-                                    <v-form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
-                                        <v-row>
-                                            <v-col xl="4" lg="4" sm="6">
+                                    <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
+                                        <div class="row">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="full_name">{{ $t('full_name') }}</label>
                                                     <input 
@@ -139,8 +139,8 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                            <v-col xl="4" lg="4" sm="6">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
@@ -156,8 +156,8 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                            <v-col xl="4" lg="4" sm="6">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="address">{{ $t("address") }}</label>
                                                     <input 
@@ -173,8 +173,8 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                            <v-col xl="4" lg="4" sm="6">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
@@ -190,8 +190,8 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                            <v-col xl="4" lg="4" sm="6">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="country">{{ $t("country") }}</label>
                                                     <input 
@@ -207,8 +207,8 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                            <v-col xl="4" lg="4" sm="6">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="state">{{ $t("state") }}</label>
                                                     <input 
@@ -224,8 +224,8 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                            <v-col xl="4" lg="4" sm="6">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="city">{{ $t("city") }}</label>
                                                     <input 
@@ -241,8 +241,8 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                            <v-col xl="4" lg="4" sm="6">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="phone_number">{{ $t("phone_number") }}</label>
                                                     <input 
@@ -258,9 +258,10 @@
                                                         {{error.$message }}
                                                     </p>
                                                 </div>
-                                            </v-col>
-                                        </v-row>
-                                    </v-form>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
 
                                 </div>
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
@@ -1695,4 +1696,114 @@ export default {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+/* General Grid Setup */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col {
+  flex: 1 0 0%;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Default Columns */
+.col-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+.col-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+.col-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+.col-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* Breakpoints for Responsive Design */
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+  .col-sm-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-sm-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-sm-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-sm-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-sm-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-sm-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-sm-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-sm-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-sm-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-sm-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .col-md-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-md-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-md-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-md-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-md-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-md-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-md-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-md-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Large devices (≥992px) */
+@media (min-width: 992px) {
+  .col-lg-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-lg-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-lg-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-lg-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-lg-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-lg-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-lg-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-lg-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-lg-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Extra Large devices (≥1200px) */
+@media (min-width: 1200px) {
+  .col-xl-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-xl-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-xl-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-xl-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-xl-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-xl-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-xl-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-xl-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-xl-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-xl-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-xl-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-xl-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Extra Extra Large devices (≥1400px) */
+@media (min-width: 1400px) {
+  .col-xxl-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-xxl-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-xxl-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-xxl-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-xxl-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-xxl-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-xxl-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-xxl-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-xxl-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-xxl-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-xxl-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-xxl-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
 </style>
