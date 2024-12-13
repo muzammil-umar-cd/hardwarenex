@@ -124,8 +124,8 @@
 
                                     <div class="white pa-5 rounded">
                                         <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
-                                            <v-row>
-                                                <v-col xl="4" lg="4">
+                                            <div class="row">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="full_name">{{ $t('full_name') }}</label>
                                                         <input 
@@ -141,8 +141,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                                <v-col xl="4" lg="4">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="email_address">{{ $t("email_address") }}</label>
                                                         <input 
@@ -158,8 +158,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                                <v-col xl="4" lg="4">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="address">{{ $t("address") }}</label>
                                                         <input 
@@ -175,8 +175,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                                <v-col xl="4" lg="4">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="postal_code">{{ $t("postal_code") }}</label>
                                                         <input 
@@ -192,8 +192,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                                <v-col xl="4" lg="4">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="country">{{ $t("country") }}</label>
                                                         <input 
@@ -209,8 +209,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                                <v-col xl="4" lg="4">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="state">{{ $t("state") }}</label>
                                                         <input 
@@ -226,8 +226,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                                <v-col xl="4" lg="4">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="city">{{ $t("city") }}</label>
                                                         <input 
@@ -243,8 +243,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                                <v-col xl="4" lg="4">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="phone_number">{{ $t("phone_number") }}</label>
                                                         <input 
@@ -260,8 +260,8 @@
                                                             {{error.$message }}
                                                         </p>
                                                     </div>
-                                                </v-col>
-                                            </v-row>
+                                                </div>
+                                            </div>
                                             
                                         </v-form>
                                     </div>
