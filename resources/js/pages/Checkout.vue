@@ -1038,7 +1038,7 @@ export default {
             "getPickupPoints",
             "getCartProducts",
         ]),
-        
+        ...mapGetters("auth", ["currentUser"]),
         totalPrice() {
             return this.selectedDeliveryType == "home_delivery"
                 ? this.selectedDeliveryOption === "standard"
@@ -1059,6 +1059,7 @@ export default {
             "fetchPickupPoints",
         ]),
         ...mapActions("address", ["fetchAddresses"]),
+        ...mapActions("auth", ["rechargeWallet", "deductFromWallet"]),
 
         // check for pick up availability
 
