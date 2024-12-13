@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                                 <!-- ========== -->
-                                <div v-if="currentUser.id == null">
+                                <div v-if="currentUser.id == null" style="background: #DEE2E6;padding: 20px;border-radius: 12px;">
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("shipping_address") }}
                                     </h3>
@@ -264,7 +264,7 @@
                                     </form>
 
                                 </div>
-                                <div v-if="currentUser.id == null">
+                                <div v-if="currentUser.id == null" style="background: #DEE2E6;padding: 20px;border-radius: 12px;">
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("billing_address") }}
                                     </h3>
@@ -411,7 +411,7 @@
                                     </form>
 
                                 </div>
-                                <div v-if="selectedDeliveryType == 'home_delivery'">
+                                <div v-if="selectedDeliveryType == 'home_delivery'" >
                                     <address-dialog
                                         :show="addDialogShow"
                                         @close="addressDialogClosed"
