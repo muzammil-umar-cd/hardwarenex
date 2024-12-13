@@ -116,7 +116,7 @@
                                 <!-- ========== -->
                                 <div v-if="currentUser.id == null">
                                     <h3 class="opacity-80 mb-3 fs-20">
-                                        <i class="lab la-fedex" style="font-size: 60px;"></i> Shipping & Billing Info
+                                        <i class="las la-shipping-fast" style="font-size: 20px;"></i> Shipping & Billing Info
                                     </h3>
                                     <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                         <div class="row"> 
