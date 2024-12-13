@@ -126,124 +126,140 @@
                                         <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                             <v-row>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="full_name">{{ $t('full_name') }}</label>
-                                                    <input 
-                                                        :placeholder="$t('full_name')"
-                                                        v-model="form.full_name"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="full_name"
-                                                        id="full_name"
-                                                    >
-                                                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="full_name">{{ $t('full_name') }}</label>
+                                                        <input 
+                                                            :placeholder="$t('full_name')"
+                                                            v-model="form.full_name"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="full_name"
+                                                            id="full_name"
+                                                        >
+                                                        <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="email_address">{{ $t("email_address") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('email_address')"
-                                                        v-model="form.email_address"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="email_address"
-                                                        id="email_address"
-                                                    >
-                                                    <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="email_address">{{ $t("email_address") }}</label>
+                                                        <input 
+                                                            :placeholder="$t('email_address')"
+                                                            v-model="form.email_address"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="email_address"
+                                                            id="email_address"
+                                                        >
+                                                        <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="address">{{ $t("address") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('address')"
-                                                        v-model="form.address"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="address"
-                                                        id="address"
-                                                    >
-                                                    <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="address">{{ $t("address") }}</label>
+                                                        <input 
+                                                            :placeholder="$t('address')"
+                                                            v-model="form.address"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="address"
+                                                            id="address"
+                                                        >
+                                                        <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="postal_code">{{ $t("postal_code") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('postal_code')"
-                                                        v-model="form.postal_code"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="postal_code"
-                                                        id="postal_code"
-                                                    >
-                                                    <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="postal_code">{{ $t("postal_code") }}</label>
+                                                        <input 
+                                                            :placeholder="$t('postal_code')"
+                                                            v-model="form.postal_code"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="postal_code"
+                                                            id="postal_code"
+                                                        >
+                                                        <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="country">{{ $t("country") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('country')"
-                                                        v-model="form.country"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="country"
-                                                        id="country"
-                                                    >
-                                                    <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="country">{{ $t("country") }}</label>
+                                                        <input 
+                                                            :placeholder="$t('country')"
+                                                            v-model="form.country"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="country"
+                                                            id="country"
+                                                        >
+                                                        <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="state">{{ $t("state") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('state')"
-                                                        v-model="form.state"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="state"
-                                                        id="state"
-                                                    >
-                                                    <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="state">{{ $t("state") }}</label>
+                                                        <input 
+                                                            :placeholder="$t('state')"
+                                                            v-model="form.state"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="state"
+                                                            id="state"
+                                                        >
+                                                        <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="city">{{ $t("city") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('city')"
-                                                        v-model="form.city"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="city"
-                                                        id="city"
-                                                    >
-                                                    <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="city">{{ $t("city") }}</label>
+                                                        <input 
+                                                            :placeholder="$t('city')"
+                                                            v-model="form.city"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="city"
+                                                            id="city"
+                                                        >
+                                                        <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                                 <v-col xl="4" lg="4">
-                                                    <label for="phone_number">{{ $t("phone_number") }}</label>
-                                                    <input 
-                                                        :placeholder="$t('phone_number')"
-                                                        v-model="form.phone_number"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        name="phone_number"
-                                                        id="phone_number"
-                                                    >
-                                                    <p v-for="error of v$.form.phone_number.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="phone_number">{{ $t("phone_number") }}</label>
+                                                        <input 
+                                                            :placeholder="$t('phone_number')"
+                                                            v-model="form.phone_number"
+                                                            hide-details="auto"
+                                                            required
+                                                            class="form-control"
+                                                            name="phone_number"
+                                                            id="phone_number"
+                                                        >
+                                                        <p v-for="error of v$.form.phone_number.$errors" :key="error.$uid" class="text-red">
+                                                            {{error.$message }}
+                                                        </p>
+                                                    </div>
                                                 </v-col>
                                             </v-row>
                                             
