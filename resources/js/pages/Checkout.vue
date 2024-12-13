@@ -10,7 +10,7 @@
                 class=""
             />
             <v-col xl="12" lg="12" class="mx-auto">
-                <h1 class="fs-24 fw-700 opacity-80 mb-4">
+                <h1 class="fs-24 fw-800 opacity-80 mb-4" style="text-align: center;">
                     {{ $t("checkout") }}
                 </h1>
                 <v-row>
@@ -1838,7 +1838,7 @@ export default {
 }
 .form-control {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
