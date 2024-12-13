@@ -121,7 +121,7 @@
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("shipping_address") }}
                                     </h3>
-                                    <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
+                                    <v-form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                         <v-row>
                                             <v-col xl="4" lg="4" sm="6">
                                                 <div class="form-group">
@@ -260,7 +260,7 @@
                                                 </div>
                                             </v-col>
                                         </v-row>
-                                    </form>
+                                    </v-form>
 
                                 </div>
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
