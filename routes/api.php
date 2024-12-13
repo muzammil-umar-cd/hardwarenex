@@ -97,13 +97,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::get('order/invoice-download/{order_id}', [OrderController::class, 'invoice_download']);
 
 
+    Route::group(['prefix' => 'checkout'], function () {
+        Route::get('get-shipping-cost/{address_id}', [OrderController::class, 'get_shipping_cost']);
+        Route::post('order/store', [OrderController::class, 'store']);
+        Route::post('coupon/apply', [CouponController::class, 'apply']);
+    });
     Route::group(['middleware' => ['auth:api', 'unbanned']], function () {
 
-        Route::group(['prefix' => 'checkout'], function () {
-            Route::get('get-shipping-cost/{address_id}', [OrderController::class, 'get_shipping_cost']);
-            Route::post('order/store', [OrderController::class, 'store']);
-            Route::post('coupon/apply', [CouponController::class, 'apply']);
-        });
 
         Route::group(['prefix' => 'user'], function () {
 
