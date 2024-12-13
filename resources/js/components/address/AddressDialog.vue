@@ -3,6 +3,34 @@
         <div class="white pa-5 rounded">
             <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                 <div class="mb-3">
+                    <div class="mb-1 fs-13 fw-500">{{ $t("full_name") }}</div>
+                    <v-text-field
+                        :placeholder="$t('full_name')"
+                        type="text"
+                        v-model="form.full_name"
+                        hide-details="auto"
+                        required
+                        variant="outlined"
+                    ></v-text-field>
+                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
+                        {{error.$message }}
+                    </p>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-1 fs-13 fw-500">{{ $t("email_address") }}</div>
+                    <v-text-field
+                        :placeholder="$t('email_address')"
+                        type="email"
+                        v-model="form.email_address"
+                        hide-details="auto"
+                        required
+                        variant="outlined"
+                    ></v-text-field>
+                    <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
+                        {{error.$message }}
+                    </p>
+                </div>
+                <div class="mb-3">
                     <div class="mb-1 fs-13 fw-500">{{ $t('address') }}</div>
                     <v-textarea
                         :label="$t('address')"
@@ -141,6 +169,8 @@ export default {
         v$: useVuelidate(),
         form:{
             id: null,
+            full_name: "",
+            email_address: "",
             address: "",
             postal_code: "",
             country: "",
@@ -151,6 +181,8 @@ export default {
     }),
     validations: {
         form: {
+            full_name: { required },
+            email_address: { required },
             address: { required },
             postal_code: { required },
             country: { required },
@@ -272,6 +304,8 @@ export default {
         },
         resetData(){
             this.form.id = null;
+            this.full_name = "";
+            this.email_address = "";
             this.form.address = "";
             this.form.postal_code = "";
             this.form.country = "";
@@ -285,6 +319,8 @@ export default {
             let oldAddress = { ...oldVal }
 
             this.form.id = oldAddress.id;
+            this.full_name = oldAddress.full_name;
+            this.email_address = oldAddress.email_address;
             this.form.address = oldAddress.address;
             this.form.postal_code = oldAddress.postal_code;
             this.form.phone = oldAddress.phone;
