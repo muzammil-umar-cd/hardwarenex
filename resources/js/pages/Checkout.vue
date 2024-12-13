@@ -1038,7 +1038,7 @@ export default {
             "getPickupPoints",
             "getCartProducts",
         ]),
-        ...mapGetters("auth", ["currentUser"]),
+        
         totalPrice() {
             return this.selectedDeliveryType == "home_delivery"
                 ? this.selectedDeliveryOption === "standard"
