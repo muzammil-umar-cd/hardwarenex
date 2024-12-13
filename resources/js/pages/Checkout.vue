@@ -635,7 +635,7 @@
                                 <h3 class="opacity-80 mb-3 fs-18 text-capitalize">
                                     {{ $t("account_details") }}
                                 </h3>
-                                <div class="border px-2 py-2 a">
+                                <div class="border px-2 py-2">
                                     <!-- show authorize payment method's inputs -->
                                     <v-text-field
                                         variant="plain"
