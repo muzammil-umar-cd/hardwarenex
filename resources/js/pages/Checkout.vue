@@ -123,7 +123,7 @@
                                     </h3>
                                     <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="full_name">{{ $t('full_name') }}</label>
                                                     <input 
@@ -140,7 +140,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
@@ -157,7 +157,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="address">{{ $t("address") }}</label>
                                                     <input 
@@ -174,7 +174,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
@@ -191,7 +191,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="country">{{ $t("country") }}</label>
                                                     <input 
@@ -208,7 +208,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="state">{{ $t("state") }}</label>
                                                     <input 
@@ -225,7 +225,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="city">{{ $t("city") }}</label>
                                                     <input 
@@ -242,7 +242,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="phone_number">{{ $t("phone_number") }}</label>
                                                     <input 
@@ -270,7 +270,7 @@
                                     </h3>
                                     <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="full_name">{{ $t('full_name') }}</label>
                                                     <input 
@@ -287,7 +287,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
@@ -304,7 +304,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="address">{{ $t("address") }}</label>
                                                     <input 
@@ -321,7 +321,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
@@ -338,7 +338,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="country">{{ $t("country") }}</label>
                                                     <input 
@@ -355,7 +355,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="state">{{ $t("state") }}</label>
                                                     <input 
@@ -372,7 +372,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="city">{{ $t("city") }}</label>
                                                     <input 
@@ -389,7 +389,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="phone_number">{{ $t("phone_number") }}</label>
                                                     <input 
@@ -1896,7 +1896,7 @@ export default {
   .col-md-1 { flex: 0 0 8.333%; max-width: 8.333%; }
   .col-md-2 { flex: 0 0 16.667%; max-width: 16.667%; }
   .col-md-3 { flex: 0 0 25%; max-width: 25%; }
-  .col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-md-3 { flex: 0 0 33.333%; max-width: 33.333%; }
   .col-md-5 { flex: 0 0 41.667%; max-width: 41.667%; }
   .col-md-6 { flex: 0 0 50%; max-width: 50%; }
   .col-md-7 { flex: 0 0 58.333%; max-width: 58.333%; }
