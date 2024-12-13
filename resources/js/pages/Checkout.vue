@@ -1059,7 +1059,6 @@ export default {
             "fetchPickupPoints",
         ]),
         ...mapActions("address", ["fetchAddresses"]),
-        ...mapActions("auth", ["rechargeWallet", "deductFromWallet"]),
 
         // check for pick up availability
 
