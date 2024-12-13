@@ -123,7 +123,7 @@
                                     </h3>
 
                                     <div class="white pa-5 rounded">
-                                        <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
+                                        <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
@@ -263,7 +263,7 @@
                                                 </div>
                                             </div>
                                             
-                                        </v-form>
+                                        </form>
                                     </div>
 
                                 </div>
