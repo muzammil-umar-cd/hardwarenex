@@ -1951,5 +1951,63 @@ export default {
   .col-xxl-11 { flex: 0 0 91.667%; max-width: 91.667%; }
   .col-xxl-12 { flex: 0 0 100%; max-width: 100%; }
 }
+/* Form Check Container */
+.form-check {
+  display: block;
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Form Check Input */
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -1.5rem;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.form-check-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Disabled States */
+.form-check-input:disabled {
+  cursor: not-allowed;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+/* Form Check Label */
+.form-check-label {
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #212529;
+  cursor: pointer;
+}
+
+/* Inline Checkboxes and Radio Buttons */
+.form-check-inline {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+/* Custom Radio */
+.form-check-input[type="radio"] {
+  border-radius: 50%;
+}
 
 </style>
