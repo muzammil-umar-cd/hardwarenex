@@ -392,6 +392,14 @@
                                     </form>
 
                                 </div>
+                                <div v-if="currentUser.id == null">
+                                    <h3 class="opacity-80 mb-3 fs-20">
+                                        <i class="las la-truck" style="font-size: 20px;"></i>  Shipment Method
+                                    </h3>
+                                    <p>Select your preferred delivery method</p>
+
+                                    <h4 class="opacity-80 mb-3 fs-18"> No shipping method available for selected address. </h4>
+                                </div>
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
                                     <address-dialog
                                         :show="addDialogShow"
