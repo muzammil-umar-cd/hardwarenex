@@ -258,9 +258,9 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="form-group">
-                                            <input type="checkbox" class="form-control" name="same_address" id="same_address">
-                                            My billing address is the same as shipping 
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-control form-check-input" name="same_address" id="same_address">
+                                            <label class="form-check-label" for="same_address">My billing address is the same as shipping </label>                                            
                                         </div>
                                     </form>
                                 </div>
