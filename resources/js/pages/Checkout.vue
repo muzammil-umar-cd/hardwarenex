@@ -1696,6 +1696,9 @@ export default {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+.form-group{
+    padding: 10px;
+}
 /* General Grid Setup */
 .row {
   display: flex;
