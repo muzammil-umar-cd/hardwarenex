@@ -121,7 +121,7 @@
                                     <div class="white pa-5 rounded">
                                         <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                             <v-row>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">{{ $t("full_name") }}</div>
                                                         <v-text-field
@@ -137,7 +137,7 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">{{ $t("email_address") }}</div>
                                                         <v-text-field
@@ -153,7 +153,7 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">{{ $t('address') }}</div>
                                                         <v-textarea
@@ -170,7 +170,7 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">{{ $t('postal_code') }}</div>
                                                         <v-text-field
@@ -186,7 +186,7 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">{{ $t('country') }}</div>
                                                         <v-autocomplete
@@ -207,7 +207,7 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">{{ $t('state') }}</div>
                                                         <v-autocomplete
@@ -226,7 +226,7 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">City</div>
                                                         <v-autocomplete
@@ -244,7 +244,7 @@
                                                         </p>
                                                     </div>
                                                 </v-col>
-                                                <v-col xl="6" lg="6">
+                                                <v-col xl="4" lg="4">
                                                     <div class="mb-3">
                                                         <div class="mb-1 fs-13 fw-500">{{ $t('phone_number') }}</div>
                                                         <v-text-field
