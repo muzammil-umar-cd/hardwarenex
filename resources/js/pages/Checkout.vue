@@ -272,7 +272,7 @@
                                                     <label for="email_address">{{ $t("email_address") }}</label>
                                                     <input 
                                                         :placeholder="$t('email_address')"
-                                                        v-model="form.email_address"
+                                                        v-model="form.billing_email_address"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -289,7 +289,7 @@
                                                     <label for="full_name">{{ $t('full_name') }}</label>
                                                     <input 
                                                         :placeholder="$t('full_name')"
-                                                        v-model="form.full_name"
+                                                        v-model="form.billing_full_name"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -306,7 +306,7 @@
                                                     <label for="phone_number">{{ $t("phone_number") }}</label>
                                                     <input 
                                                         :placeholder="$t('phone_number')"
-                                                        v-model="form.phone"
+                                                        v-model="form.billing_phone"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -323,7 +323,7 @@
                                                     <label for="address">{{ $t("address") }}</label>
                                                     <input 
                                                         :placeholder="$t('address')"
-                                                        v-model="form.address"
+                                                        v-model="form.billing_address"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -340,7 +340,7 @@
                                                     <label for="country">{{ $t("country") }}</label>
                                                     <input 
                                                         :placeholder="$t('country')"
-                                                        v-model="form.country"
+                                                        v-model="form.billing_country"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -357,7 +357,7 @@
                                                     <label for="state">{{ $t("state") }}</label>
                                                     <input 
                                                         :placeholder="$t('state')"
-                                                        v-model="form.state"
+                                                        v-model="form.billing_state"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -374,7 +374,7 @@
                                                     <label for="city">{{ $t("city") }}</label>
                                                     <input 
                                                         :placeholder="$t('city')"
-                                                        v-model="form.city"
+                                                        v-model="form.billing_city"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -391,7 +391,7 @@
                                                     <label for="postal_code">{{ $t("postal_code") }}</label>
                                                     <input 
                                                         :placeholder="$t('postal_code')"
-                                                        v-model="form.postal_code"
+                                                        v-model="form.billing_postal_code"
                                                         hide-details="auto"
                                                         required
                                                         class="form-control"
@@ -1317,6 +1317,17 @@ export default {
                 state: "",
                 city: "",
                 phone: "",
+            },
+            billing_form:{
+                id: null,
+                billing_full_name: "",
+                billing_email_address: "",
+                billing_address: "",
+                billing_postal_code: "",
+                billing_country: "",
+                billing_state: "",
+                billing_city: "",
+                billing_phone: "",
             }
         };
     },
@@ -1337,6 +1348,16 @@ export default {
             state: { required },
             city: { required },
             phone: { required },
+        },
+        billing_form:{
+            billing_full_name: { required },
+            billing_email_address: { required },
+            billing_address: { required },
+            billing_postal_code: { required },
+            billing_country: { required },
+            billing_state: { required },
+            billing_city: { required },
+            billing_phone: { required },
         }
     },
     watch: {
@@ -1755,6 +1776,15 @@ export default {
             this.form.state = "";
             this.form.city = "";
             this.form.phone = "";
+
+            this.billing_form.billing_full_name= "";
+            this.billing_form.billing_email_address= "";
+            this.billing_form.billing_address= "";
+            this.billing_form.billing_postal_code= "";
+            this.billing_form.billing_country= "";
+            this.billing_form.billing_state= "";
+            this.billing_form.billing_city= "";
+            this.billing_form.billing_phone= "";
 
             this.v$.form.$reset();
         },
