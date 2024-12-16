@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BulkOrder;  // Create a model to interact with the contact_form table
+use App\Models\BulkOrder;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Mail\BulkOrderMailer;
+use Illuminate\Support\Facades\Mail;
 
 class BulkOrderController extends Controller
 {
@@ -25,7 +28,28 @@ class BulkOrderController extends Controller
         // Create a new record in the database
         $bulk_order = BulkOrder::create($validated);
 
-        // Return a response indicating success
-        return response()->json(['message' => 'Order submitted successfully!']);
+        $get_product = Product::findOrFail($request->product_id);
+
+
+        if($bulk_order){
+            $subject = 'Bulk Order For :' . ' ' . $get_product->name;
+            $body = [
+                'title' => $get_product->name,
+                'quantity' => $request->quantity,
+                'total_price' => $request->total_price,
+                'unit_price' => $request->unit_price,
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'message' => $request->message
+            ];
+        
+            Mail::to('muzammil.coredigitals@gmail.com')->send(new BulkOrderMailer($subject, $body));   
+            // Return a response indicating success
+            return response()->json(['message' => 'Order submitted successfully!']);
+        }else{
+            return response()->json(['message' => 'There was an error submitting your order.']);
+        }
+
     }
 }
