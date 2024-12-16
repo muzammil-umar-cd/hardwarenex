@@ -703,8 +703,12 @@ export default {
       return !isNaN(quantity) && quantity > 0 ? quantity * price : 0;
     },
     unitPrice(){
-      const u_p = this.productDetails.base_discounted_price;;
+      const u_p = this.productDetails.base_discounted_price;
       return u_p;
+    },
+    productID(){
+      const p_id = this.productDetails.id;
+      return p_id;
     }
   },
   watch:{
@@ -794,7 +798,7 @@ export default {
           quantity: this.formData.quantity,
           total_price: this.totalPrice,
           unit_price: this.unitPrice,
-          product_id: this.formData.product_id,
+          product_id: this.productID,
           message: this.formData.message,
         }
       );
