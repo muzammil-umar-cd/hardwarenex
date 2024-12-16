@@ -791,8 +791,8 @@ export default {
           phone: this.formData.phone,
           quantity: this.formData.quantity,
           total_price: this.totalPrice,
-          product_id: productDetails.id,
-          unit_price: productDetails.base_discounted_price,
+          product_id: this.productDetails.id,
+          unit_price: this.productDetails.base_discounted_price,
           message: this.formData.message,
         }
       );
