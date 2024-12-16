@@ -10,6 +10,25 @@ use Illuminate\Support\Facades\Mail;
 
 class BulkOrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:show_bulk_orders'])->only('index');
+        $this->middleware(['permission:view_bulk_orders'])->only('show');
+        $this->middleware(['permission:delete_bulk_orders'])->only('destroy');
+    }
+
+    public function index(){
+
+    }
+
+    public function show(){
+
+    }
+
+    public function destroy(){
+        
+    }
+
     public function store(Request $request)
     {
         // dd($request->all());
