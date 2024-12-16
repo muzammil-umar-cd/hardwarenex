@@ -785,7 +785,6 @@ export default {
     },
     ...mapMutations("auth", ["updateCartDrawer"]),
     async submitForm() {
-      console.log(this.formData);
     try {
       // Call your API method with the appropriate data
       const response = await this.call_api(
@@ -802,7 +801,8 @@ export default {
           message: this.formData.message,
         }
       );
-
+      console.log(response);
+      
       // Handle successful response
       if (response.message) {
         this.snack({ message: res.data.message });
