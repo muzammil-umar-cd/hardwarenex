@@ -32,7 +32,6 @@ class BulkOrderMailer extends Mailable
     public function build()
     {
         return $this->subject($this->subject)
-                    ->view('emails.bulk_order')
-                    ->with(['body' => $this->body]);
+                    ->view('emails.bulk_order');
     }
 }
