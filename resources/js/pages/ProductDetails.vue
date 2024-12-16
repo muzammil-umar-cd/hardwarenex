@@ -788,8 +788,8 @@ export default {
           email: this.formData.email,
           phone: this.formData.phone,
           quantity: this.formData.quantity,
-          total_price: this.totalPrice,
-          unit_price: this.productDetails.base_discounted_price,
+          total_price: this.totalPrice.toFixed(2),
+          unit_price: this.productDetails.base_discounted_price.toFixed(2),
           product_id: this.productDetails.id,
           message: this.formData.message,
         }
