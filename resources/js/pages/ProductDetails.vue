@@ -18,14 +18,12 @@
     <small style="margin-bottom: 20px">{{productDetails.name}}</small>
     <input 
       type="hidden" 
-      id="unit_price"
-      v-model="formData.unit_price"
+      id="hiddenPrice" 
       :value="format_price(productDetails.base_discounted_price)"
     />
     <input 
       type="hidden" 
       id="product_id" 
-      v-model="formData.product_id"
       :value="productDetails.id"
     />
     <div class="row">
@@ -680,8 +678,8 @@ export default {
         message: "",
         phone: "",
         total_price: "",
-        unit_price: "",
         product_id: "",
+        hiddenPrice: "",
         quantity: "",
       },
   }),
@@ -776,7 +774,7 @@ export default {
       this.drawerOpen = !this.drawerOpen; // Toggle drawer visibility
     },
     ...mapMutations("auth", ["updateCartDrawer"]),
-
+    
     async submitForm() {
     try {
       // Call your API method with the appropriate data
@@ -788,9 +786,9 @@ export default {
           email: this.formData.email,
           phone: this.formData.phone,
           quantity: this.formData.quantity,
-          total_price: this.totalPrice.toFixed(2),
-          unit_price: this.productDetails.base_discounted_price.toFixed(2),
-          product_id: this.productDetails.id,
+          total_price: this.totalPrice,
+          product_id: this.product_id,
+          hiddenPrice: this.hiddenPrice,
           message: this.formData.message,
         }
       );
