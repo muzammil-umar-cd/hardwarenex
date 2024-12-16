@@ -789,8 +789,8 @@ export default {
           phone: this.formData.phone,
           quantity: this.formData.quantity,
           total_price: this.totalPrice,
-          product_id: this.product_id,
-          unit_price: this.unit_price,
+          product_id: this.formData.product_id,
+          unit_price: this.formData.unit_price,
           message: this.formData.message,
         }
       );
