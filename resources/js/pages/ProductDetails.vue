@@ -790,9 +790,9 @@ export default {
           email: this.formData.email,
           phone: this.formData.phone,
           quantity: this.formData.quantity,
-          total_price: this.totalPrice,
+          total_price: this.totalPrice.toFixed(2),
           product_id: this.productDetails.id,
-          unit_price: this.productDetails.base_discounted_price,
+          unit_price: this.productDetails.base_discounted_price.toFixed(2),
           message: this.formData.message,
         }
       );
