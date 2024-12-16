@@ -18,13 +18,13 @@
     <small style="margin-bottom: 20px">{{productDetails.name}}</small>
     <input 
       type="hidden" 
-      id="hiddenPrice"
+      id="unit_price"
       v-model="formData.unit_price"
       :value="format_price(productDetails.base_discounted_price)"
     />
     <input 
       type="hidden" 
-      id="product-id" 
+      id="product_id" 
       v-model="formData.product_id"
       :value="productDetails.id"
     />
