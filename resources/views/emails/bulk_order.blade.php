@@ -105,7 +105,7 @@
 										<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
 											<tr>
 												<td class="p30-15-0" style="padding: 40px 30px 0px 30px;">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="left: 60px;position: relative;">
 														<tr>
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -140,11 +140,11 @@
 												<td class="p30-15" style="padding: 70px 30px 70px 30px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="h2 center pb10" style="color:#000000; font-family:'Ubuntu', Arial,sans-serif; font-size:50px; line-height:60px; text-align:center; padding-bottom:10px;">Bulk Order Received!</td>
+															<td class="h2 center pb10" style="color:#000000; font-family:'Ubuntu', Arial,sans-serif; font-size:50px; line-height:60px; text-align:center; padding-bottom:30px;">Bulk Order Received!</td>
 														</tr>
 														<tr>
 															<td class="h5 center blue pb30" style="font-family:'Ubuntu', Arial,sans-serif; font-size:20px; line-height:26px; text-align:center; color:#2e57ae; padding-bottom:30px;">
-															    Product Title: <span>{{ $body['title'] ?? '' }}</span>
+															    <span>{{ $body['title'] ?? '' }}</span>
 															</td>
 														</tr>
 														<tr>
