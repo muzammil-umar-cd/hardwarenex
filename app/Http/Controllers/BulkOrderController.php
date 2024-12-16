@@ -9,23 +9,19 @@ class BulkOrderController extends Controller
 {
     public function store(Request $request)
     {
+        dd($request->all());
         // Validate the incoming request
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|tel|number|max:11',
-            'quantity' => 'required|number',
-            'message' => 'required|string',
+            'phone' => 'required|string|max:15',
+            'quantity' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
+            'message' => 'required|string|max:1000',
         ]);
 
         // Create a new record in the database
-        $bulk_order = BulkOrder::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'quantity' => $request->quantity,
-            'message' => $request->message,
-        ]);
+        $bulk_order = BulkOrder::create($validated);
 
         // Return a response indicating success
         return response()->json([

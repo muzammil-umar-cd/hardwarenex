@@ -677,6 +677,7 @@ export default {
         email: "",
         message: "",
         phone: "",
+        price: "",
         quantity: "",
       },
   }),
@@ -771,13 +772,41 @@ export default {
       this.drawerOpen = !this.drawerOpen; // Toggle drawer visibility
     },
     ...mapMutations("auth", ["updateCartDrawer"]),
-    submitForm() {
-      // Handle form submission logic here
-      console.log("Form Submitted:", this.formData);
-      this.resetForm();
-      this.updateCartDrawer(false);
-      alert("Thank you for reaching out to us!");
-    },
+    // submitForm() {
+    //   // Handle form submission logic here
+    //   console.log("Form Submitted:", this.formData);
+    //   this.resetForm();
+    //   this.updateCartDrawer(false);
+    //   alert("Thank you for reaching out to us!");
+    // },
+    async submitForm() {
+    try {
+      // Call your API method with the appropriate data
+      const response = await this.call_api(
+        'post',  // Method type (POST in this case)
+        'bulk-orders',  // Endpoint for storing the bulk order
+        {
+          name: this.formData.name,
+          email: this.formData.email,
+          phone: this.formData.phone,
+          quantity: this.formData.quantity,
+          price: this.totalPrice, // Calculated total price
+          message: this.formData.message,
+        }
+      );
+
+      // Handle successful response
+      if (response.data.success) {
+        alert("Order submitted successfully!");
+        this.resetForm();
+      } else {
+        alert("There was an error submitting your order.");
+      }
+    } catch (error) {
+      console.error("Error during form submission:", error);
+      alert("There was an error submitting your order.");
+    }
+  },
     resetForm() {
       this.formData = {
         name: "",

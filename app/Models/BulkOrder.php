@@ -9,5 +9,5 @@ class BulkOrder extends Model
 {
     use HasFactory;
     // Define the fillable fields for mass assignment
-    protected $fillable = ['name', 'email', 'phone','quantity','message'];
+    protected $fillable = ['name', 'email', 'phone', 'quantity', 'price', 'message'];
 }

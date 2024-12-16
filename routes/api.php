@@ -28,6 +28,8 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\WalletController;
 use App\Http\Controllers\Api\WishlistController;
 use App\Http\Controllers\Payment\PaymentController;
+use App\Http\Controllers\BulkOrderController;
+
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
 
@@ -106,6 +108,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::get('addresses', [AddressController::class, 'addresses']);
     Route::post('address/create', [AddressController::class, 'createShippingAddress']);
     Route::post('address/update', [AddressController::class, 'updateShippingAddress']);
+    // BULK ORDER API
+    Route::post('/bulk-orders', [BulkOrderController::class, 'store']);
 
     Route::group(['middleware' => ['auth:api', 'unbanned']], function () {
         Route::group(['prefix' => 'user'], function () {
