@@ -681,7 +681,7 @@ export default {
         phone: "",
         total_price: "",
         unit_price: "",
-        product_id: productDetails.id,
+        product_id: "",
         quantity: "",
       },
   }),
@@ -777,6 +777,7 @@ export default {
     },
     ...mapMutations("auth", ["updateCartDrawer"]),
     async submitForm() {
+      console.log(this.formData);
     try {
       // Call your API method with the appropriate data
       const response = await this.call_api(
