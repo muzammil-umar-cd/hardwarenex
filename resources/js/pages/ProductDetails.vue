@@ -681,7 +681,7 @@ export default {
         phone: "",
         total_price: "",
         unit_price: "",
-        product_id: "",
+        product_id: productDetails.id,
         quantity: "",
       },
   }),
