@@ -17,8 +17,8 @@ class BulkOrderController extends Controller
             'phone' => 'required|string|max:15',
             'quantity' => 'required|integer|min:1',
             'total_price' => 'required|numeric|min:0',
-            // 'unit_price' => 'required|min:0',
-            // 'product_id' => 'required|numeric|min:0',
+            'unit_price' => 'required|min:0',
+            'product_id' => 'required|numeric|min:0',
             'message' => 'required|string|max:1000',
         ]);
 
