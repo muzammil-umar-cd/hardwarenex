@@ -16,7 +16,9 @@ class BulkOrderController extends Controller
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:15',
             'quantity' => 'required|integer|min:1',
-            'price' => 'required|numeric|min:0',
+            'total_price' => 'required|numeric|min:0',
+            'unit_price' => 'required|numeric|min:0',
+            'product_id' => 'required|numeric|min:0',
             'message' => 'required|string|max:1000',
         ]);
 
@@ -24,8 +26,6 @@ class BulkOrderController extends Controller
         $bulk_order = BulkOrder::create($validated);
 
         // Return a response indicating success
-        return response()->json([
-            'message' => 'Thank you for reaching out. We will get back to you soon.',
-        ], 200);
+        return response()->json(['message' => 'Order submitted successfully!']);
     }
 }
