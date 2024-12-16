@@ -702,6 +702,10 @@ export default {
       const price = this.productDetails.base_discounted_price;
       return !isNaN(quantity) && quantity > 0 ? quantity * price : 0;
     },
+    unitPrice(){
+      const u_p = this.productDetails.base_discounted_price;;
+      return u_p;
+    }
   },
   watch:{
     metaTitle(newTitle){
@@ -789,7 +793,7 @@ export default {
           phone: this.formData.phone,
           quantity: this.formData.quantity,
           total_price: this.totalPrice,
-          unit_price: this.formData.unit_price,
+          unit_price: this.unitPrice,
           product_id: this.formData.product_id,
           message: this.formData.message,
         }
