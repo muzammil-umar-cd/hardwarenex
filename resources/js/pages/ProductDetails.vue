@@ -21,6 +21,11 @@
       id="hiddenPrice" 
       :value="format_price(productDetails.base_discounted_price)"
     />
+    <input 
+      type="hidden" 
+      id="product-id" 
+      :value="productDetails.id"
+    />
     <div class="row">
       <div class="col-md-12">
           <div class="form-group">
@@ -90,7 +95,7 @@
       </div>
       <div class="col-md-12"></div>
     </div>
-    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+    <button type="submit" class="btn btn-primary w-100">Complete Order</button>
   </form>
 </div>
 </v-navigation-drawer>
