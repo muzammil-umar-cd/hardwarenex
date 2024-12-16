@@ -10,4 +10,9 @@ class BulkOrder extends Model
     use HasFactory;
     // Define the fillable fields for mass assignment
     protected $fillable = ['name', 'email', 'phone', 'quantity', 'total_price','unit_price', 'product_id', 'message'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

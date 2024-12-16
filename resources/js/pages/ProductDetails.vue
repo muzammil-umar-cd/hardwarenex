@@ -804,15 +804,20 @@ export default {
       );
 
       // Handle successful response
-      if (response.data.success) {
-        alert("Order submitted successfully!");
+      if (response.message) {
+        this.snack({ message: res.data.message });
         this.resetForm();
       } else {
-        alert("There was an error submitting your order.");
+        this.snack({
+            message: this.$i18n.t("There was an error submitting your order."),
+            color: "red"
+        });
       }
     } catch (error) {
-      console.error("Error during form submission:", error);
-      alert("There was an error submitting your order.");
+      this.snack({
+            message: this.$i18n.t("There was an error submitting your order."),
+            color: "red"
+        });
     }
   },
     resetForm() {
