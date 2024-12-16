@@ -789,7 +789,7 @@ export default {
           phone: this.formData.phone,
           quantity: this.formData.quantity,
           total_price: this.totalPrice,
-          unit_price: format_price(productDetails.base_discounted_price),
+          unit_price: productDetails.base_discounted_price,
           product_id: productDetails.id,
           message: this.formData.message,
         }
