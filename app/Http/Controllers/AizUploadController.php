@@ -173,6 +173,12 @@ class AizUploadController extends Controller
                     }
                 }
 
+                $disk = Storage::disk('wasabi');
+                $fileName = $request->file('aiz_file');
+                $data = $disk->putFileAs('uploads/all' , $request->hasFile('aiz_file') , $fileName);
+                dd($data);
+                $disk->setVisibility($data, 'public');
+
                 $upload->file_name = $request->file('aiz_file')->store('uploads/all');
                 $upload->user_id = Auth::user()->id;
 
