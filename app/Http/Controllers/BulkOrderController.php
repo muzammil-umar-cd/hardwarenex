@@ -9,7 +9,7 @@ class BulkOrderController extends Controller
 {
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         // Validate the incoming request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
