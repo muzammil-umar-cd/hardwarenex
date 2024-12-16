@@ -804,8 +804,8 @@ export default {
       console.log(response);
       
       // Handle successful response
-      if (response.message) {
-        this.snack({ message: res.data.message });
+      if (response.data.message === "Order submitted successfully!") {
+        this.snack({ message: response.data.message });
         this.resetForm();
       } else {
         this.snack({
