@@ -238,7 +238,7 @@
                             </a>
                         </li>
                     @endcan
-                @elseif(auth()->user()->can('show_bulk_orders') || auth()->user()->user_type === "admin")
+                @elseif(auth()->user()->can('show_bulk_orders') || Auth::user()->user_type === "admin")
                 @can('show_bulk_orders')
                     <li class="aiz-side-nav-item">
                         <a href="{{ route('bulk-orders.index') }}"
