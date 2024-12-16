@@ -18,12 +18,14 @@
     <small style="margin-bottom: 20px">{{productDetails.name}}</small>
     <input 
       type="hidden" 
-      id="hiddenPrice" 
+      id="unit_price" 
+      v-model="formData.unit_price"
       :value="format_price(productDetails.base_discounted_price)"
     />
     <input 
       type="hidden" 
       id="product_id" 
+      v-model="formData.product_id"
       :value="productDetails.id"
     />
     <div class="row">
@@ -679,7 +681,7 @@ export default {
         phone: "",
         total_price: "",
         product_id: "",
-        hiddenPrice: "",
+        unit_price: "",
         quantity: "",
       },
   }),
@@ -788,7 +790,7 @@ export default {
           quantity: this.formData.quantity,
           total_price: this.totalPrice,
           product_id: this.product_id,
-          hiddenPrice: this.hiddenPrice,
+          unit_price: this.unit_price,
           message: this.formData.message,
         }
       );
