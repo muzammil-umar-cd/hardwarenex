@@ -173,15 +173,6 @@ class AizUploadController extends Controller
                     }
                 }
 
-                $disk = Storage::disk('s3');
-                
-                $file_name = pathinfo($request->file('aiz_file')->getClientOriginalName(), PATHINFO_FILENAME);
-                $name = 'uploads/all'. $file_name . $request->file('aiz_file')->extension();
-                
-                // Upload the file
-                $disk->put($name, file_get_contents($request->file('aiz_file')), 'public');
-                $disk->setVisibility($name, 'public');
-
                 $upload->file_name = $request->file('aiz_file')->store('uploads/all');
                 $upload->user_id = Auth::user()->id;
 
