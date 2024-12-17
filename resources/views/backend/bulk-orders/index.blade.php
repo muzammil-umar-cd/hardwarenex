@@ -134,13 +134,16 @@ $(document).on('change', '.status', function() {
             status: status,
             order_id: orderId
         },
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-            if(response == 1) {
-                location.reload();
+        success: function(response) {
+            if (response == 1) {
+                location.reload(); // Reload the page if the response is 1
+            } else {
+                alert('Failed to update status. Try again.');
             }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+            alert('Something went wrong. Please check the console for errors.');
         }
     });
 });
