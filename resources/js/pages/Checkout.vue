@@ -14,7 +14,7 @@
                     <v-col xl="8" lg="8" sm="12">
                         <div class="mb-4">
                             <div style="background: #f8f8f8;padding: 20px;border-radius: 12px;border: 1px solid #ccc;">
-                                <div class="delivery-type" hidden>
+                                <div class="delivery-type">
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("delivery_type") }}
                                     </h3>
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                                 <!-- ========== -->
-                                <div v-if="currentUser.id == null">
+                                <div>
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         <i class="las la-shipping-fast" style="font-size: 20px;"></i> Shipping & Billing Info
                                     </h3>
@@ -256,7 +256,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div v-if="currentUser.id == null">
+                                <div>
                                     <form class="form" v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
                                         <div class="row"> 
                                             <div class="col-md-4">
@@ -392,7 +392,7 @@
                                     </form>
 
                                 </div>
-                                <div v-if="currentUser.id == null">
+                                <div>
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         <i class="las la-truck" style="font-size: 20px;"></i>  Shipment Method
                                     </h3>
