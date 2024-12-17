@@ -32,6 +32,8 @@ class AddressController extends Controller
             
             $address = new Address;
             $address->user_id = auth('api')->user()->id;
+            $address->full_name = $request->full_name;
+            $address->email = $request->email_address;
             $address->address = $request->address;
             $address->country = Country::find($request->country)->name;
             $address->country_id = $request->country;
@@ -48,6 +50,8 @@ class AddressController extends Controller
         }else{
 
             $address = new Address;
+            $address->full_name = $request->full_name;
+            $address->email = $request->email_address;
             $address->ip_address = $request->ip();
             $address->address = $request->address;
             $address->country = Country::find($request->country)->name;
