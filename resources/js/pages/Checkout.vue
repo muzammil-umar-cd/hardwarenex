@@ -1094,12 +1094,12 @@ export default {
         },
 
         addressDialogClosed() {
-            this.addressSelectedForEdit = {};
+            this.addressSelectedForEdit = this.getAddresses;
             this.addDialogShow = false;
         },
 
         editAddress(address) {
-            this.addressSelectedForEdit = address;
+            this.addressSelectedForEdit = this.getAddresses;
             this.addDialogShow = true;
         },
         rechargeDialogClosed() {
