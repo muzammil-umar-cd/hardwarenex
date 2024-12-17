@@ -77,11 +77,11 @@
                                 <td>{{ format_price($order->total_price) }}</td>
                                 <td>
                                     <select name="status" class="status form-control" data-order-id="{{ $order->id }}">
-                                        <option value="">Update Status</option>
-                                        <option {{ ($order->status == "Pending") ? 'selected' : '' }} value="Pending">Pending</option>
-                                        <option {{ ($order->status == "Follow-Up") ? 'selected' : '' }} value="Follow-Up">Follow-Up</option>
-                                        <option {{ ($order->status == "Canceled") ? 'selected' : '' }} value="Canceled">Canceled</option>
-                                        <option {{ ($order->status == "Completed") ? 'selected' : '' }} value="Completed">Completed</option>
+                                        <option value="" style="background-color: white;">Update Status</option>
+                                        <option value="Pending" style="background-color: yellow; color: black;" {{ ($order->status == "Pending") ? 'selected' : '' }}>Pending</option>
+                                        <option value="Follow-Up" style="background-color: orange; color: white;" {{ ($order->status == "Follow-Up") ? 'selected' : '' }}>Follow-Up</option>
+                                        <option value="Canceled" style="background-color: red; color: white;" {{ ($order->status == "Canceled") ? 'selected' : '' }}>Canceled</option>
+                                        <option value="Completed" style="background-color: green; color: white;" {{ ($order->status == "Completed") ? 'selected' : '' }}>Completed</option>
                                     </select>
                                 </td>
                                 <td>{{ $order->created_at }}</td>
