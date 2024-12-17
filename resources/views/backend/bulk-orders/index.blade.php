@@ -76,8 +76,8 @@
                                 <td>{{ $order->phone }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>
-                                    Product: {{ $order->product->name }} <br>
-                                    Price: {{ format_price($order->unit_price) }}
+                                    Product:<br> {{ $order->product->name }} <br>
+                                    Price:<br> {{ format_price($order->unit_price) }}
                                 </td>
                                 <td>{{ format_price($order->total_price) }}</td>
                                 <td>
