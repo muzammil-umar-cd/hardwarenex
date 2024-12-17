@@ -984,7 +984,7 @@ export default {
             standardDeliveryCost: 0,
             expressDeliveryCost: 0,
             addDialogShow: true,
-            addressSelectedForEdit: {},
+            addressSelectedForEdit: address,
             rechargeDialogShow: false,
             transactionId: null,
             receipt: null,

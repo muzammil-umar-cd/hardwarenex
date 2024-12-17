@@ -1,4 +1,5 @@
 <template>
+    <!-- <v-dialog v-model="isVisible" max-width="600px" @click:outside="closeDialog"></v-dialog> -->
     <div class="white pa-5 rounded">
         <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
             <div class="row"> 
