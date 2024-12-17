@@ -37,6 +37,7 @@ class AddressController extends Controller
             $address->city_id = $request->city;
             $address->postal_code = $request->postal_code;
             $address->phone = $request->phone;
+            $address->ip_address = FacadeRequest::ip();
             $address->default_shipping = $shipping_count > 0 ? 0 : 1;
             $address->default_billing = $billing_count > 0 ? 0 : 1;
             $address->save();
@@ -114,7 +115,7 @@ class AddressController extends Controller
             return response()->json(null, 401);
         }
 
-        $latest_address = Address::where('user_id', auth('api')->user()->id)->latest()->first();
+        $latest_address = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->first();
         if ($address->default_shipping) {
             $latest_address->default_shipping = 1;
         }
@@ -128,7 +129,7 @@ class AddressController extends Controller
         return response()->json([
             'success' => true,
             'message' => translate('Address has been deleted successfully.'),
-            'data' => Address::where('user_id', auth('api')->user()->id)->latest()->get()
+            'data' => Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get()
         ]);
     }
 
@@ -153,7 +154,7 @@ class AddressController extends Controller
         return response()->json([
             'success' => true,
             'message' => translate('Address has been updated successfully.'),
-            'data' => Address::where('user_id', auth('api')->user()->id)->latest()->get()
+            'data' => Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get()
         ]);
     }
 
@@ -164,7 +165,7 @@ class AddressController extends Controller
             return response()->json(null, 401);
         }
 
-        $default_shipping = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->first();
+        $default_shipping = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->where('default_shipping', 1)->first();
         if ($default_shipping != null && $default_shipping->id != $address->id) {
             $default_shipping->default_shipping = 0;
             $default_shipping->save();
@@ -176,7 +177,7 @@ class AddressController extends Controller
         return response()->json([
             'success' => true,
             'message' => translate('Address has been marked as default shipping address.'),
-            'data' => Address::where('user_id', auth('api')->user()->id)->latest()->get()
+            'data' => Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get()
         ]);
     }
 
@@ -187,7 +188,7 @@ class AddressController extends Controller
             return response()->json(null, 401);
         }
 
-        $default_billing = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->first();
+        $default_billing = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->where('default_billing', 1)->first();
         if ($default_billing != null  && $default_billing->id != $address->id) {
             $default_billing->default_billing = 0;
             $default_billing->save();
@@ -199,7 +200,7 @@ class AddressController extends Controller
         return response()->json([
             'success' => true,
             'message' => translate('Address has been marked as default billing address.'),
-            'data' => Address::where('user_id', auth('api')->user()->id)->latest()->get()
+            'data' => Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get()
         ]);
     }
 
