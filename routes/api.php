@@ -110,6 +110,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     Route::post('address/update', [AddressController::class, 'updateShippingAddress']);
     Route::get('address/default-shipping/{id}', [AddressController::class, 'defaultShippingAddress']);
     Route::get('address/default-billing/{id}', [AddressController::class, 'defaultBillingAddress']);
+    
+    Route::get('address/delete/{id}', [AddressController::class, 'deleteShippingAddress']);
+    Route::get('pickup-points', [AddressController::class, 'get_pickup_points']);
+    
     // BULK ORDER API
     Route::post('/bulk-orders', [BulkOrderController::class, 'store']);
 
@@ -145,8 +149,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
             Route::apiResource('wishlists', WishlistController::class)->except(['update', 'show']);
             Route::apiResource('follow', FollowController::class)->except(['update', 'show']);
 
-            Route::get('address/delete/{id}', [AddressController::class, 'deleteShippingAddress']);
-            Route::get('pickup-points', [AddressController::class, 'get_pickup_points']);
 
             # conversation
             Route::get('querries', [ConversationController::class, 'index']);
