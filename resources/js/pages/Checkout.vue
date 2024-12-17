@@ -116,7 +116,8 @@
                                 </div>
                                 <!-- ========== -->
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
-                                    <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
+                                    <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off" v-for="address in getAddresses"
+                                    :key="address.id">
                                         <div class="row"> 
                                             <div class="col-md-4">
                                                 <div class="form-group">
