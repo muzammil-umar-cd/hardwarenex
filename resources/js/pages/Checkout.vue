@@ -1,78 +1,78 @@
 <template>
-    <div>
+    <div class="checkout-container">
       <!-- Shipping & Billing Info Form -->
       <div class="shipping-billing-form">
-        <h3>{{ $i18n.t('shipping_billing_info') }}</h3>
+        <h3 class="section-title">{{ $i18n.t('shipping_billing_info') }}</h3>
         <form @submit.prevent="submitCheckout">
-          <div>
+          <div class="form-row">
             <label for="full_name">{{ $i18n.t('full_name') }}</label>
-            <input type="text" v-model="form.full_name" required />
+            <input type="text" v-model="form.full_name" class="form-input" required />
           </div>
   
-          <div>
+          <div class="form-row">
             <label for="email_address">{{ $i18n.t('email_address') }}</label>
-            <input type="email" v-model="form.email_address" required />
+            <input type="email" v-model="form.email_address" class="form-input" required />
           </div>
   
-          <div>
+          <div class="form-row">
             <label for="address">{{ $i18n.t('address') }}</label>
-            <input type="text" v-model="form.address" required />
+            <input type="text" v-model="form.address" class="form-input" required />
           </div>
   
-          <div>
+          <div class="form-row">
             <label for="postal_code">{{ $i18n.t('postal_code') }}</label>
-            <input type="text" v-model="form.postal_code" required />
+            <input type="text" v-model="form.postal_code" class="form-input" required />
           </div>
   
-          <div>
+          <div class="form-row">
             <label for="country">{{ $i18n.t('country') }}</label>
-            <select v-model="form.country" @change="countryChanged(form.country)" required>
+            <select v-model="form.country" class="form-select" @change="countryChanged(form.country)" required>
               <option v-for="country in countries" :key="country.id" :value="country.id">
                 {{ country.name }}
               </option>
             </select>
           </div>
   
-          <div>
+          <div class="form-row">
             <label for="state">{{ $i18n.t('state') }}</label>
-            <select v-model="form.state" @change="stateChanged(form.state)" required>
+            <select v-model="form.state" class="form-select" @change="stateChanged(form.state)" required>
               <option v-for="state in filteredStates" :key="state.id" :value="state.id">
                 {{ state.name }}
               </option>
             </select>
           </div>
   
-          <div>
+          <div class="form-row">
             <label for="city">{{ $i18n.t('city') }}</label>
-            <select v-model="form.city" required>
+            <select v-model="form.city" class="form-select" required>
               <option v-for="city in filteredCities" :key="city.id" :value="city.id">
                 {{ city.name }}
               </option>
             </select>
           </div>
   
-          <div>
+          <div class="form-row">
             <label for="phone">{{ $i18n.t('phone') }}</label>
-            <input type="tel" v-model="form.phone" required />
+            <input type="tel" v-model="form.phone" class="form-input" required />
           </div>
         </form>
       </div>
   
       <!-- Shipping Method Section -->
       <div v-if="countriesLoaded" class="shipping-method">
-        <h3>{{ $i18n.t('shipping_method') }}</h3>
+        <h3 class="section-title">{{ $i18n.t('shipping_method') }}</h3>
         <div v-for="(method, index) in shippingMethods" :key="index" class="shipping-option">
           <label>
             <input type="radio" 
               :value="method" 
               v-model="selectedShippingMethod" 
-              @change="updateShippingPrice" />
+              @change="updateShippingPrice" class="shipping-radio" />
             {{ method.name }} - {{ method.price | currency }}
           </label>
         </div>
   
         <!-- Display the selected shipping method and its price -->
-        <div v-if="selectedShippingMethod">
+        <div v-if="selectedShippingMethod" class="selected-shipping">
           <p>{{ $i18n.t('selected_shipping_method') }}: {{ selectedShippingMethod.name }}</p>
           <p>{{ $i18n.t('price') }}: {{ selectedShippingMethod.price | currency }}</p>
         </div>
@@ -80,17 +80,21 @@
   
       <!-- Cart Summary & Calculations -->
       <div class="cart-summary">
-        <h3>{{ $i18n.t('order_summary') }}</h3>
-        <div>
+        <h3 class="section-title">{{ $i18n.t('order_summary') }}</h3>
+        <div class="summary-item">
           <p>{{ $i18n.t('subtotal') }}: {{ subtotal | currency }}</p>
+        </div>
+        <div class="summary-item">
           <p>{{ $i18n.t('shipping_fee') }}: {{ shippingPrice | currency }}</p>
+        </div>
+        <div class="summary-item total">
           <p>{{ $i18n.t('total') }}: {{ totalPrice | currency }}</p>
         </div>
       </div>
   
       <!-- Checkout Button -->
-      <div>
-        <button @click="submitCheckout">{{ $i18n.t('checkout') }}</button>
+      <div class="checkout-btn">
+        <button @click="submitCheckout" class="btn btn-primary">{{ $i18n.t('checkout') }}</button>
       </div>
     </div>
   </template>
@@ -115,9 +119,9 @@
           city: "",
           phone: "",
         },
-        subtotal: 100.00, // Example subtotal, this should be dynamically set based on cart
+        subtotal: 0.00, // Cart subtotal fetched from your old code
         shippingPrice: 0.00, // Initial shipping price
-        totalPrice: 100.00, // Total price (subtotal + shipping)
+        totalPrice: 0.00, // Total price (subtotal + shipping)
       };
     },
     methods: {
@@ -181,6 +185,27 @@
         ];
       },
   
+      // Fetch cart items and subtotal from old code or API
+      async fetchCartData() {
+        // Simulating fetching cart data from your old code (replace with actual API call)
+        const cartData = await this.getCartData();
+        
+        // Assuming the cart data contains items with price and quantity
+        this.subtotal = cartData.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+        this.totalPrice = this.subtotal + this.shippingPrice; // Recalculate total with shipping
+      },
+  
+      // Dummy method to simulate fetching cart data
+      async getCartData() {
+        // Simulating a cart with 2 items
+        return {
+          items: [
+            { price: 30.00, quantity: 2 },
+            { price: 20.00, quantity: 1 }
+          ]
+        };
+      },
+  
       // Update the shipping price when a shipping method is selected
       updateShippingPrice() {
         if (this.selectedShippingMethod) {
@@ -215,31 +240,84 @@
         alert("Checkout successful!");
       },
     },
-    async created() {
-      await this.fetchCountries(); // Fetch countries when the component is created
-      await this.fetchShippingMethods(); // Fetch shipping methods (dummy data)
+  
+    // Computed properties for currency formatting
+    filters: {
+      currency(value) {
+        return `$${value.toFixed(2)}`;
+      },
+    },
+  
+    mounted() {
+      // Load initial data (countries, shipping methods, cart data)
+      this.fetchCountries();
+      this.fetchShippingMethods();
+      this.fetchCartData();
     },
   };
   </script>
   
   <style scoped>
-  .shipping-method {
-    margin-top: 20px;
+  /* Add styles for the UI elements to match your old code's design */
+  .checkout-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .form-row {
+    margin-bottom: 15px;
+  }
+  
+  .form-input,
+  .form-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .shipping-method,
+  .cart-summary {
+    margin-top: 30px;
   }
   
   .shipping-option {
     margin-bottom: 10px;
   }
   
-  .cart-summary {
-    margin-top: 30px;
+  .selected-shipping {
+    margin-top: 10px;
     padding: 10px;
-    border-top: 1px solid #ddd;
     background-color: #f9f9f9;
   }
   
-  button {
-    margin-top: 20px;
+  .cart-summary .total {
+    font-weight: bold;
+  }
+  
+  .checkout-btn {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
   }
   </style>
   
