@@ -77,7 +77,7 @@
                                 <td>{{ format_price($order->total_price) }}</td>
                                 <td>
                                     <select name="status" class="status form-control" data-order-id="{{ $order->id }}">
-                                        <option value="">Update Status</option>
+                                        <option value="" disabled>Update Status</option>
                                         <option {{ ($order->status == "Pending") ? 'selected' : '' }} value="Pending">Pending</option>
                                         <option {{ ($order->status == "Follow-Up") ? 'selected' : '' }} value="Follow-Up">Follow-Up</option>
                                         <option {{ ($order->status == "Canceled") ? 'selected' : '' }} value="Canceled">Canceled</option>
