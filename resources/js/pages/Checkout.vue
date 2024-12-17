@@ -398,25 +398,7 @@
                                     </h3>
                                     <p>Select your preferred delivery method</p>
 
-                                    <!-- <h4 class="opacity-80 mb-3 fs-18 mt-3"> No shipping method available for selected address. </h4> -->
-                                    <div v-if="countriesLoaded" class="shipping-method">
-                                        <h3>{{ $i18n.t('shipping_method') }}</h3>
-                                        <div v-for="(method, index) in shippingMethods" :key="index" class="shipping-option">
-                                            <label>
-                                                <input type="radio" 
-                                                    :value="method" 
-                                                    v-model="selectedShippingMethod" 
-                                                    @change="updateShippingPrice" />
-                                                {{ method.name }} - {{ method.price | currency }}
-                                            </label>
-                                        </div>
-
-                                        <!-- Display the selected shipping method and its price -->
-                                        <div v-if="selectedShippingMethod">
-                                            <p>{{ $i18n.t('selected_shipping_method') }}: {{ selectedShippingMethod.name }}</p>
-                                            <p>{{ $i18n.t('price') }}: {{ selectedShippingMethod.price | currency }}</p>
-                                        </div>
-                                    </div>
+                                    <h4 class="opacity-80 mb-3 fs-18 mt-3"> No shipping method available for selected address. </h4>
                                 </div>
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
                                     <address-dialog
@@ -1314,9 +1296,6 @@ export default {
             adding: false,
             countriesLoaded: false,
             countries: [],
-            shippingMethods: [], // To store dummy shipping methods
-            selectedShippingMethod: null, // To track the selected shipping method
-            shippingPrice: 0, // To track the price based on the selected method
             filteredStates: [],
             filteredCities: [],
             v$: useVuelidate(),
@@ -1829,25 +1808,11 @@ export default {
         closeDialog(){
             this.isVisible = false
             this.$emit('close')
-        },
-        async fetchShippingMethods() {
-            // Simulate an API call to fetch shipping methods (using dummy data)
-            this.shippingMethods = [
-                { name: "FedEx Standard", price: 10.99 },
-                { name: "FedEx Express", price: 20.99 },
-                { name: "FedEx Same-Day", price: 50.99 },
-            ];
-        },
-        updateShippingPrice() {
-            if (this.selectedShippingMethod) {
-                this.shippingPrice = this.selectedShippingMethod.price;
-            }
-        },
+        }
     },
     async created() {
         await this.fetchPickupPoints();
         await this.fetchAddresses();
-        await this.fetchShippingMethods();
         this.selectedShippingAddressId = this.getDefaultShippingAddress.id;
         this.selectedBillingAddressId = this.getDefaultBillingAddress.id;
         this.getShippingCost(this.selectedShippingAddressId);
