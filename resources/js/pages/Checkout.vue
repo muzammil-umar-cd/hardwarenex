@@ -92,6 +92,12 @@
                                             class="aiz-megabox d-block"
                                             v-if="for_pickup"
                                         >
+                                            <!-- <v-select
+                                label="Select"
+                                :items="getPickupPoints"
+                            ></v-select>
+                            -->
+
                                             <v-autocomplete
                                                 v-model="selectedPickupPoint"
                                                 :items="getPickupPoints"
@@ -1086,12 +1092,12 @@ export default {
         },
 
         addressDialogClosed() {
-            this.addressSelectedForEdit = this.getAddresses;
+            this.addressSelectedForEdit = {};
             this.addDialogShow = false;
         },
 
         editAddress(address) {
-            this.addressSelectedForEdit = this.getAddresses;
+            this.addressSelectedForEdit = address;
             this.addDialogShow = true;
         },
         rechargeDialogClosed() {
