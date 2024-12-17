@@ -152,6 +152,12 @@
                                                     <span
                                                         class="flex-grow-1 ps-3 opacity-80 lh-1-5"
                                                     >
+                                                        <span class="d-block">
+                                                            {{ address.full_name }}
+                                                        </span>
+                                                        <span class="d-block">
+                                                            {{ address.email }}
+                                                        </span>
                                                         <span class="d-block"
                                                             >{{ address.address }},
                                                             {{
