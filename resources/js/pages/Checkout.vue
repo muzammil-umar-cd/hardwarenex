@@ -1093,7 +1093,7 @@ export default {
 
         addressDialogClosed() {
             this.addressSelectedForEdit = address;
-            this.addDialogShow = false;
+            this.addDialogShow = true;
         },
 
         editAddress(address) {
