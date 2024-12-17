@@ -7,7 +7,7 @@
                     $store.getters['app/banners']
                         .checkout_page
                 "
-                class="checkout-banner"
+                class=""
             />
             <v-col xl="12" lg="12" class="mx-auto">
                 <v-row>
@@ -403,7 +403,7 @@
                             </h3>
                             <div class="mb-4">
                                 <v-row>
-                                    <v-col cols="12" sm="8">
+                                    <v-col cols="12" sm="12">
                                         <div
                                             class="bg-soft-primary text-reset px-6 rounded-sm"
                                             v-if="generalSettings.club_point == 1"
