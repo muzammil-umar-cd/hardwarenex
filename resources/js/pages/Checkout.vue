@@ -170,7 +170,6 @@
                                             <v-btn
                                                 class="absolute-right-center me-3"
                                                 color="primary"
-                                                style="display: none;"
                                                 elevation="0"
                                                 small
                                                 @click="editAddress(address)"
@@ -234,7 +233,6 @@
                                                 class="absolute-right-center me-3"
                                                 color="primary"
                                                 elevation="0"
-                                                style="display: none;"
                                                 small
                                                 @click="editAddress(address)"
                                             >
@@ -1089,7 +1087,7 @@ export default {
 
         addressDialogClosed() {
             this.addressSelectedForEdit = this.getAddresses;
-            this.addDialogShow = true;
+            this.addDialogShow = false;
         },
 
         editAddress(address) {
