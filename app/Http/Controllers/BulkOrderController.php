@@ -23,8 +23,25 @@ class BulkOrderController extends Controller
         if(!Auth::user()->user_type === "admin"){
             return abort(401);
         }
+        $sort_search = null;
         
         $bulk_orders = BulkOrder::with(['product'])->orderBy('created_at', 'desc')->get();
+        if ($request->has('search') && $request->search != null) {
+            $sort_search = $request->search;
+            $bulk_orders = $bulk_orders->whereHas('name', 'OR', 'email', function ($query) use ($sort_search) {
+                $query->where('name', 'like', '%' . $sort_search . '%');
+                $query->orWhere('name', 'like', '%' . $sort_search . '%');
+            });
+        }
+        // if ($request->payment_status != null) {
+        //     $bulk_orders = $bulk_orders->where('payment_status', $request->payment_status);
+        //     $payment_status = $request->payment_status;
+        // }
+        // if ($request->delivery_status != null) {
+        //     $bulk_orders = $bulk_orders->where('delivery_status', $request->delivery_status);
+        //     $delivery_status = $request->delivery_status;
+        // }
+        
         $bulk_orders = $bulk_orders->paginate(10);
         return view('backend.bulk-orders.index', compact('bulk_orders'));
     }
