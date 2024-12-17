@@ -25,7 +25,7 @@ class BulkOrderController extends Controller
         
         $bulk_orders = BulkOrder::with('product')->orderBy('created_at', 'desc');
         $bulk_orders = $bulk_orders->paginate(10);
-        return view('bulk-orders.index', compact('bulk_orders'));
+        return view('bulk_orders.index', compact('bulk_orders'));
     }
 
     public function show(){
