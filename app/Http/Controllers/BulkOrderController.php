@@ -18,12 +18,13 @@ class BulkOrderController extends Controller
         // $this->middleware(['permission:delete_bulk_orders'])->only('destroy');
     }
 
-    public function index(){
+    public function index(Request $request){
         if(!Auth::user()->user_type === "admin"){
             return abort(401);
         }
         
-        $bulk_orders = BulkOrder::with('product')->get()->paginate(10);
+        $bulk_orders = BulkOrder::with('product')->orderBy('created_at', 'desc')->get()->paginate(10);
+        dd($bulk_orders);
         return view('bulk-orders.index', compact('bulk_orders'));
     }
 
