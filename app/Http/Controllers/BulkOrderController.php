@@ -19,7 +19,9 @@ class BulkOrderController extends Controller
     }
 
     public function index(){
-        // if(Auth::user()->)
+        if(Auth::user()->user_type === "admin"){
+            return abort(401);
+        }
         dd(Auth::user());
         return view('bulk-orders.index');
     }
