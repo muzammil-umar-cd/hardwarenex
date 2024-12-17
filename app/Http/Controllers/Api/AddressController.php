@@ -192,7 +192,12 @@ class AddressController extends Controller
             return response()->json(null, 401);
         }
 
-        $default_billing = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->where('default_billing', 1)->first();
+        if(auth('api')->user()){
+            $default_billing = Address::where('user_id', auth('api')->user()->id)->first();
+        }else{
+            $default_billing = Address::where('ip_address', FacadeRequest::ip())->where('default_billing', 1)->first();
+        }
+        
         if ($default_billing != null  && $default_billing->id != $address->id) {
             $default_billing->default_billing = 0;
             $default_billing->save();
