@@ -91,7 +91,7 @@ class AddressController extends Controller
             'success' => true,
             'data' => [
                 'id'      => $address->id,
-                'user_id' => $address->user_id,
+                'user_id' => $address->user_id ? $address->user_id : '',
                 'address' => $address->address,
                 'country' => $address->country,
                 'state' => $address->state,
@@ -109,7 +109,7 @@ class AddressController extends Controller
     public function deleteShippingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id) {
+        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
             return response()->json(null, 401);
         }
 
@@ -134,7 +134,7 @@ class AddressController extends Controller
     public function updateShippingAddress(Request $request)
     {
         $address = Address::findOrFail($request->id);
-        if (auth('api')->user()->id != $address->user_id) {
+        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
             return response()->json(null, 401);
         }
 
@@ -159,7 +159,7 @@ class AddressController extends Controller
     public function defaultShippingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id) {
+        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
             return response()->json(null, 401);
         }
 
@@ -182,7 +182,7 @@ class AddressController extends Controller
     public function defaultBillingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id) {
+        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
             return response()->json(null, 401);
         }
 
