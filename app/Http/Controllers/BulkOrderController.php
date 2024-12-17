@@ -69,25 +69,22 @@ class BulkOrderController extends Controller
 
     public function bulk_order_status(Request $request)
     {
-        // Log or dump the incoming data to debug
-        dd($request->all());
-
-        // Example for updating order status
         $order = BulkOrder::find($request->order_id);
 
         if ($order) {
             $order->status = $request->status;
             $order->save();
-            return response()->json(1); // Return 1 for success
+            flash(translate('Status Updated Successfully'))->success();
+            return response()->json(1);
         }
 
-        return response()->json(0); // Return 0 for failure
+        flash(translate('Status Update Failed'))->error();
+        return back();
     }
 
 
     public function store(Request $request)
     {
-        // dd($request->all());
         // Validate the incoming request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
