@@ -118,7 +118,7 @@
 
 @section('script')
     <script type="text/javascript">
-$(document).on('change','.order-status', function(){
+$('.order-status').on('change', function(){
     alert($('.order-status option:selected').val());
 });
 
