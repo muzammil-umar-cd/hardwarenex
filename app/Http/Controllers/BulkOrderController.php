@@ -68,7 +68,7 @@ class BulkOrderController extends Controller
     }
 
     public function bulk_order_status(Request $request){
-        dd($request);
+        dd($request->all());
     }
 
     public function store(Request $request)
