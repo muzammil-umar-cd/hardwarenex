@@ -984,7 +984,7 @@ export default {
             standardDeliveryCost: 0,
             expressDeliveryCost: 0,
             addDialogShow: true,
-            addressSelectedForEdit: address,
+            addressSelectedForEdit: {},
             rechargeDialogShow: false,
             transactionId: null,
             receipt: null,
@@ -1092,7 +1092,7 @@ export default {
         },
 
         addressDialogClosed() {
-            this.addressSelectedForEdit = {};
+            this.addressSelectedForEdit = address;
             this.addDialogShow = false;
         },
 
