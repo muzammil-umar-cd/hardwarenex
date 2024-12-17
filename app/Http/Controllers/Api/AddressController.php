@@ -9,13 +9,14 @@ use App\Models\Country;
 use App\Models\PickupPoint;
 use App\Models\State;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as FacadeRequest;
 use App\Models\User;
 
 class AddressController extends Controller
 {
     public function addresses()
     {
-        return new AddressCollection(Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address','=',$_SERVER['REMOTE_ADDR'])->latest()->get());
+        return new AddressCollection(Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get());
     }
 
     public function createShippingAddress(Request $request)
@@ -91,7 +92,7 @@ class AddressController extends Controller
             'success' => true,
             'data' => [
                 'id'      => $address->id,
-                'user_id' => $address->user_id ? $address->user_id : '',
+                'user_id' => $address->user_id,
                 'address' => $address->address,
                 'country' => $address->country,
                 'state' => $address->state,
@@ -109,7 +110,7 @@ class AddressController extends Controller
     public function deleteShippingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
+        if (auth('api')->user()->id != $address->user_id) {
             return response()->json(null, 401);
         }
 
@@ -134,7 +135,7 @@ class AddressController extends Controller
     public function updateShippingAddress(Request $request)
     {
         $address = Address::findOrFail($request->id);
-        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
+        if (auth('api')->user()->id != $address->user_id) {
             return response()->json(null, 401);
         }
 
@@ -159,11 +160,11 @@ class AddressController extends Controller
     public function defaultShippingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
+        if (auth('api')->user()->id != $address->user_id) {
             return response()->json(null, 401);
         }
 
-        $default_shipping = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address','=',$_SERVER['REMOTE_ADDR'])->where('default_shipping', 1)->first();
+        $default_shipping = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->first();
         if ($default_shipping != null && $default_shipping->id != $address->id) {
             $default_shipping->default_shipping = 0;
             $default_shipping->save();
@@ -182,11 +183,11 @@ class AddressController extends Controller
     public function defaultBillingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id || $_SERVER['REMOTE_ADDR'] != $address->ip_address) {
+        if (auth('api')->user()->id != $address->user_id) {
             return response()->json(null, 401);
         }
 
-        $default_billing = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address','=',$_SERVER['REMOTE_ADDR'])->where('default_billing', 1)->first();
+        $default_billing = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->first();
         if ($default_billing != null  && $default_billing->id != $address->id) {
             $default_billing->default_billing = 0;
             $default_billing->save();
