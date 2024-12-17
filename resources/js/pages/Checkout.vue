@@ -24,7 +24,6 @@
                                                 <label class="aiz-megabox d-block">
                                                     <input
                                                         type="radio"
-                                                        checked
                                                         ref="homeDeliveryRadio"
                                                         name="delivery_type"
                                                         v-model="selectedDeliveryType"
