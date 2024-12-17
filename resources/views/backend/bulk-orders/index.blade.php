@@ -86,10 +86,6 @@
                                 </td>
                                 <td>{{ $order->created_at }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-soft-primary btn-icon btn-circle btn-sm"
-                                        href="{{ route('bulk-orders.show', $order->id) }}" title="{{ translate('View') }}">
-                                        <i class="las la-eye"></i>
-                                    </a>
                                     <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete"
                                         data-href="{{ route('bulk-orders.destroy', $order->id) }}"
                                         title="{{ translate('Delete') }}">
