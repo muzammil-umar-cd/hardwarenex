@@ -120,29 +120,34 @@
     <script type="text/javascript">
 
 
-$(document).on('change', '.status', function(){
+$(document).on('change', '.status', function() {
     let status = $(this).val();
     let orderId = $(this).data('order-id');
+
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "{{route('bulk.order.status')}}",
+        url: "{{ route('bulk.order.status') }}", // Ensure the route is correct
         type: 'POST',
         data: {
             status: status,
             order_id: orderId
         },
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-            if(response == 1) {
-                location.reload();
+        success: function(response) {
+            if (response == 1) {
+                location.reload(); // Reload the page if the response is 1
+            } else {
+                alert('Failed to update status. Try again.');
             }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+            alert('Something went wrong. Please check the console for errors.');
         }
     });
 });
+
 //select all items or bulk delete
 $(document).on("change", ".check-all", function() {
             if(this.checked) {
