@@ -238,21 +238,8 @@
                             </a>
                         </li>
                     @endcan
-                @elseif(auth()->user()->can('show_bulk_orders') || Auth::user()->user_type === "admin")
-                @can('show_bulk_orders')
-                    <li class="aiz-side-nav-item">
-                        <a href="{{ route('bulk-orders.index') }}"
-                            class="aiz-side-nav-link {{ areActiveRoutes(['bulk-orders.index', 'bulk-orders.show']) }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path id="Subtraction_32" data-name="Subtraction 32"
-                                    d="M15,16H1a1,1,0,0,1-1-1V1A1,1,0,0,1,1,0H15a1,1,0,0,1,1,1V15A1,1,0,0,1,15,16ZM7,11a1,1,0,1,0,0,2h6a1,1,0,0,0,0-2ZM3,11a1,1,0,1,0,1,1A1,1,0,0,0,3,11ZM7,7A1,1,0,1,0,7,9h6a1,1,0,0,0,0-2ZM3,7A1,1,0,1,0,4,8,1,1,0,0,0,3,7ZM7,3A1,1,0,1,0,7,5h6a1,1,0,0,0,0-2ZM3,3A1,1,0,1,0,4,4,1,1,0,0,0,3,3Z"
-                                    fill="#707070" />
-                            </svg>
-                            <span class="aiz-side-nav-text">{{ translate('Bulk Orders') }}</span>
-                        </a>
-                    </li>
-                @endcan
                 @endif
+                @if(Auth::user()->user_type == "admin")
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('bulk-orders.index') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['bulk-orders.index', 'bulk-orders.show']) }}">
@@ -260,6 +247,7 @@
                         <span class="aiz-side-nav-text">{{ translate('Bulk Orders') }}</span>
                     </a>
                 </li>
+                @endif
 
                 <!-- Customers -->
                 @can('show_customers')
