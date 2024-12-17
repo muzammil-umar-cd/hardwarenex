@@ -1337,7 +1337,9 @@ export default {
     mounted() {
         this.$refs.homeDeliveryRadio.click();
         this.$nextTick(() => {
-            this.$refs.addressCheckRadio.click();
+            if (this.$refs.addressCheckRadio) {
+                this.$refs.addressCheckRadio.click();
+            }
         });
         if (this.$route.query.cart_payment && this.$route.query.order_code) {
             if (this.$route.query.cart_payment == "success") {
