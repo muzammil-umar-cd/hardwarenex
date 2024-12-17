@@ -53,6 +53,7 @@
                             <th data-breakpoints="lg">{{ translate('Email Address') }}</th>
                             <th data-breakpoints="lg">{{ translate('Phone') }}</th>
                             <th data-breakpoints="lg">{{ translate('Quantity') }}</th>
+                            <th data-breakpoints="lg">{{ translate('Product') }}</th>
                             <th data-breakpoints="lg">{{ translate('Total Price') }}</th>
                             <th data-breakpoints="lg">{{ translate('Status') }}</th>
                             <th data-breakpoints="lg">{{ translate('Order Date') }}</th>
@@ -74,6 +75,10 @@
                                 <td>{{ $order->email }}</td>
                                 <td>{{ $order->phone }}</td>
                                 <td>{{ $order->quantity }}</td>
+                                <td>
+                                    Product: {{ $order->product->name }} <br>
+                                    Price: {{ format_price($order->unit_price) }}
+                                </td>
                                 <td>{{ format_price($order->total_price) }}</td>
                                 <td>
                                     <select name="status" class="status form-control" data-order-id="{{ $order->id }}">
