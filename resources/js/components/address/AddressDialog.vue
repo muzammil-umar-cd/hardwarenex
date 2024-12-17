@@ -2,6 +2,136 @@
     <v-dialog v-model="isVisible" max-width="600px" @click:outside="closeDialog">
         <div class="white pa-5 rounded">
             <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
+                <div class="row"> 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="Email Address*"
+                                v-model="form.email_address"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="email_address"
+                                id="email_address"
+                            >
+                            <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="Full Name*"
+                                v-model="form.full_name"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="full_name"
+                                id="full_name"
+                            >
+                            <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="Phone Number*"
+                                v-model="form.phone"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="phone"
+                                id="phone"
+                            >
+                            <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="Street Address*"
+                                v-model="form.address"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="address"
+                                id="address"
+                            >
+                            <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="Country*"
+                                v-model="form.country"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="country"
+                                id="country"
+                            >
+                            <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="State*"
+                                v-model="form.state"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="state"
+                                id="state"
+                            >
+                            <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="City*"
+                                v-model="form.city"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="city"
+                                id="city"
+                            >
+                            <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input 
+                                placeholder="Postal Code*"
+                                v-model="form.postal_code"
+                                hide-details="auto"
+                                required
+                                class="form-control"
+                                name="postal_code"
+                                id="postal_code"
+                            >
+                            <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
+                                {{error.$message }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <div class="mb-1 fs-13 fw-500">{{ $t("full_name") }}</div>
                     <v-text-field
@@ -347,3 +477,187 @@ export default {
     }
 }
 </script>
+
+<style>
+h3{
+    color: #df3c3f !important;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 5px;
+}
+.form-group{
+    padding: 10px;
+}
+/* General Grid Setup */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col {
+  flex: 1 0 0%;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Default Columns */
+.col-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+.col-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+.col-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+.col-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* Breakpoints for Responsive Design */
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+  .col-sm-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-sm-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-sm-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-sm-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-sm-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-sm-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-sm-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-sm-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-sm-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-sm-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .col-md-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-md-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-md-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-md-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-md-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-md-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-md-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-md-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Large devices (≥992px) */
+@media (min-width: 992px) {
+  .col-lg-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-lg-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-lg-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-lg-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-lg-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-lg-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-lg-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-lg-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-lg-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Extra Large devices (≥1200px) */
+@media (min-width: 1200px) {
+  .col-xl-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-xl-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-xl-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-xl-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-xl-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-xl-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-xl-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-xl-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-xl-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-xl-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-xl-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-xl-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Extra Extra Large devices (≥1400px) */
+@media (min-width: 1400px) {
+  .col-xxl-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-xxl-2 { flex: 0 0 16.667%; max-width: 16.667%; }
+  .col-xxl-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-xxl-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-xxl-5 { flex: 0 0 41.667%; max-width: 41.667%; }
+  .col-xxl-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-xxl-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-xxl-8 { flex: 0 0 66.667%; max-width: 66.667%; }
+  .col-xxl-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-xxl-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-xxl-11 { flex: 0 0 91.667%; max-width: 91.667%; }
+  .col-xxl-12 { flex: 0 0 100%; max-width: 100%; }
+}
+/* Form Check Container */
+.form-check {
+  display: block;
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Form Check Input */
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -1.5rem;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.form-check-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Disabled States */
+.form-check-input:disabled {
+  cursor: not-allowed;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+/* Form Check Label */
+.form-check-label {
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #212529;
+  cursor: pointer;
+}
+
+/* Inline Checkboxes and Radio Buttons */
+.form-check-inline {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+/* Custom Radio */
+.form-check-input[type="radio"] {
+  border-radius: 50%;
+}
+
+</style>
