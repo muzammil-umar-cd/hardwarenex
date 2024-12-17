@@ -16,7 +16,11 @@ class AddressController extends Controller
 {
     public function addresses()
     {
-        return new AddressCollection(Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get());
+        if(auth('api')->user()){
+            return new AddressCollection(Address::where('user_id', auth('api')->user()->id)->latest()->get());
+        }else{
+            return new AddressCollection(Address::where('ip_address', FacadeRequest::ip())->latest()->get());
+        }
     }
 
     public function createShippingAddress(Request $request)
