@@ -66,19 +66,22 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <v-autocomplete
-                                v-model="form.country"
-                                :items="countries"
-                                :label="$t('select_country')"
-                                hide-details="auto"
-                                item-title="name"
-                                item-value="id"
-                                dense
-                                autocomplete="off"
-                                :custom-filter="countryChanged"
-                                @update:modelValue="countryChanged"
+                            <select 
+                                v-model="form.country" 
                                 class="form-control"
-                            ></v-autocomplete>
+                                :placeholder="$t('select_country')"
+                                @change="countryChanged"
+                            >
+                                <option value="" disabled>Select a Country</option>
+                                <option 
+                                    v-for="country in countries" 
+                                    :key="country.id" 
+                                    :value="country.id"
+                                >
+                                    {{ country.name }}
+                                </option>
+                            </select>
+
                             <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
@@ -86,17 +89,22 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <v-autocomplete
-                                v-model="form.state"
-                                :items="filteredStates"
-                                hide-details="auto"
-                                :label="statePlaceholer"
+                            <select 
+                                v-model="form.state" 
                                 class="form-control"
-                                item-title="name"
-                                item-value="id"
-                                dense
-                                @update:modelValue="stateChanged"
-                            ></v-autocomplete>
+                                :placeholder="statePlaceholer"
+                                @change="stateChanged"
+                            >
+                                <option value="" disabled>Select a State</option>
+                                <option 
+                                    v-for="state in filteredStates" 
+                                    :key="state.id" 
+                                    :value="state.id"
+                                >
+                                    {{ state.name }}
+                                </option>
+                            </select>
+
                             <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
@@ -104,16 +112,21 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <v-autocomplete
-                                v-model="form.city"
-                                :items="filteredCities"
-                                :label="cityPlaceholer"
-                                hide-details="auto"
+                            <select 
+                                v-model="form.city" 
                                 class="form-control"
-                                item-title="name"
-                                item-value="id"
-                                dense
-                            ></v-autocomplete>
+                                :placeholder="cityPlaceholer"
+                                @change="handleCityChange"
+                            >
+                                <option value="" disabled>Select a City</option>
+                                <option 
+                                    v-for="city in filteredCities" 
+                                    :key="city.id" 
+                                    :value="city.id"
+                                >
+                                    {{ city.name }}
+                                </option>
+                            </select>
                             <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
