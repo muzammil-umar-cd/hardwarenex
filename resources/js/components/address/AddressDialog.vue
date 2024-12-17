@@ -51,6 +51,7 @@
                     <div class="form-group">
                         <textarea
                             :label="$t('address')"
+                            :placeholder="$t('Street Address')"
                             v-model="form.address"
                             hide-details="auto"
                             rows="1"
