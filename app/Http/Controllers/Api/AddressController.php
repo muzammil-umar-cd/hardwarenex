@@ -20,24 +20,43 @@ class AddressController extends Controller
 
     public function createShippingAddress(Request $request)
     {
-        dd($request->ip());
-        $shipping_count = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->count();
-        $billing_count = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->count();
-        
-        $address = new Address;
-        $address->user_id = auth('api')->user()->id;
-        $address->address = $request->address;
-        $address->country = Country::find($request->country)->name;
-        $address->country_id = $request->country;
-        $address->state = State::find($request->state)->name;
-        $address->state_id = $request->state;
-        $address->city = City::find($request->city)->name;
-        $address->city_id = $request->city;
-        $address->postal_code = $request->postal_code;
-        $address->phone = $request->phone;
-        $address->default_shipping = $shipping_count > 0 ? 0 : 1;
-        $address->default_billing = $billing_count > 0 ? 0 : 1;
-        $address->save();
+        // $request->ip()
+        if(auth('api')->user()->id != null ){
+            $shipping_count = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->count();
+            $billing_count = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->count();
+            
+            $address = new Address;
+            $address->user_id = auth('api')->user()->id;
+            $address->address = $request->address;
+            $address->country = Country::find($request->country)->name;
+            $address->country_id = $request->country;
+            $address->state = State::find($request->state)->name;
+            $address->state_id = $request->state;
+            $address->city = City::find($request->city)->name;
+            $address->city_id = $request->city;
+            $address->postal_code = $request->postal_code;
+            $address->phone = $request->phone;
+            $address->default_shipping = $shipping_count > 0 ? 0 : 1;
+            $address->default_billing = $billing_count > 0 ? 0 : 1;
+            $address->save();
+        }else{
+
+            $address = new Address;
+            $address->ip_address = $request->ip();
+            $address->address = $request->address;
+            $address->country = Country::find($request->country)->name;
+            $address->country_id = $request->country;
+            $address->state = State::find($request->state)->name;
+            $address->state_id = $request->state;
+            $address->city = City::find($request->city)->name;
+            $address->city_id = $request->city;
+            $address->postal_code = $request->postal_code;
+            $address->phone = $request->phone;
+            $address->default_shipping = 0;
+            $address->default_billing = 0;
+            $address->save();
+        }
+
         // if($request->id != null){
         // }else{
 
@@ -79,8 +98,9 @@ class AddressController extends Controller
                 'city' => $address->city,
                 'postal_code' => $address->postal_code,
                 'phone' => $address->phone,
-                'default_shipping' => $address->default_shipping,
-                'default_billing' => $address->default_billing
+                'default_shipping' => $address->default_shippin,
+                'default_billing' => $address->default_billing,
+                'ip_address' => $address->ip_address
             ],
             'message' => translate('Address has been added successfully.')
         ]);
