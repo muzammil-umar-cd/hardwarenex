@@ -76,7 +76,7 @@
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ format_price($order->total_price) }}</td>
                                 <td>
-                                    <select name="status" id="order-status" class="order-status form-control">
+                                    <select name="status" id="order-status" class="order-status">
                                         <option value="">Update Status</option>
                                         <option {{ ($order->status == "Pending") ? 'selected' : '' }} value="Pending">Pending</option>
                                         <option {{ ($order->status == "Follow-Up") ? 'selected' : '' }} value="Follow-Up">Follow-Up</option>
@@ -118,8 +118,8 @@
 
 @section('script')
     <script type="text/javascript">
-$('#order-status').on('change', function(){
-    alert($('#order-status option:selected').val());
+$('.order-status').on('change', function(){
+    alert($('.order-status option:selected').val());
 });
 
 //select all items or bulk delete
