@@ -22,8 +22,9 @@ class BulkOrderController extends Controller
         if(!Auth::user()->user_type === "admin"){
             return abort(401);
         }
-        dd(Auth::user());
-        return view('bulk-orders.index');
+        
+        $bulk_orders = BulkOrder::with('products')->all()->paginate(10);
+        return view('bulk-orders.index', compact('bulk_orders'));
     }
 
     public function show(){
