@@ -43,8 +43,9 @@ class BulkOrderController extends Controller
     }
     
 
-    public function show(){
-        return view('backend.bulk-orders.show');
+    public function show($id){
+        $bulk_order = BulkOrder::find($id);
+        return view('backend.bulk-orders.show',compact('bulk_order'));
     }
 
     public function destroy($id){
@@ -57,6 +58,7 @@ class BulkOrderController extends Controller
 
     public function bulk_order_bulk_delete(Request $request)
     {
+        dd($request->all());
         if ($request->id) {
             foreach ($request->id as $bulk_order_id) {
                 $this->destroy($bulk_order_id);
@@ -65,6 +67,11 @@ class BulkOrderController extends Controller
 
         return 1;
     }
+
+    public function update(Request $request){
+        
+    }
+
     public function store(Request $request)
     {
         // dd($request->all());

@@ -53,7 +53,8 @@
                             <th data-breakpoints="lg">{{ translate('Email Address') }}</th>
                             <th data-breakpoints="lg">{{ translate('Phone') }}</th>
                             <th data-breakpoints="lg">{{ translate('Quantity') }}</th>
-                            <th data-breakpoints="lg">${{ translate('Total Price') }}</th>
+                            <th data-breakpoints="lg">{{ translate('Total Price') }}</th>
+                            <th data-breakpoints="lg">{{ translate('Status') }}</th>
                             <th data-breakpoints="lg">{{ translate('Order Date') }}</th>
                             <th class="text-right" data-breakpoints="lg">{{ translate('Options') }}</th>
                         </tr>
@@ -74,6 +75,15 @@
                                 <td>{{ $order->phone }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ format_price($order->total_price) }}</td>
+                                <td>
+                                    <select name="status" id="status">
+                                        <option value="">Update Status</option>
+                                        <option {{ ($order->status == "Pending") ? 'selected' : '' }} value="Pending">Pending</option>
+                                        <option {{ ($order->status == "Follow-Up") ? 'selected' : '' }} value="Follow-Up">Follow-Up</option>
+                                        <option {{ ($order->status == "Canceled") ? 'selected' : '' }} value="Canceled">Canceled</option>
+                                        <option {{ ($order->status == "Completed") ? 'selected' : '' }} value="Completed">Completed</option>
+                                    </select>
+                                </td>
                                 <td>{{ $order->created_at }}</td>
                                 <td class="text-right">
                                     <a class="btn btn-soft-primary btn-icon btn-circle btn-sm"
@@ -108,6 +118,11 @@
 
 @section('script')
     <script type="text/javascript">
+
+
+$(document).on('change','#status', function(){
+    alert($('#status').val());
+});
 
 //select all items or bulk delete
 $(document).on("change", ".check-all", function() {
