@@ -1083,7 +1083,7 @@ export default {
         },
 
         ChooseDeleviryType(deliveryType){
-            this.selectedDeliveryType = deliveryType;
+            this.selectedDeliveryType = 'deliveryType';
         },
 
         addressDialogClosed() {
@@ -1328,6 +1328,7 @@ export default {
         this.dateLoop = dateArray;
     },
     mounted() {
+        this.$refs.homeDeliveryRadio.click();
         if (this.$route.query.cart_payment && this.$route.query.order_code) {
             if (this.$route.query.cart_payment == "success") {
                 this.$router
