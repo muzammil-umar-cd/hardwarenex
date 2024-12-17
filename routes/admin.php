@@ -257,6 +257,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     // Orders
     Route::resource('orders', OrderController::class);
     Route::resource('bulk-orders', BulkOrderController::class);
+    Route::post('/bulk_order_bulk_delete', [BulkOrderController::class, 'bulk_order_bulk_delete'])->name('bulk.order.bulk.delete');
     Route::get('pickup-orders', [OrderController::class, 'pickup_orders'])->name('pickup.orders.index');
     Route::post('/orders/update_delivery_status', [OrderController::class, 'update_delivery_status'])->name('orders.update_delivery_status');
     Route::post('/orders/update_payment_status', [OrderController::class, 'update_payment_status'])->name('orders.update_payment_status');
