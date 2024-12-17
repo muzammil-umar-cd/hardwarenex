@@ -90,6 +90,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="aiz-pagination">
+                    {{ $bulk_orders->appends(request()->input())->links() }}
+                </div>
             </div>
         </form>
     </div>
