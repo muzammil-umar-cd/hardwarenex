@@ -79,7 +79,6 @@
                                     $product = \App\Models\ProductVariation::where('product_id','=',$order->product->id)->first();
                                 @endphp
                                 <td>
-                                    SKU: 
                                     {{ $product->sku }}
                                 </td>
                                 <td>{{ format_price($order->total_price) }}</td>
