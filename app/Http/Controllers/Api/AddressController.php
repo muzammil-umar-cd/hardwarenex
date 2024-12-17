@@ -130,11 +130,17 @@ class AddressController extends Controller
         $address->save();
 
 
+        if(auth('api')->user()){
+            $data = Address::where('user_id', auth('api')->user()->id)->latest()->get();
+        }else {
+            $data = Address::where('ip_address', FacadeRequest::ip())->latest()->get();
+        }
+
 
         return response()->json([
             'success' => true,
             'message' => translate('Address has been updated successfully.'),
-            'data' => Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get()
+            'data' => $data
         ]);
     }
 
@@ -162,10 +168,16 @@ class AddressController extends Controller
         $address->default_shipping = 1;
         $address->save();
 
+        if(auth('api')->user()){
+            $data = Address::where('user_id', auth('api')->user()->id)->latest()->get();
+        }else {
+            $data = Address::where('ip_address', FacadeRequest::ip())->latest()->get();
+        }
+
         return response()->json([
             'success' => true,
             'message' => translate('Address has been marked as default shipping address.'),
-            'data' => Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get()
+            'data' => $data
         ]);
     }
 
@@ -189,10 +201,16 @@ class AddressController extends Controller
         $address->default_billing = 1;
         $address->save();
 
+        if(auth('api')->user()){
+            $data = Address::where('user_id', auth('api')->user()->id)->latest()->get();
+        }else {
+            $data = Address::where('ip_address', FacadeRequest::ip())->latest()->get();
+        }
+
         return response()->json([
             'success' => true,
             'message' => translate('Address has been marked as default billing address.'),
-            'data' => Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->get()
+            'data' => $data
         ]);
     }
 
