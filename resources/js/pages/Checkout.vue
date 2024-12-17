@@ -119,161 +119,65 @@
                                         {{ $t("shipping_address") }}
                                     </h3>
                                     <div class="mb-4">
-                                        <v-form v-on:submit.prevent="saveAddress" autocomplete="chrome-off">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <input 
-                                                            :placeholder="$t('email_address')"
-                                                            type="email"
-                                                            v-model="form.email_address"
-                                                            hide-details="auto"
-                                                            class="form-control"
-                                                        >
-                                                        <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <input 
-                                                            :placeholder="$t('full_name')"
-                                                            type="text"
-                                                            v-model="form.full_name"
-                                                            hide-details="auto"
-                                                            class="form-control"
-                                                        >
-                                                        <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <input 
-                                                            :placeholder="$t('phone_number')"
-                                                            type="number"
-                                                            v-model="form.phone"
-                                                            hide-details="auto"
-                                                            class="form-control"
-                                                        >
-                                                        <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <textarea
-                                                            :label="$t('address')"
-                                                            :placeholder="$t('Street Address')"
-                                                            v-model="form.address"
-                                                            hide-details="auto"
-                                                            rows="1"
-                                                            no-resize
-                                                            class="form-control"
-                                                        ></textarea>
-                                                        <p v-for="error of v$.form.address.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <select 
-                                                            v-model="form.country" 
-                                                            class="form-control"
-                                                            :placeholder="$t('select_country')"
-                                                            @change="countryChanged"
-                                                        >
-                                                            <option value="" disabled>Select a Country</option>
-                                                            <option 
-                                                                v-for="country in countries" 
-                                                                :key="country.id" 
-                                                                :value="country.id"
-                                                            >
-                                                                {{ country.name }}
-                                                            </option>
-                                                        </select>
-                                                        <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <select 
-                                                            v-model="form.state" 
-                                                            class="form-control"
-                                                            :placeholder="statePlaceholer"
-                                                            @change="stateChanged"
-                                                        >
-                                                            <option value="" disabled>Select a State</option>
-                                                            <option 
-                                                                v-for="state in filteredStates" 
-                                                                :key="state.id" 
-                                                                :value="state.id"
-                                                            >
-                                                                {{ state.name }}
-                                                            </option>
-                                                        </select>
-                                                        <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <select 
-                                                            v-model="form.city" 
-                                                            class="form-control"
-                                                            :placeholder="cityPlaceholer"
-                                                            @change="handleCityChange"
-                                                        >
-                                                            <option value="" disabled>Select a City</option>
-                                                            <option 
-                                                                v-for="city in filteredCities" 
-                                                                :key="city.id" 
-                                                                :value="city.id"
-                                                            >
-                                                                {{ city.name }}
-                                                            </option>
-                                                        </select>
-                                                        <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <input 
-                                                            :placeholder="$t('postal_code')"
-                                                            type="text"
-                                                            v-model="form.postal_code"
-                                                            hide-details="auto"
-                                                            class="form-control"
-                                                        >
-                                                        <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
-                                                            {{error.$message }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="text-right mt-4">
-                                                <v-btn
-                                                    elevation="0"
-                                                    type="submit"
-                                                    color="primary"
-                                                    :loading="adding"
-                                                    :disabled="adding"
+                                        <div
+                                            class="position-relative mb-3"
+                                            v-for="address in getAddresses"
+                                            :key="address.id"
+                                        >
+                                            <label class="aiz-megabox d-block">
+                                                <input
+                                                    type="radio"
+                                                    name="checkout_shipping"
+                                                    v-model="selectedShippingAddressId"
+                                                    :value="address.id"
+                                                    :checked="address.default_shipping"
+                                                    @change="
+                                                        shippingAddressSelected(
+                                                            address.id
+                                                        )
+                                                    "
+                                                />
+                                                <span
+                                                    class="d-flex pa-3 aiz-megabox-elem fs-13 fw-600"
                                                 >
-                                                    {{ form.id ? $t('update') : $t('add_new') }}
-                                                </v-btn>
-                                            </div>
-                                        </v-form>
-                                        
+                                                    <span
+                                                        class="aiz-rounded-check flex-shrink-0 mt-1"
+                                                    ></span>
+                                                    <span
+                                                        class="flex-grow-1 ps-3 opacity-80 lh-1-5"
+                                                    >
+                                                        <span class="d-block">
+                                                            {{ address.full_name }}
+                                                        </span>
+                                                        <span class="d-block">
+                                                            {{ address.email }}
+                                                        </span>
+                                                        <span class="d-block"
+                                                            >{{ address.address }},
+                                                            {{
+                                                                address.postal_code
+                                                            }}</span
+                                                        >
+                                                        <span class="d-block"
+                                                            >{{ address.city }},
+                                                            {{ address.state }},
+                                                            {{ address.country }}</span
+                                                        >
+                                                        <span>{{ address.phone }}</span>
+                                                    </span>
+                                                </span>
+                                            </label>
+                                            <v-btn
+                                                class="absolute-right-center me-3"
+                                                color="primary"
+                                                style="display: none;"
+                                                elevation="0"
+                                                small
+                                                @click="editAddress(address)"
+                                            >
+                                                {{ $t("change") }}
+                                            </v-btn>
+                                        </div>
                                         <v-btn
                                             class="border-dashed border-gray-300 primary--text fs-14"
                                             elevation="0"
