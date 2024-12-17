@@ -58,7 +58,6 @@ class BulkOrderController extends Controller
 
     public function bulk_order_bulk_delete(Request $request)
     {
-        dd($request->all());
         if ($request->id) {
             foreach ($request->id as $bulk_order_id) {
                 $this->destroy($bulk_order_id);
@@ -68,8 +67,8 @@ class BulkOrderController extends Controller
         return 1;
     }
 
-    public function update(Request $request){
-        
+    public function bulk_order_status(Request $request){
+        dd($request);
     }
 
     public function store(Request $request)

@@ -76,7 +76,7 @@
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ format_price($order->total_price) }}</td>
                                 <td>
-                                    <select name="status" class="status">
+                                    <select name="status" class="status" data-order-id="{{ $order->id }}">
                                         <option value="">Update Status</option>
                                         <option {{ ($order->status == "Pending") ? 'selected' : '' }} value="Pending">Pending</option>
                                         <option {{ ($order->status == "Follow-Up") ? 'selected' : '' }} value="Follow-Up">Follow-Up</option>
@@ -121,8 +121,27 @@
 
 
 $(document).on('change', '.status', function(){
-    let selectedValue = $(this).val(); // Get the selected value of the current select
-    alert(selectedValue);
+    let status = $(this).val();
+    let orderId = $(this).data('order-id');
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "{{route('bulk.order.status')}}",
+        type: 'POST',
+        data: {
+            status: status,
+            order_id: orderId
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            if(response == 1) {
+                location.reload();
+            }
+        }
+    });
 });
 //select all items or bulk delete
 $(document).on("change", ".check-all", function() {
