@@ -1793,7 +1793,7 @@ export default {
     },
     async created() {
         await this.fetchAddresses();
-        this.selectedShippingAddressId = this.getDefaultShippingAddress.id;
+        // this.selectedShippingAddressId = this.getDefaultShippingAddress.id;
         this.selectedBillingAddressId = this.getDefaultBillingAddress.id;
         this.getShippingCost(this.selectedShippingAddressId);
 
