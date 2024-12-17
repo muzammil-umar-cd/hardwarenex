@@ -24,6 +24,8 @@
                                                 <label class="aiz-megabox d-block">
                                                     <input
                                                         type="radio"
+                                                        checked
+                                                        hidden
                                                         name="delivery_type"
                                                         v-model="selectedDeliveryType"
                                                         value="home_delivery"
