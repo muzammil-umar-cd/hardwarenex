@@ -176,7 +176,9 @@
                                             <v-btn
                                                 class="absolute-right-center me-3"
                                                 color="primary"
+                                                style="display: none;"
                                                 elevation="0"
+                                                ref="enable_address"
                                                 small
                                                 @click="editAddress(address)"
                                             >
@@ -1092,8 +1094,8 @@ export default {
         },
 
         addressDialogClosed() {
-            this.addressSelectedForEdit = address;
-            this.addDialogShow = true;
+            this.addressSelectedForEdit = {};
+            this.addDialogShow = false;
         },
 
         editAddress(address) {
@@ -1334,6 +1336,7 @@ export default {
     },
     mounted() {
         this.$refs.homeDeliveryRadio.click();
+        this.$refs.enable_address.click();
         if (this.$route.query.cart_payment && this.$route.query.order_code) {
             if (this.$route.query.cart_payment == "success") {
                 this.$router
