@@ -169,7 +169,11 @@ class AddressController extends Controller
             return response()->json(null, 401);
         }
 
-        $default_shipping = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->where('default_shipping', 1)->first();
+        if(auth('api')->user()){
+            $default_shipping = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->first();
+        }else{
+            $default_shipping = Address::where('ip_address', FacadeRequest::ip())->where('default_shipping', 1)->first();
+        }
         if ($default_shipping != null && $default_shipping->id != $address->id) {
             $default_shipping->default_shipping = 0;
             $default_shipping->save();
