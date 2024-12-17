@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Mail\BulkOrderMailer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Database\Eloquent\Collection\Paginate;
 
 class BulkOrderController extends Controller
 {
@@ -24,7 +25,7 @@ class BulkOrderController extends Controller
         }
         
         $bulk_orders = BulkOrder::with('product')->orderBy('created_at', 'desc')->get();
-        $bulk_orders = $bulk_orders->paginate(10);
+        // $bulk_orders = $bulk_orders->paginate(10);
         return view('backend.bulk-orders.index', compact('bulk_orders'));
     }
 
