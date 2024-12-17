@@ -20,7 +20,7 @@ class AddressController extends Controller
 
     public function createShippingAddress(Request $request)
     {
-        dd($request->all());
+        dd($request->ip());
         $shipping_count = Address::where('user_id', auth('api')->user()->id)->where('default_shipping', 1)->count();
         $billing_count = Address::where('user_id', auth('api')->user()->id)->where('default_billing', 1)->count();
         
