@@ -78,6 +78,16 @@
         </div>
       </div>
   
+      <!-- Cart Summary & Calculations -->
+      <div class="cart-summary">
+        <h3>{{ $i18n.t('order_summary') }}</h3>
+        <div>
+          <p>{{ $i18n.t('subtotal') }}: {{ subtotal | currency }}</p>
+          <p>{{ $i18n.t('shipping_fee') }}: {{ shippingPrice | currency }}</p>
+          <p>{{ $i18n.t('total') }}: {{ totalPrice | currency }}</p>
+        </div>
+      </div>
+  
       <!-- Checkout Button -->
       <div>
         <button @click="submitCheckout">{{ $i18n.t('checkout') }}</button>
@@ -105,6 +115,9 @@
           city: "",
           phone: "",
         },
+        subtotal: 100.00, // Example subtotal, this should be dynamically set based on cart
+        shippingPrice: 0.00, // Initial shipping price
+        totalPrice: 100.00, // Total price (subtotal + shipping)
       };
     },
     methods: {
@@ -172,7 +185,13 @@
       updateShippingPrice() {
         if (this.selectedShippingMethod) {
           this.shippingPrice = this.selectedShippingMethod.price;
+          this.calculateTotalPrice();
         }
+      },
+  
+      // Recalculate the total price based on shipping price
+      calculateTotalPrice() {
+        this.totalPrice = this.subtotal + this.shippingPrice;
       },
   
       // Handle the form submission (simply logs for now, implement actual checkout logic)
@@ -186,7 +205,7 @@
         const checkoutData = {
           shippingInfo: this.form,
           shippingMethod: this.selectedShippingMethod,
-          totalPrice: this.shippingPrice,
+          totalPrice: this.totalPrice,
         };
   
         // Log the checkout data (can be replaced with actual API call)
@@ -204,13 +223,19 @@
   </script>
   
   <style scoped>
-  /* Add any necessary styles here */
   .shipping-method {
     margin-top: 20px;
   }
   
   .shipping-option {
     margin-bottom: 10px;
+  }
+  
+  .cart-summary {
+    margin-top: 30px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
   }
   
   button {
