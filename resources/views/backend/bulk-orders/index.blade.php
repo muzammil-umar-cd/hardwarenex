@@ -121,7 +121,7 @@
 
 
 $(document).on('change','#status', function(){
-    alert($('#status').val());
+    alert($('#status option:selected').val());
 });
 
 //select all items or bulk delete
