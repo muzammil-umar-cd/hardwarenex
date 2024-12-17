@@ -14,7 +14,7 @@
                     <v-col xl="8" lg="8" sm="12">
                         <div class="mb-4">
                             <div>
-                                <div class="delivery-type">
+                                <div class="delivery-type" style="display: none;">
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("delivery_type") }}
                                     </h3>
@@ -29,7 +29,6 @@
                                                         v-model="selectedDeliveryType"
                                                         value="home_delivery"
                                                         @click="ChooseDeleviryType('home_delivery')"
-                                                        style="display: none;"
                                                     />
                                                     <span
                                                         class="d-flex pa-3 aiz-megabox-elem fs-13"
