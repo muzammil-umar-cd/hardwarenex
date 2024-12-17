@@ -49,69 +49,7 @@
                                                 </label>
                                             </div>
                                         </v-col>
-                                        <v-col cols="12" sm="6" v-if="generalSettings.pickup_point">
-                                            <div class="position-relative mb-3">
-                                                <label class="aiz-megabox d-block">
-                                                    <input
-                                                        type="radio"
-                                                        name="delivery_type"
-                                                        v-model="selectedDeliveryType"
-                                                        value="pickup"
-                                                        @click="
-                                                            checkForPickUp('pickup')
-                                                        "
-                                                    />
-                                                    <span
-                                                        class="d-flex pa-3 aiz-megabox-elem fs-13"
-                                                    >
-                                                        <span
-                                                            class="aiz-rounded-check flex-shrink-0 mt-1"
-                                                        ></span>
-                                                        <span
-                                                            class="flex-grow-1 ps-3 lh-1-5"
-                                                        >
-                                                            <span
-                                                                class="d-block fw-600"
-                                                                >{{
-                                                                    $t("pickup")
-                                                                }}</span
-                                                            >
-                                                        </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </v-col>
                                     </v-row>
-                                    <!-- Pick up point ist -->
-                                    <div
-                                        class="position-relative my-3"
-                                        v-if="selectedDeliveryType == 'pickup'"
-                                    >
-                                        <label
-                                            class="aiz-megabox d-block"
-                                            v-if="for_pickup"
-                                        >
-                                            <!-- <v-select
-                                label="Select"
-                                :items="getPickupPoints"
-                            ></v-select>
-                            -->
-    
-                                            <v-autocomplete
-                                                v-model="selectedPickupPoint"
-                                                :items="getPickupPoints"
-                                                :label="$t('select_pickup_point')"
-                                                hide-details="auto"
-                                                variant="outlined"
-                                                item-title="name"
-                                                item-value="id"
-                                                dense
-                                                autocomplete="off"
-                                                class=""
-                                            >
-                                            </v-autocomplete>
-                                        </label>
-                                    </div>
                                 </div>
                                 <!-- ========== -->
                                 <div>
@@ -1274,8 +1212,6 @@ export default {
     components: {},
     data() {
         return {
-            for_pickup: true,
-            selectedPickupPoint: null,
             checkbox: false,
             checkoutLoading: false,
             selectedShippingAddressId: null,
@@ -1405,7 +1341,6 @@ export default {
             "getSelectedCartIds",
             "checkShopMinOrder",
             "getIsDigital",
-            "getPickupPoints",
             "getCartProducts",
         ]),
         ...mapGetters("auth", ["currentUser"]),
@@ -1441,29 +1376,11 @@ export default {
             "resetCoupon",
             "removeMultipleFromCart",
             "fetchCartProducts",
-            "fetchPickupPoints",
         ]),
         ...mapActions("address", ["fetchAddresses"]),
         ...mapActions("auth", ["rechargeWallet", "deductFromWallet"]),
 
-        // check for pick up availability
-
-        async checkForPickUp(type) {
-            this.getCartProducts.map((product) => {
-                if (product.for_pickup == 0) {
-                    this.selectedPickupPoint = null;
-                    this.for_pickup = false;
-                    this.snack({
-                        message: `One or more items in the cart are not available for pickup`,
-                        color: "red",
-                    });
-                    return;
-                } else {
-                    this.for_pickup = true;
-                }
-            });
-            this.selectedDeliveryType = type;
-        },
+        
 
         ChooseDeleviryType(deliveryType){
             this.selectedDeliveryType = deliveryType;
@@ -1563,23 +1480,7 @@ export default {
                 });
                 return;
             }
-            if (this.selectedDeliveryType === "pickup" && this.for_pickup == false) {
-                this.snack({
-                    message: `One or more items in the cart are not available for pickup`,
-                    color: "red",
-                });
-                return;
-            }
-            if (
-                this.selectedDeliveryType === "pickup" &&
-                this.selectedPickupPoint == null
-            ) {
-                this.snack({
-                    message: `Please select a pick up point`,
-                    color: "red",
-                });
-                return;
-            }
+            
             if (
                 this.selectedDeliveryType === "home_delivery" &&
                 this.selectedDeliveryOption === ""
@@ -1631,7 +1532,6 @@ export default {
             formData.append("payment_type", this.selectedPaymentMethod.code);
             formData.append("delivery_type", this.selectedDeliveryOption);
             formData.append("type_of_delivery", this.selectedDeliveryType);
-            formData.append("pickup_point_id", this.selectedPickupPoint);
 
             let cartIds = this.getSelectedCartIds;
             cartIds.forEach((item, index) => {
@@ -1892,7 +1792,6 @@ export default {
       },
     },
     async created() {
-        await this.fetchPickupPoints();
         await this.fetchAddresses();
         this.selectedShippingAddressId = this.getDefaultShippingAddress.id;
         this.selectedBillingAddressId = this.getDefaultBillingAddress.id;
