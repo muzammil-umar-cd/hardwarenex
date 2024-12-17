@@ -110,7 +110,11 @@ class AddressController extends Controller
     public function updateShippingAddress(Request $request)
     {
         $address = Address::findOrFail($request->id);
-        if (auth('api')->user()->id != $address->user_id || $address->ip_address != FacadeRequest::ip()) {
+        if(auth('api')->user()){
+            if (auth('api')->user()->id != $address->user_id) {
+                return response()->json(null, 401);
+            }
+        }else if($address->ip_address != FacadeRequest::ip()){
             return response()->json(null, 401);
         }
 
@@ -137,7 +141,11 @@ class AddressController extends Controller
     public function defaultShippingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id || $address->ip_address != FacadeRequest::ip()) {
+        if(auth('api')->user()){
+            if (auth('api')->user()->id != $address->user_id) {
+                return response()->json(null, 401);
+            }
+        }else if($address->ip_address != FacadeRequest::ip()){
             return response()->json(null, 401);
         }
 
@@ -164,7 +172,11 @@ class AddressController extends Controller
     public function defaultBillingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id || $address->ip_address != FacadeRequest::ip()) {
+        if(auth('api')->user()){
+            if (auth('api')->user()->id != $address->user_id) {
+                return response()->json(null, 401);
+            }
+        }else if($address->ip_address != FacadeRequest::ip()){
             return response()->json(null, 401);
         }
 
