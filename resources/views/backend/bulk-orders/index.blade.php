@@ -76,7 +76,7 @@
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ format_price($order->total_price) }}</td>
                                 <td>
-                                    <select name="status" id="status">
+                                    <select name="status" class="status">
                                         <option value="">Update Status</option>
                                         <option {{ ($order->status == "Pending") ? 'selected' : '' }} value="Pending">Pending</option>
                                         <option {{ ($order->status == "Follow-Up") ? 'selected' : '' }} value="Follow-Up">Follow-Up</option>
@@ -120,10 +120,10 @@
     <script type="text/javascript">
 
 
-$(document).on('change','#status', function(){
-    alert($('#status option:selected').val());
+$(document).on('change', '.status', function(){
+    let selectedValue = $(this).val(); // Get the selected value of the current select
+    alert(selectedValue);
 });
-
 //select all items or bulk delete
 $(document).on("change", ".check-all", function() {
             if(this.checked) {
