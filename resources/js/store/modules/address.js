@@ -32,7 +32,7 @@ export default {
     actions: {
         async fetchAddresses({commit,getters}){
             if(!getters.addressesLoaded){
-                const res = await Mixin.methods.call_api("get", `user/addresses`);
+                const res = await Mixin.methods.call_api("get", `addresses`);
                 if(res.data.success){
                     commit('setAddresses',res.data.data)
                 }
