@@ -63,36 +63,6 @@ class AddressController extends Controller
             $address->save();
         }
 
-        // if($request->id != null){
-        // }else{
-
-        //     if (!$request->has('phone') || !$request->has('email')) {
-        //         return response()->json([
-        //             'success' => false,
-        //             'message' => translate('Email & phone is required.'),
-        //             'data' => null
-        //         ], 200);
-        //     }
-
-        //     $user = User::where('phone', $request->phone)->orWhere('email', $request->email)->first();
-
-        //     $address = new Address;
-        //     $address->user_id = auth('api')->user()->id;
-        //     $address->address = $request->address;
-        //     $address->country = Country::find($request->country)->name;
-        //     $address->country_id = $request->country;
-        //     $address->state = State::find($request->state)->name;
-        //     $address->state_id = $request->state;
-        //     $address->city = City::find($request->city)->name;
-        //     $address->city_id = $request->city;
-        //     $address->postal_code = $request->postal_code;
-        //     $address->phone = $request->phone;
-        //     $address->default_shipping = $shipping_count > 0 ? 0 : 1;
-        //     $address->default_billing = $billing_count > 0 ? 0 : 1;
-        //     $address->save();
-        // }
-
-
         return response()->json([
             'success' => true,
             'data' => [
@@ -119,7 +89,7 @@ class AddressController extends Controller
             return response()->json(null, 401);
         }
 
-        $latest_address = Address::where('user_id', auth('api')->user()->id)->orWhere('ip_address', FacadeRequest::ip())->latest()->first();
+        $latest_address = Address::where('user_id', auth('api')->user()->id)->latest()->first();
         if ($address->default_shipping) {
             $latest_address->default_shipping = 1;
         }
@@ -140,8 +110,7 @@ class AddressController extends Controller
     public function updateShippingAddress(Request $request)
     {
         $address = Address::findOrFail($request->id);
-        dd($address);
-        if (auth('api')->user()->id != $address->user_id || $address->ip_address == FacadeRequest::ip()) {
+        if (auth('api')->user()->id != $address->user_id || $address->ip_address != FacadeRequest::ip()) {
             return response()->json(null, 401);
         }
 
@@ -168,7 +137,7 @@ class AddressController extends Controller
     public function defaultShippingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id || $address->ip_address == FacadeRequest::ip()) {
+        if (auth('api')->user()->id != $address->user_id || $address->ip_address != FacadeRequest::ip()) {
             return response()->json(null, 401);
         }
 
@@ -195,7 +164,7 @@ class AddressController extends Controller
     public function defaultBillingAddress($id)
     {
         $address = Address::findOrFail($id);
-        if (auth('api')->user()->id != $address->user_id || $address->ip_address == FacadeRequest::ip()) {
+        if (auth('api')->user()->id != $address->user_id || $address->ip_address != FacadeRequest::ip()) {
             return response()->json(null, 401);
         }
 
