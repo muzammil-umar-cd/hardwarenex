@@ -6,6 +6,7 @@ use App\Models\BulkOrder;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Mail\BulkOrderMailer;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class BulkOrderController extends Controller
@@ -18,15 +19,16 @@ class BulkOrderController extends Controller
     }
 
     public function index(){
-
+        // if(Auth::user()->)
+        dd(Auth::user());
+        return view('bulk-orders.index');
     }
 
     public function show(){
-
+        return view('bulk-orders.show');
     }
 
     public function destroy(){
-        
     }
 
     public function store(Request $request)
