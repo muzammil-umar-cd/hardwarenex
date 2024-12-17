@@ -25,11 +25,12 @@
                                                     <input
                                                         type="radio"
                                                         checked
-                                                        hidden
+                                                        ref="homeDeliveryRadio"
                                                         name="delivery_type"
                                                         v-model="selectedDeliveryType"
                                                         value="home_delivery"
                                                         @click="ChooseDeleviryType('home_delivery')"
+                                                        style="display: none;"
                                                     />
                                                     <span
                                                         class="d-flex pa-3 aiz-megabox-elem fs-13"
