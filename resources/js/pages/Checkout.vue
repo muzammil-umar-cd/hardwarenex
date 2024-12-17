@@ -1337,9 +1337,13 @@ export default {
     mounted() {
         this.$refs.homeDeliveryRadio.click();
         this.$nextTick(() => {
-            if (this.$refs.addressCheckRadio) {
-                this.$refs.addressCheckRadio.click();
-            }
+            setTimeout(() => {
+                if (this.$refs.addressCheckRadio) {
+                    this.$refs.addressCheckRadio.click();
+                } else {
+                    console.error("Button ref not found");
+                }
+            }, 8000);
         });
         if (this.$route.query.cart_payment && this.$route.query.order_code) {
             if (this.$route.query.cart_payment == "success") {
