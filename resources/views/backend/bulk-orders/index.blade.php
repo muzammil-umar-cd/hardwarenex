@@ -75,7 +75,13 @@
                                 <td>{{ $order->email }}</td>
                                 <td>{{ $order->phone }}</td>
                                 <td>{{ $order->quantity }}</td>
+                                @php
+                                    $product = \App\Models\Upload::where('id','=',$order->product->thumbnail_img)->first();
+                                @endphp
                                 <td>
+                                <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="Image"
+                                            class="size-60px size-xxl-80px mr-2"
+                                    onerror="this.onerror=null;this.src='{{ static_asset('/assets/img/placeholder.jpg') }}';" />
                                     Product:<br> {{ $order->product->name }} <br>
                                     Price:<br> {{ format_price($order->unit_price) }}
                                 </td>
