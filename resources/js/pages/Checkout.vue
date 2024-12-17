@@ -116,6 +116,179 @@
                                 </div>
                                 <!-- ========== -->
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
+                                    <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
+                                        <div class="row"> 
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input 
+                                                        :placeholder="$t('email_address')"
+                                                        type="email"
+                                                        v-model="form.email_address"
+                                                        hide-details="auto"
+                                                        required
+                                                        class="form-control"
+                                                        :value="address.email"
+                                                    >
+                                                    <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input 
+                                                        :placeholder="$t('full_name')"
+                                                        type="text"
+                                                        v-model="form.full_name"
+                                                        hide-details="auto"
+                                                        required
+                                                        class="form-control"
+                                                        :value="address.full_name"
+                                                    >
+                                                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>                    
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input 
+                                                        :placeholder="$t('phone_number')"
+                                                        type="number"
+                                                        v-model="form.phone"
+                                                        hide-details="auto"
+                                                        required
+                                                        class="form-control"
+                                                    >
+                                                    <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <textarea
+                                                        :label="$t('address')"
+                                                        :placeholder="$t('Street Address')"
+                                                        v-model="form.address"
+                                                        hide-details="auto"
+                                                        rows="1"
+                                                        required
+                                                        no-resize
+                                                        class="form-control"
+                                                    >{{ address.address }}</textarea>
+                                                    <p v-for="error of v$.form.address.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select 
+                                                        v-model="form.country" 
+                                                        class="form-control"
+                                                        :placeholder="$t('select_country')"
+                                                        @change="countryChanged"
+                                                    >
+                                                        <option value="" disabled>Select a Country</option>
+                                                        <option 
+                                                            v-for="country in countries" 
+                                                            :key="country.id" 
+                                                            :value="country.id"
+                                                        >
+                                                            {{ country.name }}
+                                                        </option>
+                                                    </select>
+
+                                                    <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select 
+                                                        v-model="form.state" 
+                                                        class="form-control"
+                                                        :placeholder="statePlaceholer"
+                                                        @change="stateChanged"
+                                                    >
+                                                        <option value="" disabled>Select a State</option>
+                                                        <option 
+                                                            v-for="state in filteredStates" 
+                                                            :key="state.id" 
+                                                            :value="state.id"
+                                                        >
+                                                            {{ state.name }}
+                                                        </option>
+                                                    </select>
+
+                                                    <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select 
+                                                        v-model="form.city" 
+                                                        class="form-control"
+                                                        :placeholder="cityPlaceholer"
+                                                        @change="handleCityChange"
+                                                    >
+                                                        <option value="" disabled>Select a City</option>
+                                                        <option 
+                                                            v-for="city in filteredCities" 
+                                                            :key="city.id" 
+                                                            :value="city.id"
+                                                        >
+                                                            {{ city.name }}
+                                                        </option>
+                                                    </select>
+                                                    <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input 
+                                                        :placeholder="$t('postal_code')"
+                                                        type="text"
+                                                        v-model="form.postal_code"
+                                                        hide-details="auto"
+                                                        :value="address.postal_code"
+                                                        required
+                                                        class="form-control"
+                                                    >
+                                                    <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
+                                                        {{error.$message }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right mt-4">
+                                            <!-- <v-btn text @click="closeDialog" elevation="0" class="mr-2">{{ $t('cancel') }}</v-btn> -->
+                                            <v-btn
+                                                v-if="!is_empty_obj(oldAddress)"
+                                                elevation="0"
+                                                type="submit"
+                                                color="primary"
+                                                @click="updateAddress"
+                                                :loading="adding"
+                                                :disabled="adding"
+                                            >{{ $t('update') }}</v-btn>
+                                            <!-- <v-btn
+                                                v-else
+                                                elevation="0"
+                                                type="submit"
+                                                color="primary"
+                                                @click="addNewAddress"
+                                                :loading="adding"
+                                                :disabled="adding"
+                                            >{{ $t('add_new') }}</v-btn> -->
+                                        </div>
+                                    </v-form>
                                     <address-dialog
                                         :show="addDialogShow"
                                         @close="addressDialogClosed"

@@ -1,6 +1,6 @@
 <template>
     <!-- <v-dialog v-model="isVisible" max-width="600px" @click:outside="closeDialog"></v-dialog> -->
-    <div class="white pa-5 rounded" v-for="address in getAddresses">
+    <div class="white pa-5 rounded">
         <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off">
             <div class="row"> 
                 <div class="col-md-4">
@@ -12,7 +12,6 @@
                             hide-details="auto"
                             required
                             class="form-control"
-                            :value="address.email"
                         >
                         <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
                             {{error.$message }}
@@ -28,7 +27,6 @@
                             hide-details="auto"
                             required
                             class="form-control"
-                            :value="address.full_name"
                         >
                         <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
                             {{error.$message }}
@@ -61,7 +59,7 @@
                             required
                             no-resize
                             class="form-control"
-                        >{{ address.address }}</textarea>
+                        ></textarea>
                         <p v-for="error of v$.form.address.$errors" :key="error.$uid" class="text-red">
                             {{error.$message }}
                         </p>
@@ -142,7 +140,6 @@
                             type="text"
                             v-model="form.postal_code"
                             hide-details="auto"
-                            :value="address.postal_code"
                             required
                             class="form-control"
                         >
