@@ -6,13 +6,12 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <input 
-                                placeholder="Email Address*"
+                                :placeholder="$t('email_address')"
+                                type="email"
                                 v-model="form.email_address"
                                 hide-details="auto"
                                 required
                                 class="form-control"
-                                name="email_address"
-                                id="email_address"
                             >
                             <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
@@ -22,29 +21,27 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <input 
-                                placeholder="Full Name*"
+                                :placeholder="$t('full_name')"
+                                type="text"
                                 v-model="form.full_name"
                                 hide-details="auto"
                                 required
                                 class="form-control"
-                                name="full_name"
-                                id="full_name"
                             >
                             <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="col-md-4">
                         <div class="form-group">
                             <input 
-                                placeholder="Phone Number*"
+                                :placeholder="$t('phone_number')"
+                                type="number"
                                 v-model="form.phone"
                                 hide-details="auto"
                                 required
                                 class="form-control"
-                                name="phone"
-                                id="phone"
                             >
                             <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
@@ -53,31 +50,35 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input 
-                                placeholder="Street Address*"
+                            <textarea
+                                :label="$t('address')"
                                 v-model="form.address"
                                 hide-details="auto"
+                                rows="3"
                                 required
+                                no-resize
                                 class="form-control"
-                                name="address"
-                                id="address"
-                            >
-                            <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
+                            ></textarea>
+                            <p v-for="error of v$.form.address.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input 
-                                placeholder="Country*"
+                            <v-autocomplete
                                 v-model="form.country"
+                                :items="countries"
+                                :label="$t('select_country')"
                                 hide-details="auto"
-                                required
+                                item-title="name"
+                                item-value="id"
+                                dense
+                                autocomplete="off"
+                                :custom-filter="countryChanged"
+                                @update:modelValue="countryChanged"
                                 class="form-control"
-                                name="country"
-                                id="country"
-                            >
+                            ></v-autocomplete>
                             <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
@@ -85,15 +86,17 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input 
-                                placeholder="State*"
+                            <v-autocomplete
                                 v-model="form.state"
+                                :items="filteredStates"
                                 hide-details="auto"
-                                required
+                                :label="statePlaceholer"
                                 class="form-control"
-                                name="state"
-                                id="state"
-                            >
+                                item-title="name"
+                                item-value="id"
+                                dense
+                                @update:modelValue="stateChanged"
+                            ></v-autocomplete>
                             <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
@@ -101,15 +104,16 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input 
-                                placeholder="City*"
+                            <v-autocomplete
                                 v-model="form.city"
+                                :items="filteredCities"
+                                :label="cityPlaceholer"
                                 hide-details="auto"
-                                required
                                 class="form-control"
-                                name="city"
-                                id="city"
-                            >
+                                item-title="name"
+                                item-value="id"
+                                dense
+                            ></v-autocomplete>
                             <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
                             </p>
@@ -118,13 +122,12 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <input 
-                                placeholder="Postal Code*"
+                                :placeholder="$t('postal_code')"
+                                type="text"
                                 v-model="form.postal_code"
                                 hide-details="auto"
                                 required
                                 class="form-control"
-                                name="postal_code"
-                                id="postal_code"
                             >
                             <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
                                 {{error.$message }}
@@ -256,7 +259,7 @@
                     </p>
                 </div>
                 <div class="text-right mt-4">
-                    <v-btn text @click="closeDialog" elevation="0" class="mr-2">{{ $t('cancel') }}</v-btn>
+                    <!-- <v-btn text @click="closeDialog" elevation="0" class="mr-2">{{ $t('cancel') }}</v-btn> -->
                     <v-btn
                         v-if="!is_empty_obj(oldAddress)"
                         elevation="0"
@@ -266,7 +269,7 @@
                         :loading="adding"
                         :disabled="adding"
                     >{{ $t('update') }}</v-btn>
-                    <v-btn
+                    <!-- <v-btn
                         v-else
                         elevation="0"
                         type="submit"
@@ -274,7 +277,7 @@
                         @click="addNewAddress"
                         :loading="adding"
                         :disabled="adding"
-                    >{{ $t('add_new') }}</v-btn>
+                    >{{ $t('add_new') }}</v-btn> -->
                 </div>
             </v-form>
         </div>
