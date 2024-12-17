@@ -23,7 +23,7 @@ class BulkOrderController extends Controller
             return abort(401);
         }
         
-        $bulk_orders = BulkOrder::with('products')->get()->paginate(10);
+        $bulk_orders = BulkOrder::with('product')->get()->paginate(10);
         return view('bulk-orders.index', compact('bulk_orders'));
     }
 
