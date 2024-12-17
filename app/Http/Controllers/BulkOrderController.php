@@ -43,11 +43,11 @@ class BulkOrderController extends Controller
         // }
         
         $bulk_orders = $bulk_orders->paginate(10);
-        return view('backend.bulk-orders.index', compact('bulk_orders'));
+        return view('backend.bulk-orders.index', compact('bulk_orders'.'sort_search'));
     }
 
     public function show(){
-        return view('bulk-orders.show');
+        return view('backend.bulk-orders.show');
     }
 
     public function destroy(){
