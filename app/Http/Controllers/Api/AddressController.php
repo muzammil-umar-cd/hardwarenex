@@ -140,6 +140,7 @@ class AddressController extends Controller
     public function updateShippingAddress(Request $request)
     {
         $address = Address::findOrFail($request->id);
+        dd($address);
         if (auth('api')->user()->id != $address->user_id || $address->ip_address == FacadeRequest::ip()) {
             return response()->json(null, 401);
         }
@@ -154,6 +155,8 @@ class AddressController extends Controller
         $address->postal_code = $request->postal_code;
         $address->phone = $request->phone;
         $address->save();
+
+
 
         return response()->json([
             'success' => true,
