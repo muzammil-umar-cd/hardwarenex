@@ -398,7 +398,25 @@
                                     </h3>
                                     <p>Select your preferred delivery method</p>
 
-                                    <h4 class="opacity-80 mb-3 fs-18 mt-3"> No shipping method available for selected address. </h4>
+                                    <!-- <h4 class="opacity-80 mb-3 fs-18 mt-3"> No shipping method available for selected address. </h4> -->
+                                    <div v-if="countriesLoaded" class="shipping-method">
+                                        <h3 class="section-title">{{ $i18n.t('shipping_method') }}</h3>
+                                        <div v-for="(method, index) in shippingMethods" :key="index" class="shipping-option">
+                                        <label>
+                                            <input type="radio" 
+                                            :value="method" 
+                                            v-model="selectedShippingMethod" 
+                                            @change="updateShippingPrice" class="shipping-radio" />
+                                            {{ method.name }} - {{ method.price | currency }}
+                                        </label>
+                                        </div>
+                                
+                                        <!-- Display the selected shipping method and its price -->
+                                        <div v-if="selectedShippingMethod" class="selected-shipping">
+                                        <p>{{ $i18n.t('selected_shipping_method') }}: {{ selectedShippingMethod.name }}</p>
+                                        <p>{{ $i18n.t('price') }}: {{ selectedShippingMethod.price | currency }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
                                     <address-dialog
@@ -1298,6 +1316,8 @@ export default {
             countries: [],
             filteredStates: [],
             filteredCities: [],
+            shippingMethods: [],
+            selectedShippingMethod: null,
             v$: useVuelidate(),
             form:{
                 id: null,
@@ -1808,7 +1828,68 @@ export default {
         closeDialog(){
             this.isVisible = false
             this.$emit('close')
+        },
+        async fetchCountries() {
+        // Dummy countries list for now
+        this.countries = [
+          { id: 1, name: "USA" },
+          { id: 2, name: "Canada" },
+          { id: 3, name: "UK" },
+        ];
+        this.countriesLoaded = true;
+      },
+      async countryChanged(countryId) {
+        // Dummy states for selected country
+        if (countryId === 1) {
+          this.filteredStates = [
+            { id: 1, name: "California" },
+            { id: 2, name: "Texas" },
+          ];
+        } else if (countryId === 2) {
+          this.filteredStates = [
+            { id: 3, name: "Ontario" },
+            { id: 4, name: "Quebec" },
+          ];
+        } else {
+          this.filteredStates = [];
         }
+  
+        this.form.state = "";
+        this.form.city = "";
+        this.filteredCities = [];
+      },
+      async stateChanged(stateId) {
+        // Dummy cities for selected state
+        if (stateId === 1) {
+          this.filteredCities = [
+            { id: 1, name: "Los Angeles" },
+            { id: 2, name: "San Francisco" },
+          ];
+        } else if (stateId === 3) {
+          this.filteredCities = [
+            { id: 3, name: "Toronto" },
+            { id: 4, name: "Ottawa" },
+          ];
+        } else {
+          this.filteredCities = [];
+        }
+      },
+      async fetchShippingMethods() {
+        this.shippingMethods = [
+          { name: "FedEx Standard", price: 10.99 },
+          { name: "FedEx Express", price: 20.99 },
+          { name: "FedEx Same-Day", price: 50.99 },
+        ];
+      },
+      updateShippingPrice() {
+        if (this.selectedShippingMethod) {
+          this.shippingPrice = this.selectedShippingMethod.price;
+          this.calculateTotalPrice();
+        }
+      },
+      calculateTotalPrice() {
+        this.totalPrice = this.subtotal + this.shippingPrice;
+      },
     },
     async created() {
         await this.fetchPickupPoints();
@@ -1845,6 +1926,7 @@ export default {
         }
         this.rechargeWallet(this.$route.query.wallet_payment);
         this.fetchCartProducts();
+        this.fetchShippingMethods();
     },
 };
 </script>
