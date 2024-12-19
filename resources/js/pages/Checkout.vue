@@ -983,7 +983,7 @@ export default {
             selectedDeliveryType: "",
             standardDeliveryCost: 0,
             expressDeliveryCost: 0,
-            addDialogShow: true,
+            addDialogShow: false,
             addressSelectedForEdit: {},
             rechargeDialogShow: false,
             transactionId: null,
