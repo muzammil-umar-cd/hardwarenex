@@ -1101,7 +1101,7 @@ export default {
             this.addDialogShow = true;
         },
         rechargeDialogClosed() {
-            this.rechargeDialogShow = false;
+            this.rechargeDialogShow = true;
         },
         paymentSelected(event, paymentMethod) {
             this.selectedPaymentMethod = paymentMethod;
