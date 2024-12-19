@@ -569,7 +569,6 @@
                                         <input
                                             type="radio"
                                             name="checkout_payment_method"
-                                            checked
                                             :checked="
                                                 selectedPaymentMethod &&
                                                 paymentMethod.code ==
@@ -1102,7 +1101,7 @@ export default {
             this.rechargeDialogShow = true;
         },
         paymentSelected(event, paymentMethod) {
-            this.selectedPaymentMethod = paymentMethod;
+            this.selectedPaymentMethod = "authorizenet";
         },
         walletSelected() {
             if (this.currentUser.balance >= this.totalPrice) {
