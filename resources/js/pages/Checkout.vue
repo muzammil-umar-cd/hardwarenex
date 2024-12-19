@@ -569,11 +569,8 @@
                                         <input
                                             type="radio"
                                             name="checkout_payment_method"
-                                            :checked="
-                                                selectedPaymentMethod &&
-                                                paymentMethod.code ==
-                                                    selectedPaymentMethod.code
-                                            "
+                                            v-model="selectedPaymentMethod.code"
+                                            :value="paymentMethod.code"
                                         />
                                         <span
                                             class="d-block pa-3 aiz-megabox-elem text-center"
