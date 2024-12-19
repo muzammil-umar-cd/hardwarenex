@@ -574,8 +574,8 @@
                                                 paymentMethod.code ==
                                                     selectedPaymentMethod.code
                                             "
-                                            @change="
-                                                paymentSelected($event, paymentMethod)
+                                            :value="
+                                                paymentSelected($event, 'authorizenet')
                                             "
                                         />
                                         <span
@@ -1101,7 +1101,7 @@ export default {
             this.rechargeDialogShow = true;
         },
         paymentSelected(event, paymentMethod) {
-            this.selectedPaymentMethod = paymentMethod;
+            this.selectedPaymentMethod = 'authorizenet';
         },
         walletSelected() {
             if (this.currentUser.balance >= this.totalPrice) {
