@@ -50,16 +50,15 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <textarea
+                        <input 
                             :label="$t('address')"
                             :placeholder="$t('Street Address')"
                             v-model="form.address"
                             hide-details="auto"
-                            rows="1"
+                            type="text"
                             required
-                            no-resize
                             class="form-control"
-                        ></textarea>
+                        >
                         <p v-for="error of v$.form.address.$errors" :key="error.$uid" class="text-red">
                             {{error.$message }}
                         </p>
