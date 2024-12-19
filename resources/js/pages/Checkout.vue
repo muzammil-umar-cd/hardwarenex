@@ -667,6 +667,17 @@
                                         outlined
                                     >
                                     </v-text-field>
+                                        <v-select
+                                            :items="months"
+                                            v-model="authorizeNet.expiration_month"
+                                            variant="plain"
+                                            class="my-2 text-field"
+                                            :placeholder="$t('select_month')"
+                                            hide-details="auto"
+                                            outlined
+                                            required
+                                        >
+                                        </v-select>
 
                                     <v-autocomplete
                                         variant="plain"
