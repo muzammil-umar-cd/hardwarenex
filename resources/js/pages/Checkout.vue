@@ -667,17 +667,22 @@
                                         outlined
                                     >
                                     </v-text-field>
-                                        <v-select
-                                            :items="months"
-                                            v-model="authorizeNet.expiration_month"
-                                            variant="plain"
-                                            class="my-2 text-field"
-                                            :placeholder="$t('select_month')"
-                                            hide-details="auto"
-                                            outlined
-                                            required
-                                        >
-                                        </v-select>
+                                    <v-select
+                                        :items="months"
+                                        v-model="authorizeNet.expiration_month"
+                                        variant="plain"
+                                        class="my-2"
+                                        :placeholder="$t('select_month')"
+                                        hide-details="auto"
+                                        outlined
+                                        required
+                                    >
+                                        <template v-slot:prepend-item>
+                                            <v-list-item disabled>
+                                                <v-list-item-title>{{ $t('select_month') }}</v-list-item-title>
+                                            </v-list-item>
+                                        </template>
+                                    </v-select>
 
                                     <v-autocomplete
                                         variant="plain"
