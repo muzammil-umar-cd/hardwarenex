@@ -114,466 +114,6 @@
                                         </label>
                                     </div>
                                 </div>
-                                <!-- ========== -->
-                                <div v-if="selectedDeliveryType == 'home_delivery'">
-                                    <v-form  v-on:submit.prevent="addNewAddress()" autocomplete="chrome-off" v-for="address in getAddresses"
-                                    :key="address.id">
-                                        <div class="row"> 
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input 
-                                                        :placeholder="$t('email_address')"
-                                                        type="email"
-                                                        v-model="form.email_address"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        :value="address.email"
-                                                    >
-                                                    <p v-for="error of v$.form.email_address.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input 
-                                                        :placeholder="$t('full_name')"
-                                                        type="text"
-                                                        v-model="form.full_name"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                        :value="address.full_name"
-                                                    >
-                                                    <p v-for="error of v$.form.full_name.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>                    
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input 
-                                                        :placeholder="$t('phone_number')"
-                                                        type="number"
-                                                        v-model="form.phone"
-                                                        hide-details="auto"
-                                                        required
-                                                        class="form-control"
-                                                    >
-                                                    <p v-for="error of v$.form.phone.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <textarea
-                                                        :label="$t('address')"
-                                                        :placeholder="$t('Street Address')"
-                                                        v-model="form.address"
-                                                        hide-details="auto"
-                                                        rows="1"
-                                                        required
-                                                        no-resize
-                                                        class="form-control"
-                                                    >{{ address.address }}</textarea>
-                                                    <p v-for="error of v$.form.address.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <select 
-                                                        v-model="form.country" 
-                                                        class="form-control"
-                                                        :placeholder="$t('select_country')"
-                                                        @change="countryChanged"
-                                                    >
-                                                        <option value="" disabled>Select a Country</option>
-                                                        <option 
-                                                            v-for="country in countries" 
-                                                            :key="country.id" 
-                                                            :value="country.id"
-                                                        >
-                                                            {{ country.name }}
-                                                        </option>
-                                                    </select>
-
-                                                    <p v-for="error of v$.form.country.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <select 
-                                                        v-model="form.state" 
-                                                        class="form-control"
-                                                        :placeholder="statePlaceholer"
-                                                        @change="stateChanged"
-                                                    >
-                                                        <option value="" disabled>Select a State</option>
-                                                        <option 
-                                                            v-for="state in filteredStates" 
-                                                            :key="state.id" 
-                                                            :value="state.id"
-                                                        >
-                                                            {{ state.name }}
-                                                        </option>
-                                                    </select>
-
-                                                    <p v-for="error of v$.form.state.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <select 
-                                                        v-model="form.city" 
-                                                        class="form-control"
-                                                        :placeholder="cityPlaceholer"
-                                                        @change="handleCityChange"
-                                                    >
-                                                        <option value="" disabled>Select a City</option>
-                                                        <option 
-                                                            v-for="city in filteredCities" 
-                                                            :key="city.id" 
-                                                            :value="city.id"
-                                                        >
-                                                            {{ city.name }}
-                                                        </option>
-                                                    </select>
-                                                    <p v-for="error of v$.form.city.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input 
-                                                        :placeholder="$t('postal_code')"
-                                                        type="text"
-                                                        v-model="form.postal_code"
-                                                        hide-details="auto"
-                                                        :value="address.postal_code"
-                                                        required
-                                                        class="form-control"
-                                                    >
-                                                    <p v-for="error of v$.form.postal_code.$errors" :key="error.$uid" class="text-red">
-                                                        {{error.$message }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="text-right mt-4">
-                                            <!-- <v-btn text @click="closeDialog" elevation="0" class="mr-2">{{ $t('cancel') }}</v-btn> -->
-                                            <v-btn
-                                                v-if="!is_empty_obj(oldAddress)"
-                                                elevation="0"
-                                                type="submit"
-                                                color="primary"
-                                                @click="updateAddress"
-                                                :loading="adding"
-                                                :disabled="adding"
-                                            >{{ $t('update') }}</v-btn>
-                                            <!-- <v-btn
-                                                v-else
-                                                elevation="0"
-                                                type="submit"
-                                                color="primary"
-                                                @click="addNewAddress"
-                                                :loading="adding"
-                                                :disabled="adding"
-                                            >{{ $t('add_new') }}</v-btn> -->
-                                        </div>
-                                    </v-form>
-                                    <address-dialog
-                                        :show="addDialogShow"
-                                        @close="addressDialogClosed"
-                                        :old-address="addressSelectedForEdit"
-                                    />
-                                    <h3 class="opacity-80 mb-3 fs-20">
-                                        {{ $t("shipping_address") }}
-                                    </h3>
-                                    <div class="mb-4">
-                                        <div
-                                            class="position-relative mb-3"
-                                            v-for="address in getAddresses"
-                                            :key="address.id"
-                                        >
-                                            <label class="aiz-megabox d-block">
-                                                <input
-                                                    type="radio"
-                                                    name="checkout_shipping"
-                                                    v-model="selectedShippingAddressId"
-                                                    :value="address.id"
-                                                    :checked="address.default_shipping"
-                                                    @change="
-                                                        shippingAddressSelected(
-                                                            address.id
-                                                        )
-                                                    "
-                                                />
-                                                <span
-                                                    class="d-flex pa-3 aiz-megabox-elem fs-13 fw-600"
-                                                >
-                                                    <span
-                                                        class="aiz-rounded-check flex-shrink-0 mt-1"
-                                                    ></span>
-                                                    <span
-                                                        class="flex-grow-1 ps-3 opacity-80 lh-1-5"
-                                                    >
-                                                        <span class="d-block">
-                                                            {{ address.full_name }}
-                                                        </span>
-                                                        <span class="d-block">
-                                                            {{ address.email }}
-                                                        </span>
-                                                        <span class="d-block"
-                                                            >{{ address.address }},
-                                                            {{
-                                                                address.postal_code
-                                                            }}</span
-                                                        >
-                                                        <span class="d-block"
-                                                            >{{ address.city }},
-                                                            {{ address.state }},
-                                                            {{ address.country }}</span
-                                                        >
-                                                        <span>{{ address.phone }}</span>
-                                                    </span>
-                                                </span>
-                                            </label>
-                                            <v-btn
-                                                class="absolute-right-center me-3"
-                                                color="primary"
-                                                elevation="0"
-                                                small
-                                                @click="editAddress(address)"
-                                            >
-                                                {{ $t("change") }}
-                                            </v-btn>
-                                        </div>
-                                        <v-btn
-                                            class="border-dashed border-gray-300 primary--text fs-14"
-                                            elevation="0"
-                                            block
-                                            x-large
-                                            @click.stop="addDialogShow = true"
-                                        >
-                                            <i class="las la-plus"></i>
-                                            <span>{{ $t("add_new_address") }}</span>
-                                        </v-btn>
-                                    </div>
-                                    <h3 class="opacity-80 mb-3 fs-20">
-                                        {{ $t("billing_address") }}
-                                    </h3>
-                                    <div class="mb-4">
-                                        <div
-                                            class="position-relative mb-3"
-                                            v-for="address in getAddresses"
-                                            :key="address.id"
-                                        >
-                                            <label class="aiz-megabox d-block">
-                                                <input
-                                                    type="radio"
-                                                    name="checkout_billing"
-                                                    v-model="selectedBillingAddressId"
-                                                    :value="address.id"
-                                                    :checked="address.default_billing"
-                                                />
-                                                <span
-                                                    class="d-flex pa-3 aiz-megabox-elem fs-13 fw-600"
-                                                >
-                                                    <span
-                                                        class="aiz-rounded-check flex-shrink-0 mt-1"
-                                                    ></span>
-                                                    <span
-                                                        class="flex-grow-1 ps-3 opacity-80 lh-1-5"
-                                                    >
-                                                        <span class="d-block"
-                                                            >{{ address.address }},
-                                                            {{
-                                                                address.postal_code
-                                                            }}</span
-                                                        >
-                                                        <span class="d-block"
-                                                            >{{ address.city }},
-                                                            {{ address.state }},
-                                                            {{ address.country }}</span
-                                                        >
-                                                        <span>{{ address.phone }}</span>
-                                                    </span>
-                                                </span>
-                                            </label>
-                                            <v-btn
-                                                class="absolute-right-center me-3"
-                                                color="primary"
-                                                elevation="0"
-                                                small
-                                                @click="editAddress(address)"
-                                            >
-                                                {{ $t("change") }}
-                                            </v-btn>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ================== -->
-                                <div
-                                    class="delivery-option"
-                                    v-if="selectedDeliveryType == 'home_delivery'"
-                                >
-                                    <h3 class="opacity-80 mb-3 fs-20">
-                                        {{ $t("delivery_option") }}
-                                    </h3>
-                                    <v-row v-if="selectedDeliveryOption !== ''">
-                                        <v-col cols="12" sm="6">
-                                            <div class="position-relative mb-3">
-                                                <label class="aiz-megabox d-block">
-                                                    <input
-                                                        type="radio"
-                                                        name="delivery_option"
-                                                        v-model="selectedDeliveryOption"
-                                                        value="standard"
-                                                    />
-                                                    <span
-                                                        class="d-flex pa-3 aiz-megabox-elem fs-13"
-                                                    >
-                                                        <span
-                                                            class="aiz-rounded-check flex-shrink-0 mt-1"
-                                                        ></span>
-                                                        <span
-                                                            class="flex-grow-1 ps-3 lh-1-5"
-                                                        >
-                                                            <span
-                                                                class="d-block fw-600"
-                                                                >{{
-                                                                    $t(
-                                                                        "standard_delivery"
-                                                                    )
-                                                                }}</span
-                                                            >
-                                                            <span class="d-block">
-                                                                {{
-                                                                    $t("delivery_cost")
-                                                                }}:
-                                                                <span class="fw-600">{{
-                                                                    format_price(
-                                                                        standardDeliveryCost
-                                                                    )
-                                                                }}</span>
-                                                                <span
-                                                                    v-if="
-                                                                        is_addon_activated(
-                                                                            'multi_vendor'
-                                                                        )
-                                                                    "
-                                                                    >/{{
-                                                                        $t("shop")
-                                                                    }}</span
-                                                                >
-                                                            </span>
-                                                            <span class="d-block"
-                                                                >{{
-                                                                    $t(
-                                                                        "delivery_timing"
-                                                                    )
-                                                                }}:
-                                                                <span class="fw-600"
-                                                                    >{{
-                                                                        getStandardTime
-                                                                    }}
-                                                                    {{
-                                                                        $t("days")
-                                                                    }}</span
-                                                                ></span
-                                                            >
-                                                        </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </v-col>
-                                        <v-col cols="12" sm="6">
-                                            <div class="position-relative mb-3">
-                                                <label class="aiz-megabox d-block">
-                                                    <input
-                                                        type="radio"
-                                                        name="delivery_option"
-                                                        v-model="selectedDeliveryOption"
-                                                        value="express"
-                                                    />
-                                                    <span
-                                                        class="d-flex pa-3 aiz-megabox-elem fs-13"
-                                                    >
-                                                        <span
-                                                            class="aiz-rounded-check flex-shrink-0 mt-1"
-                                                        ></span>
-                                                        <span
-                                                            class="flex-grow-1 ps-3 lh-1-5"
-                                                        >
-                                                            <span
-                                                                class="d-block fw-600"
-                                                                >{{
-                                                                    $t(
-                                                                        "express_delivery"
-                                                                    )
-                                                                }}</span
-                                                            >
-                                                            <span class="d-block">
-                                                                {{
-                                                                    $t("delivery_cost")
-                                                                }}:
-                                                                <span class="fw-600">{{
-                                                                    format_price(
-                                                                        expressDeliveryCost
-                                                                    )
-                                                                }}</span>
-                                                                <span
-                                                                    v-if="
-                                                                        is_addon_activated(
-                                                                            'multi_vendor'
-                                                                        )
-                                                                    "
-                                                                    >/{{
-                                                                        $t("shop")
-                                                                    }}</span
-                                                                >
-                                                            </span>
-                                                            <span class="d-block"
-                                                                >{{
-                                                                    $t(
-                                                                        "delivery_timing"
-                                                                    )
-                                                                }}:
-                                                                <span class="fw-600"
-                                                                    >{{
-                                                                        getExpressTime
-                                                                    }}
-                                                                    {{
-                                                                        $t("days")
-                                                                    }}</span
-                                                                ></span
-                                                            >
-                                                        </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </v-col>
-                                    </v-row>
-                                    <div
-                                        class="border red white--text rounded pa-4"
-                                        v-else
-                                    >
-                                        {{
-                                            $t(
-                                                "sorry_delivery_is_not_available_in_this_shipping_address"
-                                            )
-                                        }}
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </v-col>
@@ -683,6 +223,292 @@
                                                     format_price(totalPrice, false)
                                                 }}</v-col>
                                             </v-row>
+                                            <!-- ========== -->
+                                                <div v-if="selectedDeliveryType == 'home_delivery'">
+                                                    <address-dialog
+                                                        :show="addDialogShow"
+                                                        @close="addressDialogClosed"
+                                                        :old-address="addressSelectedForEdit"
+                                                    />
+                                                    <h3 class="opacity-80 mb-3 fs-20">
+                                                        {{ $t("shipping_address") }}
+                                                    </h3>
+                                                    <div class="mb-4">
+                                                        <div
+                                                            class="position-relative mb-3"
+                                                            v-for="address in getAddresses"
+                                                            :key="address.id"
+                                                        >
+                                                            <label class="aiz-megabox d-block">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="checkout_shipping"
+                                                                    v-model="selectedShippingAddressId"
+                                                                    :value="address.id"
+                                                                    :checked="address.default_shipping"
+                                                                    @change="
+                                                                        shippingAddressSelected(
+                                                                            address.id
+                                                                        )
+                                                                    "
+                                                                />
+                                                                <span
+                                                                    class="d-flex pa-3 aiz-megabox-elem fs-13 fw-600"
+                                                                >
+                                                                    <span
+                                                                        class="aiz-rounded-check flex-shrink-0 mt-1"
+                                                                    ></span>
+                                                                    <span
+                                                                        class="flex-grow-1 ps-3 opacity-80 lh-1-5"
+                                                                    >
+                                                                        <span class="d-block">
+                                                                            {{ address.full_name }}
+                                                                        </span>
+                                                                        <span class="d-block">
+                                                                            {{ address.email }}
+                                                                        </span>
+                                                                        <span class="d-block"
+                                                                            >{{ address.address }},
+                                                                            {{
+                                                                                address.postal_code
+                                                                            }}</span
+                                                                        >
+                                                                        <span class="d-block"
+                                                                            >{{ address.city }},
+                                                                            {{ address.state }},
+                                                                            {{ address.country }}</span
+                                                                        >
+                                                                        <span>{{ address.phone }}</span>
+                                                                    </span>
+                                                                </span>
+                                                            </label>
+                                                            <v-btn
+                                                                class="absolute-right-center me-3"
+                                                                color="primary"
+                                                                elevation="0"
+                                                                small
+                                                                @click="editAddress(address)"
+                                                            >
+                                                                {{ $t("change") }}
+                                                            </v-btn>
+                                                        </div>
+                                                        <v-btn
+                                                            class="border-dashed border-gray-300 primary--text fs-14"
+                                                            elevation="0"
+                                                            block
+                                                            x-large
+                                                            @click.stop="addDialogShow = true"
+                                                        >
+                                                            <i class="las la-plus"></i>
+                                                            <span>{{ $t("add_new_address") }}</span>
+                                                        </v-btn>
+                                                    </div>
+                                                    <h3 class="opacity-80 mb-3 fs-20">
+                                                        {{ $t("billing_address") }}
+                                                    </h3>
+                                                    <div class="mb-4">
+                                                        <div
+                                                            class="position-relative mb-3"
+                                                            v-for="address in getAddresses"
+                                                            :key="address.id"
+                                                        >
+                                                            <label class="aiz-megabox d-block">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="checkout_billing"
+                                                                    v-model="selectedBillingAddressId"
+                                                                    :value="address.id"
+                                                                    :checked="address.default_billing"
+                                                                />
+                                                                <span
+                                                                    class="d-flex pa-3 aiz-megabox-elem fs-13 fw-600"
+                                                                >
+                                                                    <span
+                                                                        class="aiz-rounded-check flex-shrink-0 mt-1"
+                                                                    ></span>
+                                                                    <span
+                                                                        class="flex-grow-1 ps-3 opacity-80 lh-1-5"
+                                                                    >
+                                                                        <span class="d-block"
+                                                                            >{{ address.address }},
+                                                                            {{
+                                                                                address.postal_code
+                                                                            }}</span
+                                                                        >
+                                                                        <span class="d-block"
+                                                                            >{{ address.city }},
+                                                                            {{ address.state }},
+                                                                            {{ address.country }}</span
+                                                                        >
+                                                                        <span>{{ address.phone }}</span>
+                                                                    </span>
+                                                                </span>
+                                                            </label>
+                                                            <v-btn
+                                                                class="absolute-right-center me-3"
+                                                                color="primary"
+                                                                elevation="0"
+                                                                small
+                                                                @click="editAddress(address)"
+                                                            >
+                                                                {{ $t("change") }}
+                                                            </v-btn>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- ================== -->
+                                                <div
+                                                    class="delivery-option"
+                                                    v-if="selectedDeliveryType == 'home_delivery'"
+                                                >
+                                                    <h3 class="opacity-80 mb-3 fs-20">
+                                                        {{ $t("delivery_option") }}
+                                                    </h3>
+                                                    <v-row v-if="selectedDeliveryOption !== ''">
+                                                        <v-col cols="12" sm="6">
+                                                            <div class="position-relative mb-3">
+                                                                <label class="aiz-megabox d-block">
+                                                                    <input
+                                                                        type="radio"
+                                                                        name="delivery_option"
+                                                                        v-model="selectedDeliveryOption"
+                                                                        value="standard"
+                                                                    />
+                                                                    <span
+                                                                        class="d-flex pa-3 aiz-megabox-elem fs-13"
+                                                                    >
+                                                                        <span
+                                                                            class="aiz-rounded-check flex-shrink-0 mt-1"
+                                                                        ></span>
+                                                                        <span
+                                                                            class="flex-grow-1 ps-3 lh-1-5"
+                                                                        >
+                                                                            <span
+                                                                                class="d-block fw-600"
+                                                                                >{{
+                                                                                    $t(
+                                                                                        "standard_delivery"
+                                                                                    )
+                                                                                }}</span
+                                                                            >
+                                                                            <span class="d-block">
+                                                                                {{
+                                                                                    $t("delivery_cost")
+                                                                                }}:
+                                                                                <span class="fw-600">{{
+                                                                                    format_price(
+                                                                                        standardDeliveryCost
+                                                                                    )
+                                                                                }}</span>
+                                                                                <span
+                                                                                    v-if="
+                                                                                        is_addon_activated(
+                                                                                            'multi_vendor'
+                                                                                        )
+                                                                                    "
+                                                                                    >/{{
+                                                                                        $t("shop")
+                                                                                    }}</span
+                                                                                >
+                                                                            </span>
+                                                                            <span class="d-block"
+                                                                                >{{
+                                                                                    $t(
+                                                                                        "delivery_timing"
+                                                                                    )
+                                                                                }}:
+                                                                                <span class="fw-600"
+                                                                                    >{{
+                                                                                        getStandardTime
+                                                                                    }}
+                                                                                    {{
+                                                                                        $t("days")
+                                                                                    }}</span
+                                                                                ></span
+                                                                            >
+                                                                        </span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </v-col>
+                                                        <v-col cols="12" sm="6">
+                                                            <div class="position-relative mb-3">
+                                                                <label class="aiz-megabox d-block">
+                                                                    <input
+                                                                        type="radio"
+                                                                        name="delivery_option"
+                                                                        v-model="selectedDeliveryOption"
+                                                                        value="express"
+                                                                    />
+                                                                    <span
+                                                                        class="d-flex pa-3 aiz-megabox-elem fs-13"
+                                                                    >
+                                                                        <span
+                                                                            class="aiz-rounded-check flex-shrink-0 mt-1"
+                                                                        ></span>
+                                                                        <span
+                                                                            class="flex-grow-1 ps-3 lh-1-5"
+                                                                        >
+                                                                            <span
+                                                                                class="d-block fw-600"
+                                                                                >{{
+                                                                                    $t(
+                                                                                        "express_delivery"
+                                                                                    )
+                                                                                }}</span
+                                                                            >
+                                                                            <span class="d-block">
+                                                                                {{
+                                                                                    $t("delivery_cost")
+                                                                                }}:
+                                                                                <span class="fw-600">{{
+                                                                                    format_price(
+                                                                                        expressDeliveryCost
+                                                                                    )
+                                                                                }}</span>
+                                                                                <span
+                                                                                    v-if="
+                                                                                        is_addon_activated(
+                                                                                            'multi_vendor'
+                                                                                        )
+                                                                                    "
+                                                                                    >/{{
+                                                                                        $t("shop")
+                                                                                    }}</span
+                                                                                >
+                                                                            </span>
+                                                                            <span class="d-block"
+                                                                                >{{
+                                                                                    $t(
+                                                                                        "delivery_timing"
+                                                                                    )
+                                                                                }}:
+                                                                                <span class="fw-600"
+                                                                                    >{{
+                                                                                        getExpressTime
+                                                                                    }}
+                                                                                    {{
+                                                                                        $t("days")
+                                                                                    }}</span
+                                                                                ></span
+                                                                            >
+                                                                        </span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </v-col>
+                                                    </v-row>
+                                                    <div
+                                                        class="border red white--text rounded pa-4"
+                                                        v-else
+                                                    >
+                                                        {{
+                                                            $t(
+                                                                "sorry_delivery_is_not_available_in_this_shipping_address"
+                                                            )
+                                                        }}
+                                                    </div>
+                                                </div>
                                         </div>
                                     </v-col>
                                 </v-row>
