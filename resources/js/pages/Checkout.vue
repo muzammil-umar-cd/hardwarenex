@@ -183,7 +183,7 @@
                                                 {{ $t("change") }}
                                             </v-btn>
                                         </div>
-                                        <v-btn
+                                        <!-- <v-btn
                                             class="border-dashed border-gray-300 primary--text fs-14"
                                             elevation="0"
                                             block
@@ -192,7 +192,7 @@
                                         >
                                             <i class="las la-plus"></i>
                                             <span>{{ $t("add_new_address") }}</span>
-                                        </v-btn>
+                                        </v-btn> -->
                                     </div>
                                     <h3 class="opacity-80 mb-3 fs-20">
                                         {{ $t("billing_address") }}
