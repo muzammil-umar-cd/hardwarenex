@@ -569,6 +569,7 @@
                                         <input
                                             type="radio"
                                             name="checkout_payment_method"
+                                            checked
                                             :checked="
                                                 selectedPaymentMethod &&
                                                 paymentMethod.code ==
@@ -581,13 +582,7 @@
                                         <span
                                             class="d-block pa-3 aiz-megabox-elem text-center"
                                         >
-                                            <img
-                                                :src="paymentMethod.img"
-                                                class="img-fluid w-100"
-                                            />
-                                            <span class="fw-700 fs-14">{{
-                                                paymentMethod.name
-                                            }}</span>
+                                            <span class="fw-700 fs-14">Credit Card</span>
                                         </span>
                                     </label>
                                 </v-col>
