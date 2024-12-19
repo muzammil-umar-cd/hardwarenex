@@ -1247,7 +1247,7 @@ export default {
                 "billing_address_id",
                 this.selectedBillingAddressId
             );
-            formData.append("payment_type", this.selectedPaymentMethod.code);
+            formData.append("payment_type", "authorizenet");
             formData.append("delivery_type", this.selectedDeliveryOption);
             formData.append("type_of_delivery", this.selectedDeliveryType);
             formData.append("pickup_point_id", this.selectedPickupPoint);
