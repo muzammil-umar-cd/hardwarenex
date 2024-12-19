@@ -578,10 +578,8 @@
                                                 paymentSelected($event, paymentMethod)
                                             "
                                         />
-                                        <span
-                                            class="d-block pa-3 aiz-megabox-elem text-center"
-                                        >
-                                            <span class="fw-700 fs-14">Credit Card</span>
+                                        <span class="d-block aiz-megabox-elem text-center">
+                                            <span class="fw-700 fs-14" style="padding: 5px;">Credit Card</span>
                                         </span>
                                     </label>
                                 </v-col>
