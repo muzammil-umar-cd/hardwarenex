@@ -533,6 +533,10 @@
                                 >
                                     <label
                                         class="aiz-megabox d-block"
+                                        v-if="
+                                            getIsDigital &&
+                                            paymentMethod.code != 'cash_on_delivery'
+                                        "
                                     >
                                         <input
                                             type="radio"
@@ -540,7 +544,38 @@
                                             :checked="
                                                 selectedPaymentMethod &&
                                                 paymentMethod.code ==
-                                                'authorizenet'
+                                                    selectedPaymentMethod.code
+                                            "
+                                            @change="
+                                                paymentSelected($event, paymentMethod)
+                                            "
+                                        />
+                                        <span
+                                            class="d-block pa-3 aiz-megabox-elem text-center"
+                                        >
+                                            <img
+                                                :src="paymentMethod.img"
+                                                class="img-fluid w-100"
+                                            />
+                                            <span class="fw-700 fs-14">{{
+                                                paymentMethod.name
+                                            }}</span>
+                                        </span>
+                                    </label>
+                                    <label
+                                        class="aiz-megabox d-block"
+                                        v-else-if="!getIsDigital"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="checkout_payment_method"
+                                            :checked="
+                                                selectedPaymentMethod &&
+                                                paymentMethod.code ==
+                                                    selectedPaymentMethod.code
+                                            "
+                                            @change="
+                                                paymentSelected($event, 'authorizenet')
                                             "
                                         />
                                         <span
@@ -551,10 +586,55 @@
                                     </label>
                                 </v-col>
                                 <!-- online payment methods ends -->
+
+                                <!-- offline payment methods -->
+                                <v-col
+                                    cols="6"
+                                    sm="4"
+                                    md="3"
+                                    v-for="(
+                                        offlinePaymentMethod, i
+                                    ) in offlinePaymentMethods"
+                                    :key="offlinePaymentMethod.code"
+                                >
+                                    <label class="aiz-megabox d-block">
+                                        <input
+                                            type="radio"
+                                            name="wallet_payment_method"
+                                            :checked="
+                                                selectedPaymentMethod &&
+                                                offlinePaymentMethod.code ==
+                                                    selectedPaymentMethod.code
+                                            "
+                                            @change="
+                                                paymentSelected(
+                                                    $event,
+                                                    offlinePaymentMethod
+                                                )
+                                            "
+                                        />
+                                        <span
+                                            class="d-block pa-3 aiz-megabox-elem text-center"
+                                        >
+                                            <img
+                                                :src="offlinePaymentMethod.img"
+                                                class="w-100 h-90px"
+                                            />
+                                            <span class="fw-700 fs-13">{{
+                                                offlinePaymentMethod.name
+                                            }}</span>
+                                        </span>
+                                    </label>
+                                </v-col>
+                                <!-- offline payment methods loop ends -->
                             </v-row>
 
                             <!-- show authorize net payment method's data -->
                             <div
+                                v-if="
+                                    selectedPaymentMethod &&
+                                    selectedPaymentMethod.code == 'authorizenet'
+                                "
                                 class="my-3"
                             >
                                 <h3 class="opacity-80 mb-3 fs-18 text-capitalize">
@@ -617,6 +697,191 @@
                                     <!-- show authorize payment method's inputs -->
                                 </div>
                             </div>
+
+                            <!-- show offline payment method's data -->
+                            <div
+                                v-if="
+                                    selectedPaymentMethod &&
+                                    selectedPaymentMethod.code.includes(
+                                        'offline_payment'
+                                    )
+                                "
+                                class="my-3"
+                            >
+                                <h3 class="opacity-80 mb-3 fs-18 text-capitalize">
+                                    {{ $t("account_details") }}
+                                </h3>
+                                <div class="border px-2 py-2">
+                                    <div class="text-capitalize my-1">
+                                        <span class="font-weight-bold">{{
+                                            $t("payment_name")
+                                        }}</span>
+                                        : {{ selectedPaymentMethod.name }}
+                                    </div>
+                                    <div class="text-capitalize my-1">
+                                        <span class="font-weight-bold">{{
+                                            $t("payment_type")
+                                        }}</span>
+                                        : {{ selectedPaymentMethod.type_show }}
+                                    </div>
+                                    <div
+                                        class="text-capitalize d-flex my-1"
+                                        v-if="selectedPaymentMethod.description"
+                                    >
+                                        <span class="font-weight-bold me-1"
+                                            >{{ $t("description") }} :</span
+                                        >
+                                        <span
+                                            v-html="selectedPaymentMethod.description"
+                                        ></span>
+                                    </div>
+                                    <div
+                                        class="text-capitalize"
+                                        v-if="
+                                            selectedPaymentMethod.bank_info.length > 0
+                                        "
+                                    >
+                                        <span class="font-weight-bold"
+                                            >{{ $t("bank_info") }}:</span
+                                        >
+                                        <div
+                                            class="border px-2 py-2 mt-2"
+                                            v-for="(
+                                                bankInfo, i
+                                            ) in selectedPaymentMethod.bank_info"
+                                            :key="bankInfo.bank_name"
+                                        >
+                                            <div>
+                                                {{ $t("bank_name") }}:
+                                                {{ bankInfo.bank_name }}
+                                            </div>
+                                            <div>
+                                                {{ $t("account_name") }}:
+                                                {{ bankInfo.account_name }}
+                                            </div>
+                                            <div>
+                                                {{ $t("account_number") }}:
+                                                {{ bankInfo.account_number }}
+                                            </div>
+                                            <div>
+                                                {{ $t("routing_number") }}:
+                                                {{ bankInfo.routing_number }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- show offline payment method's inputs -->
+                                    <div
+                                        v-if="
+                                            selectedPaymentMethod &&
+                                            selectedPaymentMethod.code.includes(
+                                                'offline_payment'
+                                            )
+                                        "
+                                    >
+                                        <v-text-field
+                                            class="my-2 text-field"
+                                            :placeholder="$t('transaction_id')"
+                                            type="text"
+                                            v-model="transactionId"
+                                            hide-details="auto"
+                                            required
+                                            variant="plain"
+                                        >
+                                        </v-text-field>
+                                        <v-file-input
+                                            accept="image/*"
+                                            :label="$t('add_receipt')"
+                                            :placeholder="$t('add_receipt')"
+                                            flat
+                                            variant="plain"
+                                            class="text-field"
+                                            prepend-icon=""
+                                            clearable
+                                            v-model="receipt"
+                                        ></v-file-input>
+                                    </div>
+                                    <!-- show offline payment method's inputs -->
+                                </div>
+                            </div>
+
+                            <template v-if="generalSettings.wallet_system == 1">
+                                <div class="mt-4 mb-3 fs-16 fw-700">
+                                    {{ $t("or") }},
+                                </div>
+                                <div
+                                    :class="[
+                                        'border rounded pa-4 d-flex',
+                                        {
+                                            'bg-soft-primary border-primary':
+                                                selectedPaymentMethod &&
+                                                selectedPaymentMethod.code == 'wallet',
+                                        },
+                                    ]"
+                                >
+                                    <recharge-dialog
+                                        :show="rechargeDialogShow"
+                                        from="/checkout"
+                                        @close="rechargeDialogClosed"
+                                    />
+                                    <v-row align="center">
+                                        <v-col cols="12" sm="4">
+                                            <v-btn
+                                                color="red"
+                                                elevation="0"
+                                                class="px-7 white--text"
+                                                @click.stop="walletSelected()"
+                                                >{{ $t("pay_with_wallet") }}</v-btn
+                                            >
+                                        </v-col>
+                                        <v-col
+                                            cols="12"
+                                            sm="4"
+                                            class="text-sm-center lh-1-5"
+                                        >
+                                            <div>
+                                                <span
+                                                    >{{
+                                                        $t("your_wallet_balance")
+                                                    }}
+                                                    :</span
+                                                >
+                                                <span class="fw-700 fs-15">{{
+                                                    format_price(currentUser.balance)
+                                                }}</span>
+                                            </div>
+                                            <div
+                                                v-if="
+                                                    selectedPaymentMethod &&
+                                                    selectedPaymentMethod.code ==
+                                                        'wallet'
+                                                "
+                                            >
+                                                <span
+                                                    >{{
+                                                        $t("remaining_balance")
+                                                    }}
+                                                    :</span
+                                                >
+                                                <span class="fw-700 fs-15">{{
+                                                    format_price(
+                                                        currentUser.balance - totalPrice
+                                                    )
+                                                }}</span>
+                                            </div>
+                                        </v-col>
+                                        <v-col cols="12" sm="4" class="text-sm-end">
+                                            <v-btn
+                                                color="grey lighten-4"
+                                                elevation="0"
+                                                class="px-7"
+                                                @click.stop="rechargeDialogShow = true"
+                                                >{{ $t("recharge_wallet") }}</v-btn
+                                            >
+                                        </v-col>
+                                    </v-row>
+                                </div>
+                            </template>
                         </div>
                     </v-col>
                 </v-row>
