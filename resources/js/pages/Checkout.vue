@@ -569,8 +569,14 @@
                                         <input
                                             type="radio"
                                             name="checkout_payment_method"
-                                            v-model="selectedPaymentMethod.code"
-                                            :value="paymentMethod.code"
+                                            :checked="
+                                                selectedPaymentMethod &&
+                                                paymentMethod.code ==
+                                                    selectedPaymentMethod.code
+                                            "
+                                            @change="
+                                                paymentSelected($event, paymentMethod)
+                                            "
                                         />
                                         <span
                                             class="d-block pa-3 aiz-megabox-elem text-center"
@@ -969,7 +975,7 @@ export default {
             checkoutLoading: false,
             selectedShippingAddressId: null,
             selectedBillingAddressId: null,
-            selectedPaymentMethod: null,
+            selectedPaymentMethod: "authorizenet",
             selectedDeliveryOption: "",
             selectedDeliveryType: "",
             standardDeliveryCost: 0,
