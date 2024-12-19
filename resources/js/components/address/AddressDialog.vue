@@ -159,7 +159,7 @@
                     :loading="adding"
                     :disabled="adding"
                 >{{ $t('update') }}</v-btn>
-                <!-- <v-btn
+                <v-btn
                     v-else
                     elevation="0"
                     type="submit"
@@ -167,7 +167,7 @@
                     @click="addNewAddress"
                     :loading="adding"
                     :disabled="adding"
-                >{{ $t('add_new') }}</v-btn> -->
+                >{{ $t('add_new') }}</v-btn>
             </div>
         </v-form>
     </div>
