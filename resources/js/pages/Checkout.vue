@@ -1004,26 +1004,7 @@ export default {
                 "Nov",
                 "Dec",
             ],
-            dateloop: [
-                "2025",
-                "2026",
-                "2027",
-                "2028",
-                "2029",
-                "2030",
-                "2031",
-                "2032",
-                "2033",
-                "2034",
-                "2035",
-                "2036",
-                "2037",
-                "2038",
-                "2039",
-                "2040",
-                "2041",
-                "2042",
-            ],
+            dateloop: [],
         };
     },
     components: {
@@ -1346,6 +1327,8 @@ export default {
             dateArray.push(i);
         }
         this.dateLoop = dateArray;
+        console.log(dateArray);
+        
     },
     mounted() {
         this.$refs.homeDeliveryRadio.click();
