@@ -579,6 +579,7 @@
                                             "
                                         />
                                         <span class="d-block pa-3 aiz-megabox-elem text-center">
+                                            <img src="/public/assets/img/payment_icons.png">
                                             <span class="fw-700 fs-14">Credit Card</span>
                                         </span>
                                     </label>
