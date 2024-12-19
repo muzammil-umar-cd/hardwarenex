@@ -678,7 +678,7 @@
                                         required
                                     >
                                         <template v-slot:prepend-item>
-                                            <v-list-item disabled>
+                                            <v-list-item disabled selected>
                                                 <v-list-item-title>{{ $t('select_month') }}</v-list-item-title>
                                             </v-list-item>
                                         </template>
