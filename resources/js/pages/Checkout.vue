@@ -975,7 +975,7 @@ export default {
             checkoutLoading: false,
             selectedShippingAddressId: null,
             selectedBillingAddressId: null,
-            selectedPaymentMethod: "authorizenet",
+            selectedPaymentMethod: null,
             selectedDeliveryOption: "",
             selectedDeliveryType: "",
             standardDeliveryCost: 0,
@@ -1101,7 +1101,7 @@ export default {
             this.rechargeDialogShow = true;
         },
         paymentSelected(event, paymentMethod) {
-            this.selectedPaymentMethod = "authorizenet";
+            this.selectedPaymentMethod = paymentMethod;
         },
         walletSelected() {
             if (this.currentUser.balance >= this.totalPrice) {
