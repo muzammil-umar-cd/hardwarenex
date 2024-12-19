@@ -294,7 +294,7 @@ export default {
             if(res.data.success){
                 this.addAddress(res.data.data)
                 this.snack({ message: res.data.message });
-                this.resetData();
+                // this.resetData();
                 this.closeDialog();                
             }else{
                 this.snack({
@@ -315,7 +315,7 @@ export default {
             if(res.data.success){
                 this.setAddresses(res.data.data)
                 this.snack({ message: res.data.message });
-                this.closeDialog();                
+                // this.closeDialog();                
             }else{
                 this.snack({
                     message: this.$i18n.t("something_went_wrong"),
@@ -324,19 +324,19 @@ export default {
             }
             this.adding = false;
         },
-        resetData(){
-            this.form.id = null;
-            this.full_name = "";
-            this.email_address = "";
-            this.form.address = "";
-            this.form.postal_code = "";
-            this.form.country = "";
-            this.form.state = "";
-            this.form.city = "";
-            this.form.phone = "";
+        // resetData(){
+        //     this.form.id = null;
+        //     this.full_name = "";
+        //     this.email_address = "";
+        //     this.form.address = "";
+        //     this.form.postal_code = "";
+        //     this.form.country = "";
+        //     this.form.state = "";
+        //     this.form.city = "";
+        //     this.form.phone = "";
 
-            this.v$.form.$reset();
-        },
+        //     this.v$.form.$reset();
+        // },
         async processOldAddress(oldVal){
             let oldAddress = { ...oldVal }
 
