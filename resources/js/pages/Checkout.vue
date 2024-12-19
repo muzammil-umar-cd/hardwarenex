@@ -667,43 +667,26 @@
                                         outlined
                                     >
                                     </v-text-field>
-                                    <v-select
-                                        :items="months"
-                                        v-model="authorizeNet.expiration_month"
-                                        variant="plain"
-                                        class="my-2"
-                                        placeholder="$t('select_month')"
-                                        hide-details="auto"
-                                        outlined
-                                        required
-                                    >
-                                        <template v-slot:prepend-item>
-                                            <v-list-item disabled selected>
-                                                <v-list-item-title>{{ $t('select_month') }}</v-list-item-title>
-                                            </v-list-item>
-                                        </template>
-                                    </v-select>
-
-                                    <!-- <v-autocomplete
+                                    <v-autocomplete
                                         variant="plain"
                                         v-model="authorizeNet.expiration_month"
                                         :items="months"
                                         placeholder="$t('select_month')"
                                         hide-details="auto"
-                                        class="mb-3"
+                                        class="mb-3 form-control"
                                         outlined
                                         allow-overflow
                                         dense
                                         required
                                         :label="$t('select_month')"
-                                    ></v-autocomplete> -->
+                                    ></v-autocomplete>
                                     <v-autocomplete
                                         variant="plain"
                                         v-model="authorizeNet.expiration_year"
                                         :items="dateLoop"
                                         placeholder="$t('select_year')"
                                         hide-details="auto"
-                                        class="mb-3"
+                                        class="mb-3 form-control"
                                         outlined
                                         allow-overflow
                                         dense
