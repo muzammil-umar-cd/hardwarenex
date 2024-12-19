@@ -575,7 +575,7 @@
                                                     selectedPaymentMethod.code
                                             "
                                             @change="
-                                                paymentSelected($event, 'authorizenet')
+                                                paymentSelected($event, paymentMethod)
                                             "
                                         />
                                         <span
@@ -1101,7 +1101,7 @@ export default {
             this.rechargeDialogShow = true;
         },
         paymentSelected(event, paymentMethod) {
-            this.selectedPaymentMethod = 'authorizenet';
+            this.selectedPaymentMethod = paymentMethod;
         },
         walletSelected() {
             if (this.currentUser.balance >= this.totalPrice) {
@@ -1247,7 +1247,7 @@ export default {
                 "billing_address_id",
                 this.selectedBillingAddressId
             );
-            formData.append("payment_type", "authorizenet");
+            formData.append("payment_type", this.selectedPaymentMethod.code);
             formData.append("delivery_type", this.selectedDeliveryOption);
             formData.append("type_of_delivery", this.selectedDeliveryType);
             formData.append("pickup_point_id", this.selectedPickupPoint);
