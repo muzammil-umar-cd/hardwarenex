@@ -574,9 +574,6 @@
                                                 paymentMethod.code ==
                                                     selectedPaymentMethod.code
                                             "
-                                            @change="
-                                                paymentSelected($event, paymentMethod)
-                                            "
                                         />
                                         <span
                                             class="d-block pa-3 aiz-megabox-elem text-center"
