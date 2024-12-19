@@ -116,6 +116,9 @@
                                 </div>
                                 <!-- ========== -->
                                 <div v-if="selectedDeliveryType == 'home_delivery'">
+                                    <h3 class="opacity-80 mb-3 fs-20">
+                                        Shipping & Billing Info
+                                    </h3>
                                     <address-dialog
                                         :show="addDialogShow"
                                         @close="addressDialogClosed"
