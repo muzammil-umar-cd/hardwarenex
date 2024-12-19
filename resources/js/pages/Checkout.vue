@@ -672,7 +672,7 @@
                                         v-model="authorizeNet.expiration_month"
                                         variant="plain"
                                         class="my-2"
-                                        :placeholder="$t('select_month')"
+                                        placeholder="$t('select_month')"
                                         hide-details="auto"
                                         outlined
                                         required
@@ -684,7 +684,7 @@
                                         </template>
                                     </v-select>
 
-                                    <v-autocomplete
+                                    <!-- <v-autocomplete
                                         variant="plain"
                                         v-model="authorizeNet.expiration_month"
                                         :items="months"
@@ -696,7 +696,7 @@
                                         dense
                                         required
                                         :label="$t('select_month')"
-                                    ></v-autocomplete>
+                                    ></v-autocomplete> -->
                                     <v-autocomplete
                                         variant="plain"
                                         v-model="authorizeNet.expiration_year"
