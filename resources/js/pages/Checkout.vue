@@ -581,7 +581,7 @@
                                         <span class="d-block pa-3 aiz-megabox-elem text-center">
                                             <span class="fw-700 fs-15">Credit Card</span>
                                             <br>
-                                            <img src="/public/build/assets/payment_icons-4b936d6d.png" style="height: auto;width: 45%;">
+                                            <img src="/public/assets/img/payment_icons.png" style="height: auto;width: 45%;">
                                         </span>
                                     </label>
                                 </v-col>
@@ -674,7 +674,7 @@
                                         :items="months"
                                         placeholder="$t('select_month')"
                                         hide-details="auto"
-                                        class="mb-3 text-field"
+                                        class="mb-3"
                                         outlined
                                         allow-overflow
                                         dense
@@ -687,7 +687,7 @@
                                         :items="dateLoop"
                                         placeholder="$t('select_year')"
                                         hide-details="auto"
-                                        class="mb-3 text-field"
+                                        class="mb-3"
                                         outlined
                                         allow-overflow
                                         dense
