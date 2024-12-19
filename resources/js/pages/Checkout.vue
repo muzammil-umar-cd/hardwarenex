@@ -572,10 +572,7 @@
                                             :checked="
                                                 selectedPaymentMethod &&
                                                 paymentMethod.code ==
-                                                    selectedPaymentMethod.code
-                                            "
-                                            :value="
-                                                paymentSelected($event, 'authorizenet')
+                                                'authorizenet'
                                             "
                                         />
                                         <span
