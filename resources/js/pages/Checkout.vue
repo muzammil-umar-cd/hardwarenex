@@ -539,7 +539,6 @@
                                             name="checkout_payment_method"
                                             checked="true"
                                             :checked="
-                                                selectedPaymentMethod &&
                                                 paymentMethod.code ==
                                                 'authorizenet'
                                             "
