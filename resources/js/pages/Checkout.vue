@@ -534,17 +534,20 @@
                                     <label
                                         class="aiz-megabox d-block"
                                     >
-                                        <!-- <input
+                                        <input
                                             type="radio"
                                             name="checkout_payment_method"
-                                            checked="true"
                                             :checked="
                                                 selectedPaymentMethod &&
                                                 paymentMethod.code ==
                                                 'authorizenet'
                                             "
-                                        /> -->
-                                        <span class="fw-700 fs-14">Credit Card</span>
+                                        />
+                                        <span
+                                            class="d-block pa-3 aiz-megabox-elem text-center"
+                                        >
+                                            <span class="fw-700 fs-14">Credit Card</span>
+                                        </span>
                                     </label>
                                 </v-col>
                                 <!-- online payment methods ends -->
