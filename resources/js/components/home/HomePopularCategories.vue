@@ -39,7 +39,8 @@
           <swiper-slide
             v-for="(category, i) in categories"
             :key="i"
-            class=" hover-effect"
+            class=" hover-effect-category"
+            style="width: 150.857px; padding: 25px 15px 15px; margin-right: 25px 15px 15px 15px !important;"
           >
             <router-link
               class="rounded pa-2 pa-md-4 border text-center d-block text-reset"
