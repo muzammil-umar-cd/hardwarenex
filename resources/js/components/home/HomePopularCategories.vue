@@ -42,7 +42,7 @@
             class=""
           >
             <router-link
-              class="rounded pa-2 pa-md-4 border text-center d-block text-reset"
+              class="rounded pa-2 pa-md-4 border text-center d-block text-reset hover-effect"
               :to="{ name: 'Category', params: {categorySlug: category.slug}}"
             >
               <img

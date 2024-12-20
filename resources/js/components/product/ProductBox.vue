@@ -28,7 +28,7 @@
             </div>
             <router-link
               :to="{ name: 'ProductDetails', params: {slug: productDetails.slug}}"
-              class="text-reset d-block lh-0 text-center"
+              class="text-reset d-block lh-0 text-center hover-effect"
             >
               <img
                 :src="productDetails.thumbnail_image"

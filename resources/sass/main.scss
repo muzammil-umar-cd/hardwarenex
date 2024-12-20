@@ -4355,3 +4355,8 @@ li.v-pagination__item.v-pagination__item--is-active {
 del .fs-20 {
     font-size: 0.75rem !important;
   }
+
+.hover-effect:hover{
+    box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
+  transform: scale(1.05,1.05);
+}
