@@ -4,7 +4,7 @@
             <div class="d-flex align-center">
                 <div class="logo">
                     <router-link :to="{ name: 'Home' }" class="d-block lh-0">
-                        <img :src="appLogo" :alt="appName" height="40" />
+                        <img :src="appLogo" :alt="appName" height="70" />
                     </router-link>
                 </div>
                 <v-spacer />
