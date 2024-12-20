@@ -300,11 +300,7 @@ class OrderController extends Controller
 
 
         $combined_order = new CombinedOrder;
-        if(auth('api')->user()){
-            $combined_order->user_id = $user->id;
-        }else{
-            $combined_order->user_id = 0;
-        }
+        $combined_order->user_id = $user->id;
         $combined_order->code = date('Ymd-His') . rand(10, 99);
         $combined_order->shipping_address = json_encode($shippingAddress);
         $combined_order->billing_address = json_encode($billingAddress);
@@ -343,24 +339,15 @@ class OrderController extends Controller
                     $shop_total -= $shop_coupon_discount;
 
                     $coupon_usage = new CouponUsage();
-                    if(auth('api')->user()){
-                        $coupon_usage->user_id = $user->id;
-                    }else{
-                        $coupon_usage->user_id = 0;
-                    }
+                    $coupon_usage->user_id = $user->id;
                     $coupon_usage->coupon_id = $coupon->id;
                     $coupon_usage->save();
                 }
             }
 
-            if(auth('api')->user()){
-                $user_id = auth('api')->user()->id;
-            }else{
-                $user_id = 0;
-            }
             // shop order place
             $order = Order::create([
-                'user_id' => $user_id,
+                'user_id' => auth('api')->user()->id,
                 'shop_id' => $shop_id,
                 'combined_order_id' => $combined_order->id,
                 'code' => $package_number,
@@ -478,7 +465,7 @@ class OrderController extends Controller
             $user->save();
 
             $wallet = new Wallet;
-            $wallet->user_id = $user_id;
+            $wallet->user_id = $user->id;
             $wallet->amount = $combined_order->grand_total;
             $wallet->type = 'Deducted';
             $wallet->details = 'Order Placed. Order Code ' . $combined_order->code;
