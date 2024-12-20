@@ -124,7 +124,7 @@
                                         @close="addressDialogClosed"
                                         :old-address="addressSelectedForEdit"
                                     />
-                                    <h3 class="opacity-80 mb-3 fs-20">
+                                    <h3 v-if="getAddresses && getAddresses.length" class="opacity-80 mb-3 fs-20">
                                         {{ $t("shipping_address") }}
                                     </h3>
                                     <div class="mb-4">
@@ -197,7 +197,7 @@
                                             <span>{{ $t("add_new_address") }}</span>
                                         </v-btn> -->
                                     </div>
-                                    <h3 class="opacity-80 mb-3 fs-20">
+                                    <h3 v-if="getAddresses && getAddresses.length" class="opacity-80 mb-3 fs-20">
                                         {{ $t("billing_address") }}
                                     </h3>
                                     <div class="mb-4">
