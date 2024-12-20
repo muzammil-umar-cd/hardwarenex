@@ -35,6 +35,7 @@
           :autoplay=carouselOption.autoplay
           :modules="modules"
           :breakpoints= carouselOption.breakpoints
+          style="padding: 10px"
         >
           <swiper-slide
             v-for="(category, i) in categories"
