@@ -16,6 +16,7 @@
                 :space-between=carouselOption.spaceBetween
                 :breakpoints= carouselOption.breakpoints
                 :modules="modules"
+                style="transition: 0.3s;"
                 >
                     <swiper-slide v-for="(product, i) in products" :key="i" class=" hover-effect">
                         <product-box :product-details="product" :is-loading="loading" box-style="three" />

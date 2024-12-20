@@ -16,6 +16,7 @@
                 :breakpoints= carouselOption.breakpoints
                 :grid="{fill: 'row' , rows: 2}"
                 :modules="modules"
+                style="transition: 0.3s;"
                 >
                     <swiper-slide v-for="(product, i) in products" :key="i" class=" hover-effect">
                         <product-box :product-details="product" :is-loading="loading" box-style="four"/>

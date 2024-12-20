@@ -27,6 +27,7 @@
           :slides-per-view=carouselOption.slidesPerView
           :space-between=carouselOption.spaceBetween
           :breakpoints= carouselOption.breakpoints
+          style="transition: 0.3s;"
         >
           <swiper-slide
             v-for="(product, i) in products"
