@@ -13,6 +13,7 @@
       <v-row
         align="center"
         no-gutters
+        class=" hover-effect"
         :class="[{'flex-nowrap': boxStyle != 'one'}]"
       >
         <v-col
@@ -28,7 +29,7 @@
             </div>
             <router-link
               :to="{ name: 'ProductDetails', params: {slug: productDetails.slug}}"
-              class="text-reset d-block lh-0 text-center hover-effect"
+              class="text-reset d-block lh-0 text-center"
             >
               <img
                 :src="productDetails.thumbnail_image"
