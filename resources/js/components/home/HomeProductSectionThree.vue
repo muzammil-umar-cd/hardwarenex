@@ -14,6 +14,7 @@
                 :slides-per-view=carouselOption.slidesPerView
                 :space-between=carouselOption.spaceBetween
                 :breakpoints= carouselOption.breakpoints
+                style="padding: 10px;"
                 >
                     <swiper-slide>
                         <dynamic-link :to="banner.link" append-class="text-reset d-block lh-0" >
