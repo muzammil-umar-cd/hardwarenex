@@ -4,7 +4,8 @@
       <div class="border-bottom pb-7 border-gray-800 mb-6">
         <img
           :src="data.footer_logo"
-          class="mw-100"
+          class=""
+          style="width: 25%;"
         />
       </div>
       <v-row>
