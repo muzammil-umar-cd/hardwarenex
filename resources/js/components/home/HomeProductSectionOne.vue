@@ -31,7 +31,7 @@
           <swiper-slide
             v-for="(product, i) in products"
             :key="i"
-            class=""
+            class=" hover-effect"
           >
             <product-box
               :product-details="product"

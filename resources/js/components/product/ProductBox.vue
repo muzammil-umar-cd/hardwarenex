@@ -13,7 +13,6 @@
       <v-row
         align="center"
         no-gutters
-        class=" hover-effect"
         :class="[{'flex-nowrap': boxStyle != 'one'}]"
       >
         <v-col
