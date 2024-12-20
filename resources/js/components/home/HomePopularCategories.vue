@@ -39,10 +39,10 @@
           <swiper-slide
             v-for="(category, i) in categories"
             :key="i"
-            class=""
+            class=" hover-effect"
           >
             <router-link
-              class="rounded pa-2 pa-md-4 border text-center d-block text-reset hover-effect"
+              class="rounded pa-2 pa-md-4 border text-center d-block text-reset"
               :to="{ name: 'Category', params: {categorySlug: category.slug}}"
             >
               <img
