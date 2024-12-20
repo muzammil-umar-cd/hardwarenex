@@ -20,7 +20,7 @@
                             <img :src="banner.img" class="img-fit w-100 h-333px border rounded" />
                         </dynamic-link>
                     </swiper-slide>
-                    <swiper-slide v-for="(product, i) in products" :key="i" >
+                    <swiper-slide v-for="(product, i) in products" :key="i" class=" hover-effect">
                         <product-box :product-details="product" :is-loading="loading" />
                     </swiper-slide>
                 </swiper>
