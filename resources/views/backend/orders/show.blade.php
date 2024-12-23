@@ -12,13 +12,16 @@
                     <div class="flex-grow-1 row">
                         <div class="col-md mb-3">
                             <div>
+                            @php
+                                $shipping_user = json_decode($order->shipping_address);
+                            @endphp
                                 <div class="fs-15 fw-600 mb-2">{{ translate('Customer info') }}</div>
                                 <div><span class="opacity-80 mr-2 ml-0">{{ translate('Name') }}:</span>
-                                    {{ $order->user->name ?? $shipping_address->full_name }}</div>
+                                    {{ $order->user->name ?? $shipping_user->full_name }}</div>
                                 <div><span class="opacity-80 mr-2 ml-0">{{ translate('Email') }}:</span>
-                                    {{ $order->user->email ?? $shipping_address->email }}</div>
+                                    {{ $order->user->email ?? $shipping_user->email }}</div>
                                 <div><span class="opacity-80 mr-2 ml-0">{{ translate('Phone') }}:</span>
-                                    {{ $order->user->phone ?? $shipping_address->phone }}</div>
+                                    {{ $order->user->phone ?? $shipping_user->phone }}</div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-4">
