@@ -33,9 +33,13 @@ use App\Http\Controllers\BulkOrderController;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
 
-    Route::group(['prefix' => 'payment', 'middleware' => 'auth:api'], function () {
+    Route::group(['prefix' => 'payment'], function () {
         Route::any('/{gateway}/pay', [PaymentController::class, 'payment_initialize']);
     });
+    
+    // Route::group(['prefix' => 'payment', 'middleware' => 'auth:api'], function () {
+    //     Route::any('/{gateway}/pay', [PaymentController::class, 'payment_initialize']);
+    // });
 
     Route::group(['prefix' => 'auth'], function () {
         // banned user
