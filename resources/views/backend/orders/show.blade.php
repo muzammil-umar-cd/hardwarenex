@@ -14,6 +14,7 @@
                             <div>
                             @php
                                 $shipping_user = json_decode($order->shipping_address);
+                                dd($shipping_user);
                             @endphp
                                 <div class="fs-15 fw-600 mb-2">{{ translate('Customer info') }}</div>
                                 <div><span class="opacity-80 mr-2 ml-0">{{ translate('Name') }}:</span>
