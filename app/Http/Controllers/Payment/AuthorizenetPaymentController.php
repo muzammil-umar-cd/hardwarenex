@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\CombinedOrder;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
+use Illuminate\Support\Facades\Request as FacadeRequest;
 
 class AuthorizenetPaymentController extends Controller
 {
@@ -19,6 +21,7 @@ class AuthorizenetPaymentController extends Controller
     public function index()
     {
         $user = User::where('id', session('user_id'))->first();
+        $get_address_data = Address::where('ip_address','=',FacadeRequest::ip())->first();
         $invoiceNumber = '';
         $lastName = '';
         $address = '';
@@ -30,15 +33,27 @@ class AuthorizenetPaymentController extends Controller
             $combined_order = CombinedOrder::where('code', session('order_code'))->first();
             $amount = round($combined_order->grand_total);
             $invoiceNumber = time() . $combined_order->id;
-            $lastName = $user->name;
+            if(auth('api')->user()){
+                $lastName = $user->name;
+            }else{
+                $lastName = $get_address_data->full_name;
+            }
         } elseif (session('payment_type') == 'wallet_payment') {
             $invoiceNumber = rand(10000, 99999);
             $amount = session('amount');
-            $lastName = $user->name;
+            if(auth('api')->user()){
+                $lastName = $user->name;
+            }else{
+                $lastName = $get_address_data->full_name;
+            }
         } elseif (session('payment_type') == 'seller_package_payment') {
             $invoiceNumber = rand(10000, 99999);
             $amount = session('amount');
-            $lastName = $user->name;
+            if(auth('api')->user()){
+                $lastName = $user->name;
+            }else{
+                $lastName = $get_address_data->full_name;
+            }
         }
 
         /* Create a merchantAuthenticationType object with authentication details
@@ -77,8 +92,13 @@ class AuthorizenetPaymentController extends Controller
 
         // Set the customer's identifying information
         $customerData = new AnetAPI\CustomerDataType();
-        $customerData->setId($user->id);
-        $customerData->setEmail($user->email);
+        if(auth('api')->user()){
+            $customerData->setId($user->id);
+            $customerData->setEmail($user->email);
+        }else{
+            $customerData->setId(0);
+            $customerData->setEmail($get_address_data->email);
+        }
 
         // Create a TransactionRequestType object and add the previous objects to it
         $transactionRequestType = new AnetAPI\TransactionRequestType();
