@@ -1283,7 +1283,7 @@ export default {
                             paymentMethod: res.data.payment_method,
                             paymentType: "cart_payment",
                             userId: this.currentUser.id,
-                            oderCode: res.data.order_code,
+                            orderCode: res.data.order_code,
 
                             // Authorize Net
                             card_number: this.authorizeNet.card_number,
