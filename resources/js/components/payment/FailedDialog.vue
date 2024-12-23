@@ -39,14 +39,16 @@ export default {
             this.dialog = false;
         },
         tryAgain() {
-            this.$parent.$refs.makePayment.pay({
-                requestedFrom: '/checkout',
-                paymentAmount: 0,
-                paymentMethod: this.paymentMethod,
-                paymentType: 'cart_payment',
-                userId: this.$parent.currentUser.id,
-                oderCode: this.orderCode,
-            })
+            if (this.$parent && this.$parent.$refs.makePayment) {
+                this.$parent.$refs.makePayment.pay({
+                    requestedFrom: "/checkout",
+                    paymentAmount: 0,
+                    paymentMethod: this.paymentMethod,
+                    paymentType: "cart_payment",
+                    userId: this.$parent.currentUser.id,
+                    orderCode: this.orderCode,  // Ensure orderCode is correctly passed
+                });
+            }
         },
     },
 };
