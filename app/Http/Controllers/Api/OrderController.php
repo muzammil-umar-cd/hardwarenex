@@ -430,7 +430,7 @@ class OrderController extends Controller
             $order->save();
             OrderUpdate::create([
                 'order_id' => $order->id,
-                'user_id' => auth('api')->user()->id,
+                'user_id' => $userId,
                 'note' => 'Order has been placed.',
             ]);
         }
