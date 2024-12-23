@@ -20,8 +20,11 @@ class AuthorizenetPaymentController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', session('user_id'))->first();
-        $get_address_data = Address::where('ip_address','=',FacadeRequest::ip())->first();
+        if(auth('api')->user()){
+            $user = User::where('id', session('user_id'))->first();
+        }else{
+            $get_address_data = Address::where('ip_address','=',FacadeRequest::ip())->first();
+        }
         $invoiceNumber = '';
         $lastName = '';
         $address = '';
