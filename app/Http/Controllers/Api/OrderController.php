@@ -349,9 +349,15 @@ class OrderController extends Controller
                 }
             }
 
+            if(auth('api')->user()){
+                $userId = auth('api')->user()->id;
+            }else{
+                $userId = 0;
+            }
+
             // shop order place
             $order = Order::create([
-                'user_id' => auth('api')->user()->id,
+                'user_id' => $userId,
                 'shop_id' => $shop_id,
                 'combined_order_id' => $combined_order->id,
                 'code' => $package_number,
