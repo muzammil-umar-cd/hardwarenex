@@ -30,7 +30,7 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="{{ uploaded_asset(get_setting('site_icon')) }}">
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     // Initialize the service worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/serviceworker.js', {
@@ -43,4 +43,4 @@
             console.log('The Shop PWA: ServiceWorker registration failed: ', err);
         });
     }
-</script> -->
+</script>
