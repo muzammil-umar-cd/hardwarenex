@@ -940,8 +940,10 @@
                         }}</span>
                     </v-btn>
                 </div>
-                <Payment ref="makePayment" />
-                <FailedDialog ref="failedPayment" />
+                <template>
+                    <Payment ref="makePayment" />
+                    <FailedDialog ref="failedPayment" />
+                </template>
                 <v-overlay :value="checkoutLoading" z-index="99999">
                     <v-progress-circular
                         indeterminate
