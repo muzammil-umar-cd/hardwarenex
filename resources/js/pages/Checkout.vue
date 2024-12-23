@@ -941,7 +941,7 @@
                     </v-btn>
                 </div>
                 <Payment ref="makePayment" />
-                <FailedDialog ref="failedPayment" />
+                <FailedDialog ref="failedPayment" v-if="$refs.makePayment" :makePayment="$refs.makePayment" />
                 <v-overlay :value="checkoutLoading" z-index="99999">
                     <v-progress-circular
                         indeterminate
