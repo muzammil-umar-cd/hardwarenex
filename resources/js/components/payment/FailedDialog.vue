@@ -22,6 +22,12 @@
 
 <script>
 export default {
+    props: {
+        makePayment: {
+            type: Object,
+            required: true,
+        },
+    },
     data() {
         return {
             dialog: false,
@@ -30,7 +36,7 @@ export default {
         };
     },
     methods: {
-        open({orderCode,paymentMethod}) {
+        open({ orderCode, paymentMethod }) {
             this.dialog = true;
             this.orderCode = orderCode;
             this.paymentMethod = paymentMethod;
@@ -39,16 +45,14 @@ export default {
             this.dialog = false;
         },
         tryAgain() {
-            if (this.$parent && this.$parent.$refs.makePayment) {
-                this.$parent.$refs.makePayment.pay({
-                    requestedFrom: "/checkout",
-                    paymentAmount: 0,
-                    paymentMethod: this.paymentMethod,
-                    paymentType: "cart_payment",
-                    userId: this.$parent.currentUser.id,
-                    orderCode: this.orderCode,  // Ensure orderCode is correctly passed
-                });
-            }
+            this.makePayment.pay({
+                requestedFrom: '/checkout',
+                paymentAmount: 0,
+                paymentMethod: this.paymentMethod,
+                paymentType: 'cart_payment',
+                userId: this.$parent.currentUser.id,
+                orderCode: this.orderCode,
+            });
         },
     },
 };
