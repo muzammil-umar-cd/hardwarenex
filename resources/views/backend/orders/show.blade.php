@@ -14,11 +14,11 @@
                             <div>
                                 <div class="fs-15 fw-600 mb-2">{{ translate('Customer info') }}</div>
                                 <div><span class="opacity-80 mr-2 ml-0">{{ translate('Name') }}:</span>
-                                    {{ $order->user->name ?? '' }}</div>
+                                    {{ $order->user->name ?? $shipping_address->full_name }}</div>
                                 <div><span class="opacity-80 mr-2 ml-0">{{ translate('Email') }}:</span>
-                                    {{ $order->user->email ?? '' }}</div>
+                                    {{ $order->user->email ?? $shipping_address->email }}</div>
                                 <div><span class="opacity-80 mr-2 ml-0">{{ translate('Phone') }}:</span>
-                                    {{ $order->user->phone ?? '' }}</div>
+                                    {{ $order->user->phone ?? $shipping_address->phone }}</div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-4">
