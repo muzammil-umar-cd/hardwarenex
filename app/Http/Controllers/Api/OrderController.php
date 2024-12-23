@@ -300,7 +300,11 @@ class OrderController extends Controller
 
 
         $combined_order = new CombinedOrder;
-        $combined_order->user_id = $user->id;
+        if($user){
+            $combined_order->user_id = $user->id;
+        }else{
+            $combined_order->user_id = 0;
+        }
         $combined_order->code = date('Ymd-His') . rand(10, 99);
         $combined_order->shipping_address = json_encode($shippingAddress);
         $combined_order->billing_address = json_encode($billingAddress);

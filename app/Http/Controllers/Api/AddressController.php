@@ -62,8 +62,8 @@ class AddressController extends Controller
             $address->city_id = $request->city;
             $address->postal_code = $request->postal_code;
             $address->phone = $request->phone;
-            $address->default_shipping = 0;
-            $address->default_billing = 0;
+            $address->default_shipping = 1;
+            $address->default_billing = 1;
             $address->save();
         }
 
