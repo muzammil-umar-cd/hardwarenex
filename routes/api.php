@@ -120,7 +120,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
     
     // BULK ORDER API
     Route::post('/bulk-orders', [BulkOrderController::class, 'store']);
-
+    Route::get('order/{order_code}', [OrderController::class, 'show']);
+    
     Route::group(['middleware' => ['auth:api', 'unbanned']], function () {
         Route::group(['prefix' => 'user'], function () {
 
@@ -143,7 +144,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
 
             Route::get('orders/downloads', [OrderController::class, 'productDownloads']);
             Route::get('orders/product/download/{id}', [OrderController::class, 'download']);
-            Route::get('order/{order_code}', [OrderController::class, 'show']);
             Route::get('order/cancel/{order_id}', [OrderController::class, 'cancel']);
             // Route::get('order/invoice-download/{order_code}', [OrderController::class, 'invoice_download']);
 

@@ -37,7 +37,7 @@ export default {
     async getDetails() {
       const res = await this.call_api(
         "get",
-        `user/order/${this.$route.query.orderCode}`
+        `order/${this.$route.query.orderCode}`
       );
       if (res.data.success) {
         this.order = res.data.data;
