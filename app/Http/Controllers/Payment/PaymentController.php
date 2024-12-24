@@ -16,12 +16,16 @@ class PaymentController extends Controller
 
     public function payment_initialize(Request $request, $gateway)
     {
-        dd($request->all());
+        if($request->user_id != null){
+            $userId = $request->user_id;
+        }else{
+            $userId = 0;
+        }
         session()->put('redirect_to', $request->redirect_to);
         session()->put('amount', $request->amount);
         session()->put('payment_method', $request->payment_method);
         session()->put('payment_type', $request->payment_type);
-        session()->put('user_id', $request->user_id);
+        session()->put('user_id', $userId);
         session()->put('order_code', $request->order_code);
 
         session()->put('transactionId', $request->transactionId ?? null);
@@ -33,7 +37,7 @@ class PaymentController extends Controller
         session()->put('cvv', $request->cvv);
         session()->put('expiration_month', $request->expiration_month);
         session()->put('expiration_year', $request->expiration_year);
-// dd(session()->all());
+dd(session()->all());
         if ($request->hasFile('receipt')) {
             if ($request->payment_type == "seller_package_payment") {
                 session()->put('receiptFile', $request->file('receipt')->store('uploads/offline_payments'));
