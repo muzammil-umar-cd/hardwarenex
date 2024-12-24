@@ -65,7 +65,6 @@ class AuthorizenetPaymentController extends Controller
         $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
         $merchantAuthentication->setName(config('payment.authorizenet.AUTHORIZE_NET_MERCHANT_LOGIN_ID'));
         $merchantAuthentication->setTransactionKey(config('payment.authorizenet.AUTHORIZE_NET_MERCHANT_TRANSACTION_KEY'));
-        dd($merchantAuthentication );
         // Set the transaction's refId
         $refId = 'ref' . time();
         $cardNumber = preg_replace('/\s+/', '', session('card_number'));
@@ -75,7 +74,7 @@ class AuthorizenetPaymentController extends Controller
         $creditCard->setCardNumber($cardNumber);
         $creditCard->setExpirationDate(session('expiration_year') . "-" . session('expiration_month'));
         $creditCard->setCardCode(session('cvv'));
-
+        dd($creditCard );
         // Add the payment data to a paymentType object
         $paymentOne = new AnetAPI\PaymentType();
         $paymentOne->setCreditCard($creditCard);
