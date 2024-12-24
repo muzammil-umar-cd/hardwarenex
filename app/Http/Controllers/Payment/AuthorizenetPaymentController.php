@@ -80,7 +80,7 @@ class AuthorizenetPaymentController extends Controller
         // Add the payment data to a paymentType object
         $paymentOne = new AnetAPI\PaymentType();
         $paymentOne->setCreditCard($creditCard);
-        dd($paymentOne );
+        // dd($paymentOne );
         // Create order information
         $order = new AnetAPI\OrderType();
         $order->setInvoiceNumber($invoiceNumber);
@@ -129,7 +129,7 @@ class AuthorizenetPaymentController extends Controller
             $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
         }
 
-        // dd($response);
+        dd($response);
         if ($response != null) {
             // Check to see if the API request was successfully received and acted upon
             if ($response->getMessages()->getResultCode() == "Ok") {
