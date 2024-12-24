@@ -83,7 +83,7 @@ class AuthorizenetPaymentController extends Controller
         $order = new AnetAPI\OrderType();
         $order->setInvoiceNumber($invoiceNumber);
         // $order->setDescription("Golf Shirts");
-        dd($order );
+        
         // Set the customer's Bill To address
         $customerAddress = new AnetAPI\CustomerAddressType();
         $customerAddress->setFirstName("");
@@ -92,7 +92,7 @@ class AuthorizenetPaymentController extends Controller
         $customerAddress->setCity($city);
         $customerAddress->setZip($zip);
         $customerAddress->setCountry($country);
-
+        dd($customerAddress );
         // Set the customer's identifying information
         $customerData = new AnetAPI\CustomerDataType();
         if(auth('api')->user()){
