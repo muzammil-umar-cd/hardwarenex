@@ -113,13 +113,13 @@ class AuthorizenetPaymentController extends Controller
         $transactionRequestType->setPayment($paymentOne);
         $transactionRequestType->setBillTo($customerAddress);
         $transactionRequestType->setCustomer($customerData);
-        dd($transactionRequestType );
+        
         // Assemble the complete transaction request
         $requests = new AnetAPI\CreateTransactionRequest();
         $requests->setMerchantAuthentication($merchantAuthentication);
         $requests->setRefId($refId);
         $requests->setTransactionRequest($transactionRequestType);
-
+        dd($requests );
         // Create the controller and get the response
         $controller = new AnetController\CreateTransactionController($requests);
         if (get_setting('authorizenet_sandbox') == 1) {
