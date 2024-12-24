@@ -23,15 +23,16 @@ class AuthorizenetPaymentController extends Controller
         // dd(session('order_code'));
         if(auth('api')->user()){
             $user = User::where('id', session('user_id'))->first();
+            $get_address_data = Address::where('user_id','=',session('user_id'))where('default_shipping', '=', 1)->first();
         }else{
             $get_address_data = Address::where('ip_address','=',FacadeRequest::ip())->first();
         }
         $invoiceNumber = '';
         $lastName = '';
-        $address = '';
-        $city = '';
-        $zip = '';
-        $country = '';
+        $address = $get_address_data->address;
+        $city = $get_address_data->city;
+        $zip = $get_address_data->postal_code;
+        $country = $get_address_data->country;
 
         if (session('payment_type') == 'cart_payment' || session('payment_type') == 'repayment') {
             $combined_order = CombinedOrder::where('code', session('order_code'))->first();
