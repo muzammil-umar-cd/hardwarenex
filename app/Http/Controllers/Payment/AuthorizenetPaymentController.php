@@ -20,7 +20,7 @@ class AuthorizenetPaymentController extends Controller
      */
     public function index()
     {
-        dd(session('order_code'));
+        // dd(session('order_code'));
         if(auth('api')->user()){
             $user = User::where('id', session('user_id'))->first();
         }else{
