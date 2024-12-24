@@ -103,7 +103,7 @@ class AuthorizenetPaymentController extends Controller
             $customerData->setId(0);
             $customerData->setEmail($get_address_data->email);
         }
-        dd($customerData );
+        
         // Create a TransactionRequestType object and add the previous objects to it
         $transactionRequestType = new AnetAPI\TransactionRequestType();
         $transactionRequestType->setTransactionType("authCaptureTransaction");
@@ -113,7 +113,7 @@ class AuthorizenetPaymentController extends Controller
         $transactionRequestType->setPayment($paymentOne);
         $transactionRequestType->setBillTo($customerAddress);
         $transactionRequestType->setCustomer($customerData);
-
+        dd($transactionRequestType );
         // Assemble the complete transaction request
         $requests = new AnetAPI\CreateTransactionRequest();
         $requests->setMerchantAuthentication($merchantAuthentication);
