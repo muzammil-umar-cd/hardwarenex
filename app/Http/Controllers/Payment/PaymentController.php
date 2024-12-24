@@ -16,6 +16,7 @@ class PaymentController extends Controller
 
     public function payment_initialize(Request $request, $gateway)
     {
+        dd($request->all());
         session()->put('redirect_to', $request->redirect_to);
         session()->put('amount', $request->amount);
         session()->put('payment_method', $request->payment_method);
