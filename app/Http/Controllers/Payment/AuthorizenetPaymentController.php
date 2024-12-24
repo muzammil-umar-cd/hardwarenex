@@ -33,6 +33,7 @@ class AuthorizenetPaymentController extends Controller
         $city = $get_address_data->city;
         $zip = $get_address_data->postal_code;
         $country = $get_address_data->country;
+        $month_number = date('m', strtotime(session('expiration_month')));
 
         if (session('payment_type') == 'cart_payment' || session('payment_type') == 'repayment') {
             $combined_order = CombinedOrder::where('code', session('order_code'))->first();
@@ -73,7 +74,7 @@ class AuthorizenetPaymentController extends Controller
         // Create the payment data for a credit card
         $creditCard = new AnetAPI\CreditCardType();
         $creditCard->setCardNumber($cardNumber);
-        $creditCard->setExpirationDate(session('expiration_year') . "-" . session('expiration_month'));
+        $creditCard->setExpirationDate(session('expiration_year') . "-" .  $month_number);
         $creditCard->setCardCode(session('cvv'));
         
         // Add the payment data to a paymentType object
