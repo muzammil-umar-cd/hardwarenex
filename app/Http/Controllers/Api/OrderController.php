@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Notification;
 use PDF;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request as FacadeRequest;
 
 class OrderController extends Controller
 {
@@ -43,7 +44,19 @@ class OrderController extends Controller
     public function show($order_code)
     {
         $order = CombinedOrder::where('code', $order_code)->with(['user', 'orders.orderDetails.variation.product', 'orders.orderDetails.variation.combinations', 'orders.shop'])->first();
+        if(!auth('api')->user()){
+            $get_user_address = Address::where('ip_address','=',FacadeRequest::ip())->first();
+        }
         if ($order) {
+            if(!auth('api')->user()){
+                return new OrderSingleCollection($order);
+            }else{
+                return response()->json([
+                    'success' => false,
+                    'message' => translate("This order is not your. You can't check details of this order"),
+                    'status' => 200
+                ]);
+            }
             if (auth('api')->user()->id == ($order->user_id || $order->assign_delivery_boy)) {
                 return new OrderSingleCollection($order);
             } else {
