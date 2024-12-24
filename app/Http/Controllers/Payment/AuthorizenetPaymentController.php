@@ -93,7 +93,7 @@ class AuthorizenetPaymentController extends Controller
         $customerAddress->setCity($city);
         $customerAddress->setZip($zip);
         $customerAddress->setCountry($country);
-        dd($customerAddress );
+        
         // Set the customer's identifying information
         $customerData = new AnetAPI\CustomerDataType();
         if(auth('api')->user()){
@@ -103,7 +103,7 @@ class AuthorizenetPaymentController extends Controller
             $customerData->setId(0);
             $customerData->setEmail($get_address_data->email);
         }
-
+        dd($customerData );
         // Create a TransactionRequestType object and add the previous objects to it
         $transactionRequestType = new AnetAPI\TransactionRequestType();
         $transactionRequestType->setTransactionType("authCaptureTransaction");
