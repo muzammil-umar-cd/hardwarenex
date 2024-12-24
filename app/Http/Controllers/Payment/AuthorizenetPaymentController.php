@@ -119,7 +119,7 @@ class AuthorizenetPaymentController extends Controller
         $requests->setMerchantAuthentication($merchantAuthentication);
         $requests->setRefId($refId);
         $requests->setTransactionRequest($transactionRequestType);
-        dd($requests );
+        
         // Create the controller and get the response
         $controller = new AnetController\CreateTransactionController($requests);
         if (get_setting('authorizenet_sandbox') == 1) {
@@ -128,7 +128,7 @@ class AuthorizenetPaymentController extends Controller
             $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
         }
 
-        // dd($response);
+        dd($response);
         if ($response != null) {
             // Check to see if the API request was successfully received and acted upon
             if ($response->getMessages()->getResultCode() == "Ok") {
