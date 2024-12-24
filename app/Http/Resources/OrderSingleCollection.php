@@ -18,7 +18,7 @@ class OrderSingleCollection extends JsonResource
     public function toArray($request)
     {   
         if(!auth('api')->user()){
-            $get_user_address = Address::where('ip_address','=',FacadeRequest::ip())->first();
+            $get_user_address = Address::where('ip_address','=',FacadeRequest::ip())->latest()->first();
 
             return [
                 'id' => $this->id,

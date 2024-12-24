@@ -45,7 +45,7 @@ class OrderController extends Controller
     {
         $order = CombinedOrder::where('code', $order_code)->with(['user', 'orders.orderDetails.variation.product', 'orders.orderDetails.variation.combinations', 'orders.shop'])->first();
         if(!auth('api')->user()){
-            $get_user_address = Address::where('ip_address','=',FacadeRequest::ip())->first();
+            $get_user_address = Address::where('ip_address','=',FacadeRequest::ip())->latest()->first();
         }
         if ($order) {
             if(!auth('api')->user()){

@@ -25,7 +25,7 @@ class AuthorizenetPaymentController extends Controller
             $user = User::where('id', session('user_id'))->first();
             $get_address_data = Address::where('user_id','=',session('user_id'))->where('default_shipping', '=', 1)->first();
         }else{
-            $get_address_data = Address::where('ip_address','=',FacadeRequest::ip())->first();
+            $get_address_data = Address::where('ip_address','=',FacadeRequest::ip())->latest()->first();
         }
         $invoiceNumber = '';
         $lastName = '';
