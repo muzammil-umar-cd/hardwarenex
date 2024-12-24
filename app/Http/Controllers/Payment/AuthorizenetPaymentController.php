@@ -78,12 +78,12 @@ class AuthorizenetPaymentController extends Controller
         // Add the payment data to a paymentType object
         $paymentOne = new AnetAPI\PaymentType();
         $paymentOne->setCreditCard($creditCard);
-        dd($paymentOne );
+        
         // Create order information
         $order = new AnetAPI\OrderType();
         $order->setInvoiceNumber($invoiceNumber);
         // $order->setDescription("Golf Shirts");
-
+        dd($order );
         // Set the customer's Bill To address
         $customerAddress = new AnetAPI\CustomerAddressType();
         $customerAddress->setFirstName("");
