@@ -74,11 +74,11 @@ class AuthorizenetPaymentController extends Controller
         $creditCard->setCardNumber($cardNumber);
         $creditCard->setExpirationDate(session('expiration_year') . "-" . session('expiration_month'));
         $creditCard->setCardCode(session('cvv'));
-        dd($creditCard );
+        
         // Add the payment data to a paymentType object
         $paymentOne = new AnetAPI\PaymentType();
         $paymentOne->setCreditCard($creditCard);
-
+        dd($paymentOne );
         // Create order information
         $order = new AnetAPI\OrderType();
         $order->setInvoiceNumber($invoiceNumber);
