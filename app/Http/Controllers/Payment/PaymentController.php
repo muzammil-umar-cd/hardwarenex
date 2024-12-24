@@ -37,7 +37,7 @@ class PaymentController extends Controller
         session()->put('cvv', $request->cvv);
         session()->put('expiration_month', $request->expiration_month);
         session()->put('expiration_year', $request->expiration_year);
-dd(session()->all());
+// dd(session()->all());
         if ($request->hasFile('receipt')) {
             if ($request->payment_type == "seller_package_payment") {
                 session()->put('receiptFile', $request->file('receipt')->store('uploads/offline_payments'));

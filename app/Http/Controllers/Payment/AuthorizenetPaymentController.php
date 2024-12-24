@@ -65,7 +65,7 @@ class AuthorizenetPaymentController extends Controller
         $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
         $merchantAuthentication->setName(config('payment.authorizenet.AUTHORIZE_NET_MERCHANT_LOGIN_ID'));
         $merchantAuthentication->setTransactionKey(config('payment.authorizenet.AUTHORIZE_NET_MERCHANT_TRANSACTION_KEY'));
-
+        dd($merchantAuthentication );
         // Set the transaction's refId
         $refId = 'ref' . time();
         $cardNumber = preg_replace('/\s+/', '', session('card_number'));
