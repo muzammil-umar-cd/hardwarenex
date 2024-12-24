@@ -39,7 +39,7 @@ export default {
             this.dialog = false;
         },
         tryAgain() {
-            console.log(this.$parent.$refs.makePayment);
+            console.log(this.$parent.proceedCheckout);
             this.$parent.$refs.makePayment.pay({
                 requestedFrom: '/checkout',
                 paymentAmount: 0,
